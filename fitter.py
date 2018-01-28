@@ -20,7 +20,7 @@ def make_fit_metrics(fittedmodel):
     ci = fittedmodel.conf_int(.05).to_dict(orient='index')
     m_ci = {}
     for var, vals in ci.items():
-        m_ci[var] = {'min': vals[0], 'max': vals[1], 'range': vals[1]- vals[0]}
+        m_ci[var] = {'low': vals[0], 'high': vals[1], 'range': vals[1]- vals[0]}
 
     metrics = {
         "pvalues": fittedmodel.pvalues.to_dict(),
