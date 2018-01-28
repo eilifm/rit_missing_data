@@ -6,6 +6,11 @@ from sklearn.metrics import r2_score, mean_squared_error
 from statsmodels.stats.outliers_influence import variance_inflation_factor
 from sklearn.decomposition import PCA
 
+
+def mean_absolute_percentage_error(y_true, y_pred):
+    y_true, y_pred = np.array(y_true), np.array(y_pred)
+    return np.mean(np.abs((y_true - y_pred) / y_true)) * 100
+
 def make_fit_metrics(fittedmodel):
     """
     
@@ -63,7 +68,8 @@ def fit_lm(df, test_df, alpha=.05):
 
     pred_metrics = {
         'r2_pred': r2_score(test_y, y_pred),
-        'mse_pred': mean_squared_error(test_y, y_pred)
+        'mse_pred': mean_squared_error(test_y, y_pred),
+        'mape_pred': mean_absolute_percentage_error(test_y, y_pred)
     }
 
     f_metrics.update(**pred_metrics)
