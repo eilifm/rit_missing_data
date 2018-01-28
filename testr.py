@@ -5,6 +5,7 @@ from fixer import *
 
 import numpy as np
 
+np.random.seed(10)
 
 dist_types = [
     x_def_helper('uniform', coeff=5, low=0, high=100)
@@ -13,14 +14,14 @@ dist_types = [
 clean_fit_data, test_data = generate_ind_model(1, dist_types, intercept=10, n=100, noise_factor=.1)
 
 wreck_results = []
-for i in range(10):
+for i in range(50):
     for i in np.arange(0, 1, .05):
         wrecked_data = clean_fit_data.copy(deep=True)
 
         if i != 0:
             uniform_shred_cols(['x1'], i, wrecked_data)
-            wrecked_data = wrecked_data.dropna()
-            # wrecked_data = fix_cols({'x1': 'mean'}, wrecked_data)
+            #wrecked_data = wrecked_data.dropna()
+            wrecked_data = fix_cols({'x1': 'mean'}, wrecked_data)
 
         w_fitted, w_metrics, = fit_lm(wrecked_data, test_data)
 

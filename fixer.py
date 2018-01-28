@@ -2,6 +2,18 @@ import numpy as np
 import pandas as pd
 
 def fix_cols(col_fix_methods:dict, df: pd.DataFrame):
+    """
+    
+    
+    Parameters
+    ----------
+    col_fix_methods
+    df
+
+    Returns
+    -------
+
+    """
     fixes = {}
 
     for col, method in col_fix_methods.items():
