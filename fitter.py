@@ -75,3 +75,23 @@ def fit_lm(df, test_df, alpha=.05):
     f_metrics.update(**pred_metrics)
 
     return results, f_metrics
+
+
+def beta_target_check(metrics, coeffs, as_dataframe=False):
+    beta_target_results = []
+    for key in coeffs:
+        if metrics['beta_ci'][key]['low'] <= coeffs[key] <= metrics['beta_ci'][key]['high']:
+            beta_target_results.append({
+                'var': key,
+                'in_ci': 1
+            })
+        else:
+            beta_target_results.append({
+                'var': key,
+                'in_ci': 0
+            })
+
+    if as_dataframe:
+        return pd.DataFrame.from_records(beta_target_results, index='var')
+    else:
+        return beta_target_results

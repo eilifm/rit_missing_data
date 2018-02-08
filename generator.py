@@ -57,11 +57,17 @@ def generate_ind_model(p: int, dist_types: list, test_set_size=.5, intercept=10,
 
     dotted = np.dot(data, [dist_types[i]['x_coeff'] for i in range(p)]) + intercept
 
+    coeffs = {}
+    for i in range(p):
+        coeffs['x'+str(i+1)] = dist_types[i]['x_coeff']
+
+    coeffs['const'] = intercept
+
     data['y'] = dotted + np.random.normal(0, noise_factor*(np.max(dotted)-np.min(dotted)), size=int(n*(1+test_set_size)))
 
     fit = data.loc[0:n-1, :].copy()
     test = data.loc[n::, :].copy()
-    return fit, test
+    return fit, test, coeffs
 
 
 def x_def_helper(name, coeff, **kwargs):

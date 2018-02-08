@@ -14,7 +14,7 @@ dist_types = [
 clean_fit_data, test_data = generate_ind_model(1, dist_types, intercept=10, n=100, noise_factor=.1)
 
 wreck_results = []
-for i in range(50):
+for i in range(5):
     for i in np.arange(0, 1, .05):
         wrecked_data = clean_fit_data.copy(deep=True)
 
