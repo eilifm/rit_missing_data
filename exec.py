@@ -92,14 +92,15 @@ if __name__ == "__main__":
     levels = [
         (data_gen,),
         ("mean", "invert", "drop"),
-        (.1, .3),
-        (100, 200),
+        (.1, .3, .5),
+        (100, 200, 500),
         (.05,),
         (0,),
         (.8,),
-        range(100)
+        range(50)
     ]
 
+    print(len(list(itertools.product(*levels))))
     start = time.time()
     results = Parallel(n_jobs=-1)(delayed(run_new)(*args) for args in itertools.product(*levels))
 
