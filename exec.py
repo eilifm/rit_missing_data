@@ -97,7 +97,7 @@ if __name__ == "__main__":
         (.05,),
         (0,),
         (.8,),
-        range(10)
+        range(100)
     ]
 
     start = time.time()
