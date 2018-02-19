@@ -103,7 +103,7 @@ if __name__ == "__main__":
 
     print(len(list(itertools.product(*levels))))
     start = time.time()
-    results = Parallel(n_jobs=-1)(delayed(run_new)(*args) for args in itertools.product(*levels))
+    results = Parallel(n_jobs=-1, verbose=1)(delayed(run_new)(*args) for args in itertools.product(*levels))
 
     results = pd.concat(results)
 
