@@ -70,10 +70,11 @@ def run_new(data_gen_list, action_type, beta_sigma, sample_size, incr, lower_pct
 
     results_agg = results.copy()
     results_agg = results_agg.groupby('pct_missing').mean()
+
     results_agg.loc[:, 'action_type'] = action_type
     results.loc[:, 'action_type'] = action_type
-
-#    results.loc[:, "rep_num"]
+    results.loc[:, 'beta_sigma'] = beta_sigma
+    results.loc[:, 'sample_size'] = sample_size
 
     return results
 
@@ -93,11 +94,11 @@ if __name__ == "__main__":
         (data_gen,),
         ("mean", "invert", "drop"),
         (.1, .3, .5),
-        (100, 200, 500),
+        (20, 50, 100, 200),
         (.05,),
         (0,),
         (.8,),
-        range(50)
+        range(1000)
     ]
 
     print(len(list(itertools.product(*levels))))
@@ -105,6 +106,8 @@ if __name__ == "__main__":
     results = Parallel(n_jobs=-1)(delayed(run_new)(*args) for args in itertools.product(*levels))
 
     results = pd.concat(results)
+
+    print(results.shape)
 
     print(time.time() - start)
 
