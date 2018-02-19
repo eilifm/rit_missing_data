@@ -24,11 +24,6 @@ def run():
     #fixed_data = fix_cols({'x1': 'mean'}, wrecked_data)
     ex_fitted, ex_metrics, = fit_lm(fixed_data, x1_uniform_test_data)
 
-    # print(ex_fitted.summary())
-    #
-    # fig = sm.graphics.abline_plot(model_results=ex_fitted)
-    # ax = fig.axes[0]
-    # ax.scatter(fixed_data['x1'], fixed_data['y'])
 
     return ex_fitted.rsquared
 
@@ -37,7 +32,7 @@ from joblib import Parallel, delayed
 from math import sqrt
 import time
 start = time.time()
-results = Parallel(n_jobs=8)(delayed(run)() for i in range(51000))
+results = Parallel(n_jobs=2)(delayed(run)() for i in range(100))
 
 print(time.time()-start)
 
