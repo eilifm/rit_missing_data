@@ -79,37 +79,3 @@ def run(data_gen_list, action_type, beta_sigma, sample_size, incr, lower_pct, up
     return results
 
 
-if __name__ == "__main__":
-    from joblib import Parallel, delayed
-    from math import sqrt
-    import time
-    import itertools
-
-    data_gen = [x_def_helper('uniform', coeff=10, low=0, high=1)]
-
-    # start = time.time()
-    # results = Parallel(n_jobs=2)(delayed(run_new)() for i in range(100))
-
-    levels = [
-        (data_gen,),
-        ("mean", "invert", "drop"),
-        (.1, .3, .5),
-        (20, 50, 100, 200),
-        (.05,),
-        (0,),
-        (.8,),
-        range(10)
-    ]
-
-    print(len(list(itertools.product(*levels))))
-    start = time.time()
-    results = Parallel(n_jobs=-1, verbose=1)(delayed(run_new)(*args) for args in itertools.product(*levels))
-
-    results = pd.concat(results)
-
-    print(results.shape)
-
-    print(time.time() - start)
-
-
-    #print(run_new(data_gen, "mean", .1, 100,.05,0,.8).shape)
