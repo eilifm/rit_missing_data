@@ -4,7 +4,7 @@ from fitter import *
 from fixer import *
 
 
-def run_new(data_gen_list, action_type, beta_sigma, sample_size, incr, lower_pct, upper_pct, rep_num):
+def run(data_gen_list, action_type, beta_sigma, sample_size, incr, lower_pct, upper_pct, rep_num):
 
 
     fit_data, test_data, true_coeffs = generate_ind_model(
@@ -98,7 +98,7 @@ if __name__ == "__main__":
         (.05,),
         (0,),
         (.8,),
-        range(1000)
+        range(10)
     ]
 
     print(len(list(itertools.product(*levels))))
