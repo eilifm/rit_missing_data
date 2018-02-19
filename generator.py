@@ -31,9 +31,8 @@ def generate_xvar(dist: str, size=1000, **kwargs):
         raise ValueError("Invalid distribution %s" % dist)
 
 
-def generate_ind_model(p: int, dist_types: list, test_set_size=.5, intercept=10, n=1000, noise_factor=.1):
+def generate_ind_model(p: int, dist_types: list, test_set_size=.5, intercept=10, n=1000, beta_sigma=1):
     """
-    
     
     Parameters
     ----------
@@ -47,6 +46,7 @@ def generate_ind_model(p: int, dist_types: list, test_set_size=.5, intercept=10,
     -------
 
     """
+
     data = pd.DataFrame()
     if p != len(dist_types):
         raise ValueError("p, len(dist_types) and len(coeffd) must all be equal")
@@ -63,7 +63,7 @@ def generate_ind_model(p: int, dist_types: list, test_set_size=.5, intercept=10,
 
     coeffs['const'] = intercept
 
-    data['y'] = dotted + np.random.normal(0, noise_factor*(np.max(dotted)-np.min(dotted)), size=int(n*(1+test_set_size)))
+    data['y'] = dotted + np.random.normal(0, max([dist_types[i]['x_coeff'] for i in range(p)])*beta_sigma, size=int(n*(1+test_set_size)))
 
     fit = data.loc[0:n-1, :].copy()
     test = data.loc[n::, :].copy()
@@ -82,6 +82,7 @@ def x_def_helper(name, coeff, **kwargs):
 
     Returns
     -------
+
 
     """
     return {'dist_name': name, 'dist_params': kwargs, 'x_coeff': coeff}

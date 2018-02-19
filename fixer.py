@@ -7,7 +7,6 @@ from sklearn.metrics import r2_score, mean_squared_error
 def fix_cols(col_fix_methods:dict, df: pd.DataFrame):
     """
     
-    
     Parameters
     ----------
     col_fix_methods
@@ -80,8 +79,8 @@ def inverse_fit_impute(x_name, y_name, df: pd.DataFrame):
         ),
         results.params[x_name])
 
-
     return df, results.params
+
 
 def rand_replace(x_name, df: pd.DataFrame):
     """
