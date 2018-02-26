@@ -4,12 +4,31 @@ from fitter import *
 from fixer import *
 
 
-def run(data_gen_list, action_type, beta_sigma, sample_size, incr, lower_pct, upper_pct, rep_num):
+# print(generate_ind_model(
+#     [
+#         x_def_helper('uniform', low=0, high=1),
+#         x_def_helper('uniform', low=0, high=1),
+#         x_def_helper('uniform', low=0, high=1)
+#     ],
+#     main_coeffs=[10, 10, 10],
+#     interaction_coeffs=[1, 4],
+#     intercept=10,
+#     n=1000,
+#     beta_sigma=.2,
+#     interactions=[
+#         [1,2],
+#         [2,3]
+#     ]
+# ))
 
+
+def run(data_gen_dict, action_type, beta_sigma, sample_size, incr, lower_pct, upper_pct, rep_num):
 
     fit_data, test_data, true_coeffs = generate_ind_model(
-                                            len(data_gen_list),
-                                            data_gen_list,
+                                            data_gen_dict["dist_list"],
+                                            data_gen_dict["main_coeffs"],
+                                            data_gen_dict["interaction_coeffs"],
+                                            data_gen_dict["interactions"],
                                             intercept=1000,
                                             n=sample_size,
                                             beta_sigma=beta_sigma
@@ -73,6 +92,7 @@ def run(data_gen_list, action_type, beta_sigma, sample_size, incr, lower_pct, up
 
     results_agg.loc[:, 'action_type'] = action_type
     results.loc[:, 'action_type'] = action_type
+    results.loc[:, 'beta_sigma'] = beta_sigma
     results.loc[:, 'beta_sigma'] = beta_sigma
     results.loc[:, 'sample_size'] = sample_size
 

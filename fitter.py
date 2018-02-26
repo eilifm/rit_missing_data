@@ -51,6 +51,7 @@ def fit_lm(df, test_df, alpha=.05):
     -------
 
     """
+
     X = df.loc[:, df.columns != "y"]
     test_X = test_df.loc[:, df.columns != "y"]
 

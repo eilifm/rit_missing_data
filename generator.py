@@ -31,46 +31,57 @@ def generate_xvar(dist: str, size=1000, **kwargs):
         raise ValueError("Invalid distribution %s" % dist)
 
 
-def generate_ind_model(p: int, dist_types: list, test_set_size=.5, intercept=10, n=1000, beta_sigma=1):
+def generate_ind_model(dist_types: list,
+                       main_coeffs:list,
+                       interaction_coeffs: list,
+                       interactions=[],
+                       test_set_size=.5,
+                       intercept=10,
+                       n=1000,
+                       beta_sigma=1.0):
     """
-    
-    Parameters
-    ----------
-    p
-    dist_types
-    coefs
-    intercept
-    n
-
-    Returns
-    -------
-
     """
 
     data = pd.DataFrame()
-    if p != len(dist_types):
-        raise ValueError("p, len(dist_types) and len(coeffd) must all be equal")
+    main_effects = len(dist_types)
 
     # Generate each regressor iteritively
-    for i in range(p):
+    for i in range(main_effects):
         data.loc[:, 'x'+str(i+1)] = generate_xvar(dist_types[i]['dist_name'], size=int(n*(1+test_set_size)), **dist_types[i]['dist_params'])
 
-    dotted = np.dot(data, [dist_types[i]['x_coeff'] for i in range(p)]) + intercept
+    coeffs_ = main_coeffs + interaction_coeffs
+    coeffs_dict = {}
 
-    coeffs = {}
-    for i in range(p):
-        coeffs['x'+str(i+1)] = dist_types[i]['x_coeff']
+    # Interactions
+    if len(interactions) >= 1:
+        for inter_ix in range(len(interactions)):
+            inter_factors = list(map(lambda x: "x" + str(x), interactions[inter_ix]))
 
-    coeffs['const'] = intercept
+            # Build the name of the interaction
+            inter_name = ":".join(inter_factors)
 
-    data['y'] = dotted + np.random.normal(0, max([dist_types[i]['x_coeff'] for i in range(p)])*beta_sigma, size=int(n*(1+test_set_size)))
+            coeffs_dict[inter_name] = interaction_coeffs[inter_ix]
+
+            data.loc[:, inter_name] = data.loc[:, inter_factors].prod(axis=1)
+
+
+        #print("x"+str(inter[0]) + ":" + "x"+str(inter[1]))
+    dotted = np.dot(data, coeffs_) + intercept
+
+
+    for i in range(main_effects):
+        coeffs_dict['x'+str(i+1)] = main_coeffs[i]
+
+    coeffs_dict['const'] = intercept
+
+    data['y'] = dotted + np.random.normal(0, max(coeffs_)*beta_sigma, size=int(n*(1+test_set_size)))
 
     fit = data.loc[0:n-1, :].copy()
     test = data.loc[n::, :].copy()
-    return fit, test, coeffs
+    return fit, test, coeffs_dict
 
 
-def x_def_helper(name, coeff, **kwargs):
+def x_def_helper(name, **kwargs):
     """
     
     
@@ -85,5 +96,43 @@ def x_def_helper(name, coeff, **kwargs):
 
 
     """
-    return {'dist_name': name, 'dist_params': kwargs, 'x_coeff': coeff}
+    return {'dist_name': name, 'dist_params': kwargs}
+
+
+def rel_coeff_manager(base: int, factor_weights: list, interactions: list):
+    """
+    
+    Parameters
+    ----------
+    base
+    factor_weights
+    interactions
+
+    Returns
+    -------
+
+    """
+    """
+    generate_ind_model(
+        [
+            x_def_helper('uniform', low=0, high=1),
+            x_def_helper('uniform', low=0, high=1),
+            x_def_helper('uniform', low=0, high=1)
+        ],
+        main_coeffs=[10, 10, 10],
+        interaction_coeffs=[1, 4],
+        intercept=10,
+        n=1000,
+        beta_sigma=.2,
+        interactions=[
+            [1,2],
+            [2,3]
+        ]
+    )
+    """
+
+    [base] + list(np.multiply(base, factor_weights))
+
+
+#rel_coeff_manager(10, [2, 4, .6], [])
 
