@@ -69,6 +69,54 @@ def inverse_fit_impute(x_name, y_name, df: pd.DataFrame):
     # df.loc[df[x_name].isnull(), "was_null"] = True
     # df.loc[~df[x_name].isnull(), "was_null"] = False
 
+    df.loc[df[x_name].isnull(), x_name] = np.divide(
+        np.subtract(
+            df.loc[df[x_name].isnull(), y_name],
+            results.params['const']
+        ),
+        results.params[x_name])
+
+    return df, results.params
+
+
+def inverse_fit_impute_interaction(x_name, y_name, df: pd.DataFrame):
+    """
+
+    Invert the assumed model of y = B0 + B1*X1 + e
+    X1 = (y - B0)/B1
+
+    - Pull out the missing data
+    - Fit normal model of y = B0 + B1*X1
+    - Use the fitted parameters to compute missing X values
+    - Fill in missing X values
+    - Return fixed Dataframe
+
+    Parameters
+    ----------
+    x_name
+    y_name
+    df
+
+    Returns
+    -------
+
+    """
+
+    X = df.loc[~df[x_name].isnull(), x_name]
+    X = sm.add_constant(X)
+
+    # Gather all of the corresponding Y values
+    y = df.loc[~df[x_name].isnull(), 'y']
+
+    # Define the model
+    model = sm.OLS(y, X)
+
+    # Collect results
+    results = model.fit()
+
+    # Ignore this for now
+    # df.loc[df[x_name].isnull(), "was_null"] = True
+    # df.loc[~df[x_name].isnull(), "was_null"] = False
 
     df.loc[df[x_name].isnull(), x_name] = np.divide(
         np.subtract(

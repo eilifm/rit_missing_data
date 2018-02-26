@@ -12,10 +12,11 @@ def run(data_gen_dict, action_type, beta_sigma, sample_size, incr, lower_pct, up
                                             data_gen_dict["main_coeffs"],
                                             data_gen_dict["interaction_coeffs"],
                                             data_gen_dict["interactions"],
-                                            intercept=1000,
+                                            intercept=10,
                                             n=sample_size,
                                             beta_sigma=beta_sigma
                                         )
+
     param_cols = []
     run_results = []
     # Begin missing levels loop
@@ -52,7 +53,8 @@ def run(data_gen_dict, action_type, beta_sigma, sample_size, incr, lower_pct, up
                             w_metrics['r2_adj'],
                             w_metrics['bic'],
                             w_metrics['r2_pred'],
-                            w_metrics['mse_pred']
+                            w_metrics['mse_pred'],
+                            w_metrics['mape_pred']
         ]
 
         # A TON OF FANCY FOOTWORK TO KEEP ALL THE PARAMS IN ORDER!
@@ -80,7 +82,8 @@ def run(data_gen_dict, action_type, beta_sigma, sample_size, incr, lower_pct, up
      'r2_adj',
      'bic',
      'r2_pred',
-     'mse']+param_cols
+     'mse_pred',
+     'mape_pred']+param_cols
 
     # # Load the results into a Pandas Dataframe
     results = pd.DataFrame(run_results, columns=results_cols)
@@ -91,8 +94,9 @@ def run(data_gen_dict, action_type, beta_sigma, sample_size, incr, lower_pct, up
     # results_agg.loc[:, 'action_type'] = action_type
     results.loc[:, 'action_type'] = action_type
     results.loc[:, 'beta_sigma'] = beta_sigma
-    results.loc[:, 'beta_sigma'] = beta_sigma
     results.loc[:, 'sample_size'] = sample_size
+    results.loc[:, 'beta_x2/beta_x1'] = true_coeffs['x2']/true_coeffs['x1']
+
 
     return results
 

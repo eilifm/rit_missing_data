@@ -3,6 +3,7 @@ from shredder import *
 from fitter import *
 from fixer import *
 from exec_tools import run
+from sklearn.preprocessing import MinMaxScaler
 
 if __name__ == "__main__":
     from joblib import Parallel, delayed
@@ -13,9 +14,9 @@ if __name__ == "__main__":
     maker_levels = [
         (2,),
         (10,),
-        ([.1], [.5], [1]),
-        ([[1, 2]],),
-        ([1], [5], [10])
+        ([.1], [2], [10]), # beta_x2/beta_x1
+        ([[1, 2]],), # Declare interactions
+        ([1], [5], [10]) # Levels of interaction coeff
     ]
 
     # start = time.time()
@@ -25,11 +26,11 @@ if __name__ == "__main__":
         [config_maker(*args) for args in itertools.product(*maker_levels)],
         ("mean", "invert", "drop"),
         (.1, .3),
-        (20, 50, ),
-        (.05,),
+        (20, 50, 100),
+        (.1,),
         (0,),
-        (.8,),
-        range(10)
+        (.2,),
+        range(30)
     ]
 
     print(len(list(itertools.product(*levels))))
@@ -41,13 +42,21 @@ if __name__ == "__main__":
 
     # print(run(*runs[0]))
 
-    results = Parallel(n_jobs=-2, verbose=1)(delayed(run)(*args) for args in itertools.product(*levels))
+    results = Parallel(n_jobs=-1, verbose=1)(delayed(run)(*args) for args in itertools.product(*levels))
 
     results = pd.concat(results)
     import datetime
+
+
+    scaler = MinMaxScaler()
+
+    scaler.fit(results[['beta_sigma', 'sample_size', 'beta_x2/beta_x1', 'pct_missing']])
+
+    results[['beta_sigma', 'sample_size', 'beta_x2/beta_x1']] =  scaler.transform(results[['beta_sigma', 'sample_size', 'beta_x2/beta_x1']])
+
     results.to_csv(str(datetime.datetime.now())+".csv")
 
-    #
+
     # print(results.shape)
     #
     # print(time.time() - start)
