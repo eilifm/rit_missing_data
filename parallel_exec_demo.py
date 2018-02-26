@@ -10,39 +10,21 @@ if __name__ == "__main__":
     import time
     import itertools
 
-    data_gen = [x_def_helper('uniform', coeff=10, low=0, high=1)]
-
-    data = {
-        "dist_list": [
-            x_def_helper('uniform', low=0, high=1),
-            x_def_helper('uniform', low=0, high=1)
-        ],
-        "main_coeffs": [10, 5],
-        "interactions": [
-            [1, 2]
-        ],
-        "interaction_coeffs": [2]
-    }
-
-    data2 = {
-        "dist_list": [
-            x_def_helper('uniform', low=0, high=1),
-            x_def_helper('uniform', low=0, high=1)
-        ],
-        "main_coeffs": [10, 2],
-        "interactions": [
-            [1, 2]
-        ],
-        "interaction_coeffs": [2]
-    }
+    maker_levels = [
+        (2,),
+        (10,),
+        ([.1], [.5], [1]),
+        ([[1, 2]],),
+        ([1], [5], [10])
+    ]
 
     # start = time.time()
     # results = Parallel(n_jobs=2)(delayed(run_new)() for i in range(100))
 
     levels = [
-        (data,data2,),
+        [config_maker(*args) for args in itertools.product(*maker_levels)],
         ("mean", "invert", "drop"),
-        (.1,3),
+        (.1, .3),
         (20, 50, ),
         (.05,),
         (0,),
@@ -53,16 +35,18 @@ if __name__ == "__main__":
     print(len(list(itertools.product(*levels))))
     # start = time.time()
 
-    import pprint
+    runs = list(itertools.product(*levels))
+    #
+    #
 
-    # runs = list(itertools.product(*levels))
-    #
-    # pprint.pprint(runs)
-    #
     # print(run(*runs[0]))
 
-    results = Parallel(n_jobs=-1, verbose=1)(delayed(run)(*args) for args in itertools.product(*levels))
-    # results = pd.concat(results)
+    results = Parallel(n_jobs=-2, verbose=1)(delayed(run)(*args) for args in itertools.product(*levels))
+
+    results = pd.concat(results)
+    import datetime
+    results.to_csv(str(datetime.datetime.now())+".csv")
+
     #
     # print(results.shape)
     #

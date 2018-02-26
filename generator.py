@@ -99,7 +99,7 @@ def x_def_helper(name, **kwargs):
     return {'dist_name': name, 'dist_params': kwargs}
 
 
-def rel_coeff_manager(base: int, factor_weights: list, interactions: list):
+def rel_coeff_manager(base: int, factor_weights: list):
     """
     
     Parameters
@@ -112,27 +112,22 @@ def rel_coeff_manager(base: int, factor_weights: list, interactions: list):
     -------
 
     """
-    """
-    generate_ind_model(
-        [
-            x_def_helper('uniform', low=0, high=1),
-            x_def_helper('uniform', low=0, high=1),
-            x_def_helper('uniform', low=0, high=1)
-        ],
-        main_coeffs=[10, 10, 10],
-        interaction_coeffs=[1, 4],
-        intercept=10,
-        n=1000,
-        beta_sigma=.2,
-        interactions=[
-            [1,2],
-            [2,3]
-        ]
-    )
-    """
 
-    [base] + list(np.multiply(base, factor_weights))
+    main_coeffs = [base] + list(np.multiply(base, factor_weights))
 
+    return main_coeffs
 
-#rel_coeff_manager(10, [2, 4, .6], [])
+def config_maker(num_x, base, coeff_weights, interactions, interaction_coeffs):
+    if len(coeff_weights) + 1 > num_x:
+        raise ValueError("len(coeff_weights) + 1 must be equal to num_x")
+
+    init_dict = {
+        "dist_list": [x_def_helper('uniform', low=0, high=1) for x in range(num_x)],
+
+        "main_coeffs": rel_coeff_manager(base, coeff_weights),
+        "interactions": interactions,
+        "interaction_coeffs": interaction_coeffs
+    }
+    return init_dict
+
 

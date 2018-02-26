@@ -52,8 +52,6 @@ def inverse_fit_impute(x_name, y_name, df: pd.DataFrame):
 
     """
 
-    # Gather all the non-NULL rows in the Xs
-    #X = df.loc[~df[x_name].isnull(), df.columns != y_name]
 
     X = df.loc[~df[x_name].isnull(), x_name]
     X = sm.add_constant(X)

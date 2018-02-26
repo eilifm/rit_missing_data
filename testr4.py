@@ -15,13 +15,12 @@ data2 = {
     "interaction_coeffs": [2]
 }
 
-def maker():
-    init_dict = {
-        "dist_list": None,
-        "main_coeffs": None,
-        "interactions": None,
-        "interaction_coeffs": None
-    }
+
 
 import pprint
-pprint.pprint(data2)
+import itertools
+
+
+
+
+
