@@ -96,6 +96,7 @@ def run(data_gen_dict, action_type, beta_sigma, sample_size, incr, lower_pct, up
     results.loc[:, 'beta_sigma'] = beta_sigma
     results.loc[:, 'sample_size'] = sample_size
     results.loc[:, 'beta_x2/beta_x1'] = true_coeffs['x2']/true_coeffs['x1']
+    results.loc[:, 'beta_x1:x2/beta_x1'] = true_coeffs['x1:x2']/true_coeffs['x1']
 
 
     return results

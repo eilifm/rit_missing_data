@@ -14,7 +14,7 @@ if __name__ == "__main__":
     maker_levels = [
         (2,),
         (10,),
-        ([.1], [2], [10]), # beta_x2/beta_x1
+        ([.05], [.5], [1]), # beta_x2/beta_x1
         ([[1, 2]],), # Declare interactions
         ([1], [5], [10]) # Levels of interaction coeff
     ]
@@ -27,10 +27,10 @@ if __name__ == "__main__":
         ("mean", "invert", "drop"),
         (.1, .3),
         (20, 50, 100),
-        (.1,),
+        (.05,),
         (0,),
-        (.2,),
-        range(30)
+        (.8,),
+        range(10)
     ]
 
     print(len(list(itertools.product(*levels))))
@@ -52,7 +52,8 @@ if __name__ == "__main__":
 
     scaler.fit(results[['beta_sigma', 'sample_size', 'beta_x2/beta_x1', 'pct_missing']])
 
-    results[['beta_sigma', 'sample_size', 'beta_x2/beta_x1']] =  scaler.transform(results[['beta_sigma', 'sample_size', 'beta_x2/beta_x1']])
+    results[['_beta_sigma', '_sample_size', '_beta_x2/beta_x1', '_beta_x1:x2/beta_x1']] = pd.DataFrame([[0,0,0,0]], index=results.index)
+    results.loc[:, ['_beta_sigma', '_sample_size', '_beta_x2/beta_x1', '_beta_x1:x2/beta_x1']] = scaler.transform(results.loc[:, ['beta_sigma', 'sample_size', 'beta_x2/beta_x1', 'beta_x1:x2/beta_x1']])
 
     results.to_csv(str(datetime.datetime.now())+".csv")
 

@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 import scipy.stats as stats
+from sortedcontainers import SortedDict
 import statsmodels.api as sm
 from sklearn.metrics import r2_score, mean_squared_error
 from statsmodels.stats.outliers_influence import variance_inflation_factor
@@ -80,20 +81,11 @@ def fit_lm(df, test_df, alpha=.05):
 
 
 def beta_target_check(metrics, coeffs, as_dataframe=False):
-    beta_target_results = []
+    beta_target_results = SortedDict()
     for key in coeffs:
         if metrics['beta_ci'][key]['low'] <= coeffs[key] <= metrics['beta_ci'][key]['high']:
-            beta_target_results.append({
-                'var': key,
-                'in_ci': 1
-            })
+            beta_target_results[key]=SortedDict({'in_ci': 1})
         else:
-            beta_target_results.append({
-                'var': key,
-                'in_ci': 0
-            })
+            beta_target_results[key] = SortedDict({'in_ci': 0})
 
-    if as_dataframe:
-        return pd.DataFrame.from_records(beta_target_results, index='var')
-    else:
-        return beta_target_results
+    return beta_target_results
