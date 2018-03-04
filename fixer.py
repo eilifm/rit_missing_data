@@ -32,54 +32,54 @@ def fix_cols(col_fix_methods:dict, df: pd.DataFrame):
     return df.fillna(value=fixes)
 
 
-def inverse_fit_impute(x_name, y_name, df: pd.DataFrame):
-    """
-    
-    Invert the assumed model of y = B0 + B1*X1 + e
-    X1 = (y - B0)/B1
-    
-    - Pull out the missing data
-    - Fit normal model of y = B0 + B1*X1
-    - Use the fitted parameters to compute missing X values
-    - Fill in missing X values
-    - Return fixed Dataframe
-
-    Parameters
-    ----------
-    x_name
-    y_name
-    df
-
-    Returns
-    -------
-
-    """
-
-
-    X = df.loc[~df[x_name].isnull(), x_name]
-    X = sm.add_constant(X)
-
-    # Gather all of the corresponding Y values
-    y = df.loc[~df[x_name].isnull(), 'y']
-
-    # Define the model
-    model = sm.OLS(y, X)
-
-    # Collect results
-    results = model.fit()
-
-    # Ignore this for now
-    # df.loc[df[x_name].isnull(), "was_null"] = True
-    # df.loc[~df[x_name].isnull(), "was_null"] = False
-
-    df.loc[df[x_name].isnull(), x_name] = np.divide(
-        np.subtract(
-            df.loc[df[x_name].isnull(), y_name],
-            results.params['const']
-        ),
-        results.params[x_name])
-
-    return df, results.params
+# def inverse_fit_impute(x_name, y_name, df: pd.DataFrame):
+#     """
+#
+#     Invert the assumed model of y = B0 + B1*X1 + e
+#     X1 = (y - B0)/B1
+#
+#     - Pull out the missing data
+#     - Fit normal model of y = B0 + B1*X1
+#     - Use the fitted parameters to compute missing X values
+#     - Fill in missing X values
+#     - Return fixed Dataframe
+#
+#     Parameters
+#     ----------
+#     x_name
+#     y_name
+#     df
+#
+#     Returns
+#     -------
+#
+#     """
+#
+#
+#     X = df.loc[~df[x_name].isnull(), x_name]
+#     X = sm.add_constant(X)
+#
+#     # Gather all of the corresponding Y values
+#     y = df.loc[~df[x_name].isnull(), 'y']
+#
+#     # Define the model
+#     model = sm.OLS(y, X)
+#
+#     # Collect results
+#     results = model.fit()
+#
+#     # Ignore this for now
+#     # df.loc[df[x_name].isnull(), "was_null"] = True
+#     # df.loc[~df[x_name].isnull(), "was_null"] = False
+#
+#     df.loc[df[x_name].isnull(), x_name] = np.divide(
+#         np.subtract(
+#             df.loc[df[x_name].isnull(), y_name],
+#             results.params['const']
+#         ),
+#         results.params[x_name])
+#
+#     return df, results.params
 
 
 def inverse_fit_impute_interaction(x_name, y_name, df: pd.DataFrame):
@@ -133,7 +133,7 @@ def inverse_fit_impute_interaction(x_name, y_name, df: pd.DataFrame):
 
 def olsinv_singlex(input_df, target, verbose=False, test_mode=False):
     """
-    
+    This function will work on a COPY of the input_df DataFrame. 
     Usage Example
     -------------
     
@@ -149,8 +149,16 @@ def olsinv_singlex(input_df, target, verbose=False, test_mode=False):
     ...                                )
     >>> fit_data.columns.values
     array(['x1', 'x2', 'x1:x2', 'y'], dtype=object)
+    >>> fit_data.shape
+    (100, 4)
     >>> tmp_data = fit_data.copy()
     >>> inverted,  fitted = olsinv_singlex(tmp_data, 'x1', test_mode=True)    
+    >>> fitted.params
+    const    1.0
+    x1       5.0
+    x2       2.0
+    x1:x2    5.0
+    dtype: float64
     >>> (np.round(tmp_data.loc[inverted.index, 'x1'].values, 10) == np.round(inverted.values, 10)).all()
     True
     
