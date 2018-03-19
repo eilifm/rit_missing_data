@@ -58,10 +58,8 @@ def make_obs():
 
     if np.random.choice([True, False], 1):
         sample['age'] = birthday_td.years*12 + birthday_td.months
-    elif np.random.choice([True, False], 1):
-        sample['age'] = birthday.isoformat()
     else:
-        sample['age'] = int(sample['age'])
+        sample['age'] = birthday.isoformat()
 
 
     sample['drink_type'] = np.random.choice(['Wine', 'Hard', 'Beer'])

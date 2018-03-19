@@ -2,8 +2,15 @@
 title: "Data Cleaning Tutorials"
 author: "Eilif Mikkelsen"
 output:
+  html_notebook:
+    highlight: tango
+    mathjax: null
+    theme: spacelab
+    toc: yes
+    toc_float: yes
   html_document:
     highlight: pygments
+    theme: spacelab
     toc: yes
     toc_float:
       collapsed: no
@@ -180,9 +187,11 @@ unique(wrk_data$drink_type)
 What we have here is known in the industry as a "hot mess". 
 If you didn't guess, the values are a mix of alocholic beverage brands and types in a variety of languages. 
 When encountering this sort of data, it's often worth taking the 20 mins. to go an Google each item. 
+
 I am not well read in the boozes of the world.
 A quick Google search reveals that "Warsteiner" and "Franziskaner Weissbier" are beer. 
 Once we know what everything is we can generate our list of categories and assign the options to a specific category as we did with `sex` and `units`
+
 The resulting code would look something like this. 
 
 ```{r}
@@ -247,14 +256,16 @@ library(anytime)
 typeof(in_data$collection_date)
 
 # Use anytime to convert the column to POSIXct times. 
-wrk_data[,'collection_date'] = anydate(in_data$collection_date)
+wrk_data[,'collection_date'] = anydate(wrk_data$collection_date)
 
 # Note that the type has changed to "double", don't worry, this is really a datetime.
 typeof(wrk_data$collection_date)
 wrk_data$collection_date[1]
 ```
 
-Why does this matter? Supposed I wanted to compute the time between a value in the column and some other date. 
+Why does this matter? 
+
+Suppose I wanted to compute the time between a value in the column and some other date. 
 I could try to type out the dates as strings and pray that the compute knows what I mean. 
 This won't work because the subtraction of two string types has no idea what you intended to do!
 You could also transform the dates from your colloquial format to some relative time unit like "fortnights since 1/1/2000" but this will quickly become cumbersome and error prone. By having two values that are typed as datetime, R knows about all the leap years, time zones, and other quirks and is able to correctly perform time operations without any effort from the user. 
@@ -264,7 +275,7 @@ You could also transform the dates from your colloquial format to some relative 
 # "2011-03-25" - "2001-03-25"
 
 # Now let's try a computation of two datetime objects.
-as.Date("2018-03-19") - wrk_data$collection_date[1]
+as.Date("2018-05-19") - wrk_data$collection_date[1]
 
 ```
 Tada! Using datetime objects gives a correct and useful result. 
@@ -290,41 +301,17 @@ For these examples we will be exploring the features of the `lubridate` package.
 ```{r}
 library(lubridate)
 # If we run grep along the column, it returns the row number of the matching columns
-#grep('^(\\d{1}|\\d{2})\\/(\\d{1}|\\d{2})\\/(\\d{2})', in_data$age, perl = TRUE)
+wrk_data$age
+grep('^(\\d{4})-(\\d{2})-(\\d{2})', wrk_data$age, perl = TRUE)[1:10]
 
 # Let's make a vector of these
-birthdate_rows = grep('^(\\d{1}|\\d{2})\\/(\\d{1}|\\d{2})\\/(\\d{2})', in_data$age, perl = TRUE)
+birthdate_rows = grep('^(\\d{4})-(\\d{2})-(\\d{2})', in_data$age, perl = TRUE)
 
 # Let's look at the values
 in_data[birthdate_rows, "age"][1:10]
 
-# Here is what happens when we try to parse the MM/DD/YY format...
-as.Date(in_data[birthdate_rows, "age"][1:10], format = '%d/%m/%y')
-# And the same thing using a wrapper in lubridate
-mdy(in_data[birthdate_rows, "age"][1:10])
-
 ```
-UH OH! The dates are in the future! LET THIS BE A LESSON TO ALWAYS USE 4 YEAR DATES.
-If we know that the dates are all 1900s dates we can write our own function that converts the date strings to dates in the 1900s. I won't go too far into the syntax here but it should be simple enough to follow along. 
 
-```{r}
-nineteen_hundreds_bday <- function(x, year=2017){
-   # Parse as MM/DD/YY date
-   x <- mdy(x)
-   
-   # Get the last two digits of the date
-   m <- year(x) %% 100
-   
-   # Set the year to the 1900s year with that two digit suffix
-   year(x) <- 1900+m
-   return(x)
-}
-
-# Test it
-nineteen_hundreds_bday(c("10/3/63", "12/26/73", "12/8/91"))
-
-
-```
 We will also need a function to convert the time between the birthday and collection date to months. 
 
 ```{r}
@@ -347,10 +334,17 @@ head(wrk_data$age)
 
 wrk_data$age = in_data$age
 
-wrk_data[birthdate_rows, ]$age = as.character(months_between(in_data[birthdate_rows, "collection_date"], nineteen_hundreds_bday(in_data[birthdate_rows, "age"])))
+wrk_data[birthdate_rows, ]$age = as.character(months_between(in_data[birthdate_rows, "collection_date"], in_data[birthdate_rows, "age"]))
 wrk_data[, 'age'] = as.integer(wrk_data$age)
 
+# Convert months to integer years
+wrk_data[, 'age'] = as.integer(wrk_data[, 'age']/12)
 
+head(wrk_data[, 'age'])
+
+```
+```{r}
+head(wrk_data)
 ```
 
 # Including Plots
