@@ -1,0 +1,91 @@
+---
+title: "Data Cleaning Tutorials"
+author: "Eilif Mikkelsen"
+output:
+  html_document:
+    highlight: pygments
+    toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+# Introduction
+In an academic setting data sets are often presented as clean and orderly sets of information. For most real-world applications this couldn't be farther from the truth. In this tutorial we will cover some core data cleaning methods. This is by no means exhaustive however it should leave the reader with a strong set of data manipulation skills. For context, I wrote this document to hone my data manipulation skills in R after spending years working with the [Python Pandas](https://pandas.pydata.org/) data library which provides data structures and features similar to the R `data.frame` object. 
+
+This document was originally written in R Markdown, a format for generating mixed format documents combining code and text. 
+Where it seems useful, I will include links to relevent packages or functions.  Here is a link to a [cheat sheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) on the R Markdown syntax.
+
+# What is Presumed About the Reader
+- The reader has a very basic understanding of simple programming concepts. 
+- The reader is has cursory knowledge of the [`data.frame`](https://www.rdocumentation.org/packages/base/versions/3.4.3/topics/data.frame) tabular
+data structure and its methods.
+- The reader remembers that arrays in R are 1-indexed rather than 0-indexed.
+
+
+
+# Setup
+Here is the output information on the operating system and R version used to generate this tutorial. The tools used in this tutorial are elemental functions of R as such is it not expected that this tutorial will become out-of-date. If you find issues, please feel free to edit this file and submit a pull request to this repository. 
+Where specific packages are required, additional notes will be made. 
+```{r}
+version
+```
+
+
+## Topics Covered
+- Cleaning string categories
+- Context aware unit standardization
+- Datetime parsing
+
+Let's start by loading and looking at the first few rows of the data. The ix columns is an arbitrary row number that was created along with the dataset. We will use this to uniquely identify rows. Additionally, we want all string columns to be treated as characters rather than "factors", a special R data type. 
+
+```{r cars}
+# Loading the CSV
+in_data = read.csv('./horrible_data.csv', stringsAsFactors=FALSE)
+
+# Setting the row names to the `ix` column
+row.names(in_data) = in_data$ix
+
+head(in_data)
+
+```
+## Standardizing Text (string) Columns
+Immediately upon observing the first 6 rows of the data we see that there are several variations of the same category for both the `units` and `sex` column. The goal is to identify what values in the column correspond to what categories. 
+
+Commands Used:
+
+- [`unique`](https://stat.ethz.ch/R-manual/R-devel/library/base/html/unique.html)
+- [`which`](https://stat.ethz.ch/R-manual/R-devel/library/base/html/which.html)
+- [`c`](https://stat.ethz.ch/R-manual/R-devel/library/base/html/c.html)
+
+```{r}
+sex_vals = unique(in_data$sex)
+sex_vals
+male_values = c("Male", "meal", "male", "M")
+
+
+
+```
+
+We see from the output that this dataset has two correct options for `sex`, Male and Female. We also observe that the dataset contains a variety of abbreviations and typos for the two categories. To standardize the values such that all observations that should be recorded as Male are updated accordingly. We will perform the same operation for Female. 
+
+
+```{r}
+units_vales = unique(in_data$units)
+units_vales
+
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
