@@ -1519,13 +1519,13 @@ div.tocify {
 
 
 <section id="introduction" class="level1">
-<h1><span class="header-section-number">1</span> Introduction</h1>
+<h1>Introduction</h1>
 <p>In an academic setting data sets are often presented as clean and orderly sets of information. For most real-world applications this couldn’t be farther from the truth. When talking to data scientists across industries it is commonly noted that the vast majority of their time is spent cleaning and structuring data before they can even consider models.</p>
 <p>In this tutorial we will cover some core data cleaning methods. This is by no means exhaustive however it should leave the reader with a strong set of data manipulation skills. For context, I wrote this document to hone my data manipulation skills in R after spending years working with the <a href="https://pandas.pydata.org/">Python Pandas</a> data library which provides data structures and features similar to the R <code>data.frame</code> object. Periodically, comments detailing the <code>pandas</code> equivalents will be included looking something like <code># Py/Pandas: df.head()</code>.</p>
 <p>This document was originally written in R Markdown, a format for generating mixed format documents combining code and text. Where it seems useful, I will include links to relevent packages or functions. Here is a link to a <a href="https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf">cheat sheet</a> on the R Markdown syntax.</p>
 </section>
 <section id="what-is-presumed-about-the-reader" class="level1">
-<h1><span class="header-section-number">2</span> What is Presumed About the Reader</h1>
+<h1>What is Presumed About the Reader</h1>
 <ul>
 <li>The reader has a very basic understanding of simple programming concepts.</li>
 <li>The reader is has cursory knowledge of the <a href="https://www.rdocumentation.org/packages/base/versions/3.4.3/topics/data.frame"><code>data.frame</code></a> tabular data structure and its methods.</li>
@@ -1534,7 +1534,7 @@ div.tocify {
 <p>I will use <code>=</code> rather than <code>&lt;-</code> out of habit from my work in Python. So far as I can tell, they are equivalent.</p>
 </section>
 <section id="setup" class="level1">
-<h1><span class="header-section-number">3</span> Setup</h1>
+<h1>Setup</h1>
 <p>Here is the output information on the operating system and R version used to generate this tutorial. The tools used in this tutorial are elemental functions of R as such is it not expected that this tutorial will become out-of-date. If you find issues, please feel free to edit this file and submit a pull request to this repository. Where specific packages are required, additional notes will be made.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">version</a></code></pre></div>
 <pre><code>##                _                           
@@ -1554,7 +1554,7 @@ div.tocify {
 ## nickname       Another Canoe</code></pre>
 </section>
 <section id="topics-covered" class="level1">
-<h1><span class="header-section-number">4</span> Topics Covered</h1>
+<h1>Topics Covered</h1>
 <ul>
 <li>Cleaning string categories</li>
 <li>Context aware string categorization</li>
@@ -1563,11 +1563,11 @@ div.tocify {
 </ul>
 </section>
 <section id="initial-look" class="level1">
-<h1><span class="header-section-number">5</span> Initial Look</h1>
+<h1>Initial Look</h1>
 <p>I once had a professor that said that no matter how good and experienced and smart we are, there is no substitute for viewing and plotting your data!</p>
 <p>Let’s start by loading and looking at the first few rows of the data. The ix columns is an arbitrary row number that was created along with the dataset. We will use this to uniquely identify rows. Additionally, we want all string columns to be treated as characters rather than “factors”, a special R data type.</p>
 <section id="commands-used" class="level2">
-<h2><span class="header-section-number">5.1</span> Commands Used</h2>
+<h2>Commands Used</h2>
 <ul>
 <li><a href><code>hist</code></a></li>
 <li><a href><code>read.csv</code></a></li>
@@ -1612,12 +1612,12 @@ div.tocify {
 </section>
 </section>
 <section id="standardizing-text-string-columns" class="level1">
-<h1><span class="header-section-number">6</span> Standardizing Text (string) Columns</h1>
+<h1>Standardizing Text (string) Columns</h1>
 <p>When faced with text variables, figuring out how to group and organize the values into usable data can be extremely time consuming and difficult.</p>
 <p>Immediately upon observing the first 6 rows of the data we see that there are several variations of the same category for both the <code>units</code> and <code>sex</code> column. The goal is to identify what values in the column correspond to what categories. The <code>drink_type</code> column also needs to be cleaned in a similar manner but it requires additional discussion.</p>
 <p>I used <a href="https://www.statmethods.net/management/subset.html">this</a> review of R subsetting methods to brush up for this tutorial. Be sure to also remeber that a dataframe has two dimensions, rows and columns. Let <code>rdf</code> be an R data frame. If we wish to select the first column for all observations (rows) we would call <code>rdf[, 1]</code> as dataframe selecting follows [row, column] convention.</p>
 <section id="commands-used-1" class="level2">
-<h2><span class="header-section-number">6.1</span> Commands Used:</h2>
+<h2>Commands Used:</h2>
 <ul>
 <li><a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/unique.html"><code>unique</code></a></li>
 <li><a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/which.html"><code>which</code></a></li>
@@ -1694,7 +1694,7 @@ div.tocify {
 <pre><code>## [1] &quot;imperial&quot; &quot;metric&quot;</code></pre>
 </section>
 <section id="drinks_type-a-demonstration-in-data-context" class="level2">
-<h2><span class="header-section-number">6.2</span> <code>drinks_type</code>: A Demonstration in Data Context</h2>
+<h2><code>drinks_type</code>: A Demonstration in Data Context</h2>
 <p>Before I go into what the values for this column mean, let’s start by just looking at them. What do you notice?</p>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1"><span class="kw">unique</span>(wrk_data<span class="op">$</span>drink_type)</a></code></pre></div>
 <pre><code>##  [1] &quot;Merlot&quot;                 &quot;Franziskaner Weissbier&quot;
@@ -1721,10 +1721,10 @@ div.tocify {
 </section>
 </section>
 <section id="datetime-parsing-and-computation" class="level1">
-<h1><span class="header-section-number">7</span> DateTime Parsing and Computation</h1>
+<h1>DateTime Parsing and Computation</h1>
 <p>In this section we will clean up the <code>collection_date</code> and <code>age</code> columns, discuss the importance of correct data typing, and demonstrate datetime operations in R.</p>
 <section id="commands-used-2" class="level2">
-<h2><span class="header-section-number">7.1</span> Commands Used</h2>
+<h2>Commands Used</h2>
 <ul>
 <li><a href="https://cran.r-project.org/web/packages/anytime/index.html"><code>anytime</code></a></li>
 <li><a href><code>typeof</code></a></li>
@@ -1733,13 +1733,13 @@ div.tocify {
 </ul>
 </section>
 <section id="packages-used" class="level2">
-<h2><span class="header-section-number">7.2</span> Packages Used</h2>
+<h2>Packages Used</h2>
 <ul>
 <li><a href="https://cran.r-project.org/web/packages/anytime/index.html"><code>anytime</code></a>. This can be installed from your favorite R session using <code>install.packages(&quot;anytime&quot;)</code></li>
 </ul>
 </section>
 <section id="a-brief-introduction-to-why-data-types-matter" class="level2">
-<h2><span class="header-section-number">7.3</span> A Brief Introduction to Why Data Types Matter</h2>
+<h2>A Brief Introduction to Why Data Types Matter</h2>
 <p>Every column in the loaded dataframe <code>in_data</code> has a data type. Without going too far into what this means know that the type of a column influences how R, and the code we write for it, process the data. Imagine we have the data value <code>01776</code>. This set of digits/characters could mean a variety of completely unrelated things. For example <code>01776</code> could be:</p>
 <ul>
 <li>The string Zip Code for Sudbury, Massachusetts</li>
@@ -1752,7 +1752,7 @@ div.tocify {
 <p>Back to the examples at hand…</p>
 </section>
 <section id="setting-data-type-for-collection_date" class="level2">
-<h2><span class="header-section-number">7.4</span> Setting data type for <code>collection_date</code></h2>
+<h2>Setting data type for <code>collection_date</code></h2>
 <p>In this example dataset we have two columns that need additional attention to their types, <code>collection_date</code>, the data of data collection, and <code>age</code>, the age of the participant at the time of the study. If we examine the <code>collection_date</code> column we can observe that the values are “string encoded dates” or a representation of a date and time using a standard string format. Here, the dates are represented using the <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> date format. We will use the <code>anytime</code> package which is excellent for automatically parsing standard date formats into the datetime datatypes in R. We will also be using <code>lubridate</code> and a custom function.</p>
 <div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1"><span class="co"># Load the anytime library</span></a>
 <a class="sourceLine" id="cb28-2" data-line-number="2"><span class="kw">library</span>(anytime)</a>
@@ -1778,10 +1778,10 @@ div.tocify {
 <p>Tada! Using datetime objects gives a correct and useful result.</p>
 </section>
 <section id="a-brief-aside-on-regular-expressions-regex" class="level2">
-<h2><span class="header-section-number">7.5</span> A Brief Aside on Regular Expressions (Regex)</h2>
+<h2>A Brief Aside on Regular Expressions (Regex)</h2>
 </section>
 <section id="using-regex-to-sort-out-age" class="level2">
-<h2><span class="header-section-number">7.6</span> Using Regex to Sort Out <code>age</code></h2>
+<h2>Using Regex to Sort Out <code>age</code></h2>
 <p>Looking at the first 10 values in the <code>age</code> column we can see immediatly that the type is mixed. Some of the values are the age in <strong>months</strong> while others are the birthday. Yikes!</p>
 <div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="kw">head</span>(in_data<span class="op">$</span>age, <span class="dt">n =</span> <span class="dv">10</span>)</a></code></pre></div>
 <pre><code>##  [1] &quot;1/7/66&quot;  &quot;8/19/68&quot; &quot;50&quot;      &quot;671&quot;     &quot;4/2/60&quot;  &quot;9/14/74&quot; &quot;6/21/59&quot;
@@ -1850,7 +1850,7 @@ div.tocify {
 </section>
 </section>
 <section id="including-plots" class="level1">
-<h1><span class="header-section-number">8</span> Including Plots</h1>
+<h1>Including Plots</h1>
 <p>You can also embed plots, for example:</p>
 <pre><code># {r pressure, echo=FALSE}
 plot(pressure)</code></pre>

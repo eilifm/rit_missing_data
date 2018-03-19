@@ -4,7 +4,6 @@ author: "Eilif Mikkelsen"
 output:
   html_document:
     highlight: pygments
-    number_sections: yes
     toc: yes
     toc_float:
       collapsed: no
