@@ -2,11 +2,11 @@
 title: "Data Cleaning Tutorials"
 author: "Eilif Mikkelsen"
 output:
-  html_document:
-    highlight: pygments
+  pdf_document:
     number_sections: yes
     toc: yes
-  pdf_document:
+  html_document:
+    highlight: pygments
     number_sections: yes
     toc: yes
 ---
@@ -288,10 +288,8 @@ For these examples we will be exploring the features of the `lubridate` package.
 ```{r}
 library(lubridate)
 # If we run grep along the column, it returns the row number of the matching columns
-grep('^(\\d{1}|\\d{2})\\/(\\d{1}|\\d{2})\\/(\\d{2})', in_data$age, perl = TRUE)
+#grep('^(\\d{1}|\\d{2})\\/(\\d{1}|\\d{2})\\/(\\d{2})', in_data$age, perl = TRUE)
 
-
-in_data$age
 # Let's make a vector of these
 birthdate_rows = grep('^(\\d{1}|\\d{2})\\/(\\d{1}|\\d{2})\\/(\\d{2})', in_data$age, perl = TRUE)
 
