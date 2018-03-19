@@ -2,11 +2,14 @@
 title: "Data Cleaning Tutorials"
 author: "Eilif Mikkelsen"
 output:
-  pdf_document:
-    number_sections: yes
-    toc: yes
   html_document:
     highlight: pygments
+    number_sections: yes
+    toc: yes
+    toc_float:
+      collapsed: no
+      smooth_scroll: no
+  pdf_document:
     number_sections: yes
     toc: yes
 ---
