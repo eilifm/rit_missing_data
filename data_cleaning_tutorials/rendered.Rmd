@@ -2,11 +2,11 @@
 title: "Data Cleaning Tutorials"
 author: "Eilif Mikkelsen"
 output:
-  pdf_document:
-    number_sections: yes
-    toc: yes
   html_document:
     highlight: pygments
+    number_sections: yes
+    toc: yes
+  pdf_document:
     number_sections: yes
     toc: yes
 ---
@@ -341,6 +341,7 @@ months_between("2016-02-23", "2015-01-28")
 
 ```
 Phew! Now let's put it all together. 
+
 ```{r}
 head(wrk_data$age)
 
