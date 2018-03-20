@@ -4,7 +4,6 @@ author: "Eilif Mikkelsen"
 output:
   html_notebook:
     highlight: tango
-    mathjax: null
     theme: spacelab
     toc: yes
     toc_float: yes
@@ -23,6 +22,7 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
 # Introduction
 In an academic setting data sets are often presented as clean and orderly sets of information. For most real-world applications this couldn't be farther from the truth. When talking to data scientists across industries it is commonly noted that the vast majority of their time is spent cleaning and structuring data before they can even consider models. 
 
@@ -68,7 +68,8 @@ Let's start by loading and looking at the first few rows of the data. The ix col
 - [`ncol`]()
 
 
-```{r cars}
+```{r}
+library(ggplot2)
 # Loading the CSV
 # Py/Pandas: pd.read_csv('./horrible_data.csv', index=0)
 in_data = read.csv('./horrible_data.csv', stringsAsFactors=FALSE)
@@ -102,10 +103,12 @@ I used [this](https://www.statmethods.net/management/subset.html) review of R su
 - [`unique`](https://stat.ethz.ch/R-manual/R-devel/library/base/html/unique.html)
 - [`which`](https://stat.ethz.ch/R-manual/R-devel/library/base/html/which.html)
 - [`c`](https://stat.ethz.ch/R-manual/R-devel/library/base/html/c.html)
+- [`qplot`]()
 
 
 Let's print out the list of unique items in the sex column
 ```{r}
+
 sex_vals = unique(in_data$sex)
 sex_vals
 
@@ -127,6 +130,7 @@ results of the which command we can see this.
 ```{r}
 head(which(in_data$sex == "Male"))
 ```
+
 We see from the output that this dataset has two correct options for `sex`, Male and Female. We also observe that the dataset contains a variety of abbreviations and typos for the two categories. To standardize the values such that all observations that should be recorded as Male are updated accordingly. We will perform the same operation for Female. 
 
 To acomplish this task, we will need to use the `%in%` operator. The `%in%` operator checks if a value is in the supplied set. In a pseudocode example let `s = {1, 3, 6}`. The evaluation of `1 in s` returns `TRUE` while `2 in s` returns `FALSE`.
@@ -135,14 +139,14 @@ To acomplish this task, we will need to use the `%in%` operator. The `%in%` oper
 # A vector of all the values that should be classified as "Male"
 male_values = c("Male", "meal", "male", "M")
 
-# Now we will use the `%in%` operator to select all rows where the `sex` column value is in the set of 
-# possible values.
+# Now we will use the `%in%` operator to select all rows where the `sex` column value is 
+# in the set of possible values.
 head(in_data[which(in_data$sex %in% male_values), c("BAC", "sex")], n = 10)
 
 ```
 
 Now that we know how to select the rows that need to be updates, we can update wrk_data directly. 
-We can set a column of the filtered dataframe to a column and only the selected rows will be updates. 
+We can set a column of the filtered dataframe to a value and only the selected rows will be updates. 
 
 ```{r}
 wrk_data[which(wrk_data$sex %in% male_values), "sex"] = "Male"
@@ -150,14 +154,28 @@ wrk_data[which(wrk_data$sex %in% male_values), "sex"] = "Male"
 # Let's do the same thing for "Female"
 female_values = c("F", "female", "Female", "femeal")
 wrk_data[which(wrk_data$sex %in% female_values), "sex"] = "Female"
+```
 
-# SUCCESS! If we examine the unique set of values for `sex` in wrk_data we see that the only option for "Male" is "Male".
+```{r}
+# SUCCESS! If we examine the unique set of values for `sex` in wrk_data we see that Male and Female 
+# are now standardized.
 unique(wrk_data$sex)
-
 
 ```
 
+If you aren't careful you may have missed that there was a value in the `sex` column of `""` or nothing. 
+Since we suspect that `sex` has impact on on the BAC with all things equal, let's plot `num_drinks` vs `BAC`
+and color the data points based on `sex`.
 
+```{r}
+qplot(num_drinks, BAC, colour = sex, 
+   data = wrk_data)
+```
+
+Whoa, there appears to be a clear difference between `Male` and `Female`.  Given this difference we have two choices about how to handle the missing `sex` values. The simple option would be to simply drop the missing values. We will do this right before we fit our model. If you are interested in seeing how one might impute these values, see the appendix. 
+
+
+## Cleaning `units`
 Alright! We have learned how to update rows/columns in a dataframe using boolean masking. The `units` column has similar issues. I won't go through the explaination again but the steps are the same as those for `sex` above. 
 
 ```{r}
@@ -200,11 +218,14 @@ wine_options = c("Merlot", "Vino", "Vin", "Cab")
 beer_options = c("Bud Light", "IPA", "Beer", "Franziskaner Weissbier", "Warsteiner")
 hard_liquor_options = c("shots", "Scotch", "whiskey", "vidka")
 
-wrk_data[which(wrk_data$drink_type %in% wine_options), "drink_type"] = "Wine"
+wrk_data[which(wrk_data$drink_type %in% wine_options), "drink_type"] = 
+  "Wine"
 
-wrk_data[which(wrk_data$drink_type %in% beer_options), "drink_type"] = "Beer"
+wrk_data[which(wrk_data$drink_type %in% beer_options), "drink_type"] = 
+  "Beer"
 
-wrk_data[which(wrk_data$drink_type %in% hard_liquor_options), "drink_type"] = "Hard Liquor"
+wrk_data[which(wrk_data$drink_type %in% hard_liquor_options), "drink_type"] = 
+  "Hard Liquor"
 
 unique(wrk_data$drink_type)
 
@@ -223,7 +244,7 @@ In this section we will clean up the `collection_date` and `age` columns, discus
 ## Packages Used
 
 - [`anytime`](https://cran.r-project.org/web/packages/anytime/index.html). This can be installed from your favorite R session using `install.packages("anytime")`
-
+- [`lubridate`]()
 
 ## A Brief Introduction to Why Data Types Matter
 Every column in the loaded dataframe `in_data` has a data type. Without going too far into what this means know that the type of a column influences how R, and the code we write for it, process the data. Imagine we have the data value `01776`. This set of digits/characters could mean a variety of completely unrelated things. For example `01776` could be:
@@ -249,10 +270,12 @@ We will use the `anytime` package which is excellent for automatically parsing s
 
 
 ```{r}
-# Load the anytime library
+# Load the datetime utilities libraries
+library(lubridate)
 library(anytime)
 
-# Examine the type of the collection_date column. Note that R currently classifies it as "character"
+# Examine the type of the collection_date column. Note that R currently classifies 
+# it as "character"
 typeof(in_data$collection_date)
 
 # Use anytime to convert the column to POSIXct times. 
@@ -283,6 +306,7 @@ Tada! Using datetime objects gives a correct and useful result.
 
 ## A Brief Aside on Regular Expressions (Regex)
 
+WIP
 
 ## Using Regex to Sort Out `age`
 
@@ -293,19 +317,25 @@ head(in_data$age, n = 10)
 
 ```
 
-To select the rows where the `age` column contains a birthdate rather than an age, we need to match the values that follow the pattern `MM/DD/YYYY`. 
-In regex for R, this is `'^(\\d{2}|\\d{2})\\/(\\d{1}|\\d{2})\\/(\\d{2})'`.
+To select the rows where the `age` column contains a birthdate rather than an age, we need to match the values that follow the pattern `YYYY-MM-DD`. 
+In regex for R, this is `'^(\\d{4})-(\\d{2})-(\\d{2})'`.
 
 For these examples we will be exploring the features of the `lubridate` package. 
 
 ```{r}
-library(lubridate)
+
+head(wrk_data$age)
 # If we run grep along the column, it returns the row number of the matching columns
-wrk_data$age
 grep('^(\\d{4})-(\\d{2})-(\\d{2})', wrk_data$age, perl = TRUE)[1:10]
 
+```
+
+```{r}
 # Let's make a vector of these
-birthdate_rows = grep('^(\\d{4})-(\\d{2})-(\\d{2})', in_data$age, perl = TRUE)
+birthdate_rows = grep(
+                    '^(\\d{4})-(\\d{2})-(\\d{2})', 
+                    in_data$age, 
+                    perl = TRUE)
 
 # Let's look at the values
 in_data[birthdate_rows, "age"][1:10]
@@ -331,14 +361,22 @@ Phew! Now let's put it all together.
 
 ```{r}
 head(wrk_data$age)
-
 wrk_data$age = in_data$age
 
-wrk_data[birthdate_rows, ]$age = as.character(months_between(in_data[birthdate_rows, "collection_date"], in_data[birthdate_rows, "age"]))
+# Compute months_between, convert to strings, update the dataframe
+wrk_data[birthdate_rows, "age"] = 
+                          as.character(
+                          months_between(
+                            in_data[birthdate_rows, "collection_date"], 
+                            in_data[birthdate_rows, "age"]
+                            )
+                          )
+
+# Convert the now-uniform column to numeric values
 wrk_data[, 'age'] = as.integer(wrk_data$age)
 
-# Convert months to integer years
-wrk_data[, 'age'] = as.integer(wrk_data[, 'age']/12)
+# Convert months to decimal years
+wrk_data[, 'age'] = wrk_data[, 'age']/12
 
 head(wrk_data[, 'age'])
 
@@ -347,13 +385,173 @@ head(wrk_data[, 'age'])
 head(wrk_data)
 ```
 
-# Including Plots
+# Units Conversions
+Data is often collected in different places under different measurement systems. In this section we will look at how the reader might be able to figure out what units were used and how to perform the unit conversions.
 
-You can also embed plots, for example:
+## Commands Used
+
+- [`as.factor`](https://www.rdocumentation.org/packages/h2o/versions/3.16.0.2/topics/as.factor)
+- [`aggregate`](https://www.rdocumentation.org/packages/stats/versions/3.4.3/topics/aggregate)
+
+
+## Unit Discovery and Metric to Imperial Conversions
+We know that there is a discriminator column called "units" which tells us what unit system was used. The two measurement values 
+in the dataset are `weight` and `volume_consumed`. If we create box-whisker plot for `volume_consumed` for each unit system we can see the
+difference clearly. 
+
+
+```{r}
+# Box and Whisker plot of volume_consumed by unit type
+plot(as.factor(wrk_data$units), in_data[, "volume_consumed"])
+```
+
+As the author of the original dataset, I can disclose that the volume units for `metric` are milliliters while the `imperial` units are ounces. The best way to examine the relationship between `metric` and `imperial` units is by using data aggregation. Aggregating operations require a set of columns to sum/count/mean based on a categorical variable. We can see the relationship between units by taking ratio of the average volume per unit type. We know that there are 29.6 ml in an ounce. The ratio should be right around this number. We can do the same for the weight where the `metric` units are kg and the `imperial` units are lbs.
+
+```{r}
+# Let's aggregate the volume and weight numbers by their respective units and take the mean
+volume_means = aggregate(
+                    wrk_data[, c("volume_consumed", "weight")], 
+                    list(units = wrk_data$units), 
+                    mean)
+volume_means
+
+# Ratio of the metric volume mean to the imperial volume mean
+volume_means[which(volume_means$units == "metric"),  "volume_consumed"] / 
+  volume_means[volume_means$units == "imperial",  "volume_consumed"]
+
+# Ratio of the metric weight mean to the imperial weight mean
+volume_means[which(volume_means$units == "metric"),  "weight"] / 
+  volume_means[volume_means$units == "imperial",  "weight"]
 
 ```
-# {r pressure, echo=FALSE}
-plot(pressure)
+
+The computed BAC in this dataset used `imperial` units so we we must convert the `metric` values back to `imperial`. 
+
+```{r}
+# Convert volume - ml to oz
+wrk_data[which(wrk_data$units == 'metric'), "volume_consumed"] = 
+  wrk_data[which(wrk_data$units == 'metric'), "volume_consumed"]/29.6
+
+head(wrk_data[which(wrk_data$units == 'metric'), "volume_consumed"])
+
+# Convert weight - kg to lbs
+wrk_data[which(wrk_data$units == 'metric'), "weight"] = 
+  wrk_data[which(wrk_data$units == 'metric'), "weight"]/1.453592
+
+head(wrk_data[which(wrk_data$units == 'metric'), "weight"])
+
+```
+
+
+## Convert `volume_consumed` to alcohol consumed
+As we all learned in health class, different types of alcoholic beverage contain different quantities of alcohol. If we plot the `volume_consumed` for each of the `drink_types` we can clearly see the difference in volume consumed depending on the type of drink. 
+
+```{r}
+plot(as.factor(wrk_data$drink_type), wrk_data$volume_consumed)
+```
+Since the number of "drinks" is supplied in the dataset, we do not need to convert the volume to ounces. The best way to do this would be to multiply the volumes by their ABV (Alcohol by Volume) percentages.
+
+
+
+# Final Preparations and Modeling!
+```{r}
+# Make a copy to use in the appendix
+impute_data = wrk_data
+```
+
+```{r}
+# Remove all rows where sex is blank
+wrk_data = wrk_data[!(wrk_data$sex == ""),]
+
+head(wrk_data)
+
+model_data = wrk_data
+model_data = model_data[, !(names(model_data) %in% c("collection_date", "units", "volume_consumed", "X", "drink_type"))]
+
+```
+
+## Looking at Clean Data
+This serves both to understand the dataset and demonstrate various plotting methods.
+Specifically, let's look at how the variables relate to `sex` and `bac`
+
+```{r}
+library(ggpubr)
+
+# Box plot of sex and weight
+p1 = qplot(sex, weight, color = sex, data = model_data, geom = "boxplot")
+
+# Box plot of sex and BAC
+p2 = qplot(sex, BAC, color = sex, data = model_data, geom = "boxplot")
+
+# Scatter plot of num_drinks and BAC
+p3 = qplot(num_drinks, BAC, colour = sex, 
+   data = model_data)
+
+# Scatter plot of weight and BAC
+p4 = qplot(weight, BAC, color=sex, data = model_data) 
+```
+
+```{r}
+ggarrange(p1, p2, p3, p4)
+
+```
+
+## Fit a Linear Regression Model
+```{r}
+model_data$sex = ifelse(model_data$sex == "Male", 1, 0)
+lm1 = lm(BAC ~ ., data = model_data)
+
+summary(lm1)
+```
+
+# Appendix
+
+## Imputing the mising `sex` values
+
+A fairly easy model to use for the purpose is logistic regression. These models produce a binary output useful for simple classification problems like imputing the `sex` based on some of the other variables. 
+```{r}
+
+# Set sex as a binary variable
+impute_data[which(impute_data$sex == "Male"), 'sex'] = 1
+impute_data[which(impute_data$sex == "Female"), 'sex'] = 0
+
+# Set the data type to numeric
+impute_data$sex = as.numeric(impute_data$sex)
+```
+
+```{r}
+# Use all rows where `sex` is available as the training data. 
+# We will predict all of the missing observations
+train = impute_data[which(impute_data$sex != ""),]
+missing = impute_data[which(is.na(impute_data$sex)),]
+missing = missing[, (names(missing) %in% c('num_drinks', 'BAC'))]
+
+# Fit 
+model <- glm (sex ~ num_drinks + BAC, data = train, family = binomial)
+summary(model)
+
+```
+
+```{r}
+# Make the prediction
+prediction = predict(model, missing, type = 'response')
+
+range(prediction)
+```
+
+```{r}
+prediction = ifelse(prediction >= .5, "Male", "Female")
+
+impute_data[names(prediction), 'sex'] = prediction
+
+```
+
+```{r, echo=FALSE}
+# Good! Now we only have two categories, "Male", and "Female"
+unique(wrk_data$sex)
+
+qplot(num_drinks, BAC, colour = sex, 
+   data = wrk_data)
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
