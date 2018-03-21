@@ -149,10 +149,15 @@ def olsinv_singlex(input_df, target, verbose=False, test_mode=False):
         X_to_inv = input_df.loc[:, input_df.columns.values != 'y'].sample(
             int(input_df.shape[0] * .1), random_state=2)  # FOR TESTING
     else:
+        # Find all rows where none of the other columns are null
+        mask1 = (input_df.loc[:, ~input_df.columns.isin([target])].isnull().sum(1) == 0)
+
+        # Find all rows where the target column is null
+        mask2 = input_df[target].isnull()
+
+        # The rows we wish to invert are those at the intersection of mask1 and mask2
         X_to_inv = input_df.loc[
-            input_df.loc[:,
-            ~input_df.columns.isin(['x1'])
-            ].isnull().sum(1) == 0,
+            (mask1 & mask2),
             input_df.columns.values != 'y'
         ]
 
@@ -161,7 +166,7 @@ def olsinv_singlex(input_df, target, verbose=False, test_mode=False):
     # Add in the constant column to the model matrix since it is not ordinarily part of the dataframe
     X_to_inv = sm.add_constant(X_to_inv)
 
-    # Select the "y" -- response values coresponding to the rows with missing data
+    # Select the "y" -- response values corresponding to the rows with missing data
     if test_mode:
         y = input_df.loc[X_to_inv.index, 'y']  # FOR TESTING
     else:

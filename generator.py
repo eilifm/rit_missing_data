@@ -9,7 +9,6 @@ from sklearn.decomposition import PCA
 def generate_xvar(dist: str, size=1000, **kwargs):
     """
     
-    
     Parameters
     ----------
     dist
