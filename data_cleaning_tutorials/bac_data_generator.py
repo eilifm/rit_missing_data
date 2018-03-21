@@ -81,7 +81,7 @@ def make_obs():
 
     # randomly change to metric units
     if np.random.choice([True, False], 1):
-        sample['weight'] = sample['weight']*1.453592 + np.random.normal(0, 1)
+        sample['weight'] = sample['weight']*.453592 + np.random.normal(0, 1)
         sample['volume_consumed'] = sample['volume_consumed']*29.6 + np.random.normal(0, 1)
         sample['units'] = np.random.choice(['SI', 'metric', 'metric'])
 

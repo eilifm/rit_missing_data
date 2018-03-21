@@ -7,10 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bc011b71-78b3-41ff-a1ab-20f8633d6180" name="Default" comment="finally have the inversion code working and testable again">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data_cleaning_tutorials/rendered.pdf" afterPath="$PROJECT_DIR$/data_cleaning_tutorials/rendered.pdf" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Exploring and Fixing Errors.ipynb" afterPath="$PROJECT_DIR$/Exploring and Fixing Errors.ipynb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data_cleaning_tutorials/bac_data_generator.py" afterPath="$PROJECT_DIR$/data_cleaning_tutorials/bac_data_generator.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data_cleaning_tutorials/horrible_data.csv" afterPath="$PROJECT_DIR$/data_cleaning_tutorials/horrible_data.csv" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data_cleaning_tutorials/rendered.Rmd" afterPath="$PROJECT_DIR$/data_cleaning_tutorials/rendered.Rmd" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data_cleaning_tutorials/rendered.nb.html" afterPath="$PROJECT_DIR$/data_cleaning_tutorials/rendered.nb.html" />
     </list>
@@ -63,8 +62,8 @@
       <file leaf-file-name="bac_data_generator.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/data_cleaning_tutorials/bac_data_generator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="51" column="39" lean-forward="true" selection-start-line="51" selection-start-column="39" selection-end-line="51" selection-end-column="39" />
+            <state relative-caret-position="60">
+              <caret line="8" column="44" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -1179,8 +1178,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/data_cleaning_tutorials/bac_data_generator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="51" column="39" lean-forward="true" selection-start-line="51" selection-start-column="39" selection-end-line="51" selection-end-column="39" />
+        <state relative-caret-position="60">
+          <caret line="8" column="44" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="44" />
           <folding />
         </state>
       </provider>

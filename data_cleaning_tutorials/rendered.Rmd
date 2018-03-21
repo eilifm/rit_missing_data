@@ -1,5 +1,5 @@
 ---
-title: "Data Cleaning Tutorials"
+title: "Data Cleaning Methods: A Tutorial"
 author: "Eilif Mikkelsen"
 output:
   pdf_document:
@@ -26,12 +26,14 @@ knitr::opts_chunk$set(echo = TRUE)
 # Introduction
 In an academic setting data sets are often presented as clean and orderly sets of information. For most real-world applications this couldn't be farther from the truth. When talking to data scientists across industries it is commonly noted that the vast majority of their time is spent cleaning and structuring data before they can even consider models. 
 
-In this tutorial we will cover some core data cleaning methods. This is by no means exhaustive however it should leave the reader with a strong set of data manipulation skills. For context, I wrote this document to hone my data manipulation skills in R after spending years working with the [Python Pandas](https://pandas.pydata.org/) data library which provides data structures and features similar to the R `data.frame` object. Periodically, comments detailing the `pandas` equivalents will be included looking something like `# Py/Pandas: df.head()`.
+In this tutorial we will cover some core data cleaning methods. This is by no means exhaustive however it should leave the reader with a strong set of data manipulation skills. For context, I wrote this document to hone my data manipulation skills in R after spending the last couple years working with the [Python Pandas](https://pandas.pydata.org/) data library which provides data structures and features similar to the R `data.frame` object. Periodically, comments detailing the `pandas` equivalents will be included looking something like `# Py/Pandas: df.head()`.
 
 This document was originally written in R Markdown, a format for generating mixed format documents combining code and text. 
 Where it seems useful, I will include links to relevent packages or functions.  Here is a link to a [cheat sheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) on the R Markdown syntax.
 
 New commands introduced in a section will be listed in the "Commands Used" sub-section at the beginning of each topic. 
+
+This is a How-To document, NOT academic writing. Read it that way and have some fun with your data. 
 
 # What is Presumed About the Reader
 - The reader has a very basic understanding of simple programming concepts. 
@@ -61,19 +63,39 @@ version
 - Datetime parsing
 - Mixed data type columns
 
-# Initial Look
+# The Data
 I once had a professor that said that no matter how good and experienced and smart we are, there is no substitute for viewing and plotting your data!
 
-Let's start by loading and looking at the first few rows of the data. The ix columns is an arbitrary row number that was created along with the dataset. We will use this to uniquely identify rows. Additionally, we want all string columns to be treated as characters rather than "factors", a special R data type. 
 
 ## Commands Used
 
-- [`hist`](https://www.rdocumentation.org/packages/graphics/versions/3.4.3/topics/hist)
-- [`read.csv`](https://www.rdocumentation.org/packages/utils/versions/3.4.3/topics/read.table)
-- [`row.names`](https://www.rdocumentation.org/packages/base/versions/3.4.3/topics/row.names)
-- [`head`](https://www.rdocumentation.org/packages/utils/versions/3.4.3/topics/head)
-- [`nrow`](https://www.rdocumentation.org/packages/base/versions/3.4.3/topics/nrow)
-- [`ncol`](https://www.rdocumentation.org/packages/base/versions/3.4.3/topics/nrow)
+- [`hist`](https://www.rdocumentation.org/packages/graphics/versions/3.4.3/topics/hist) [^1] 
+- [`read.csv`](https://www.rdocumentation.org/packages/utils/versions/3.4.3/topics/read.table) [^2] 
+- [`row.names`](https://www.rdocumentation.org/packages/base/versions/3.4.3/topics/row.names) [^3]
+- [`head`](https://www.rdocumentation.org/packages/utils/versions/3.4.3/topics/head) [^4]
+- [`nrow`](https://www.rdocumentation.org/packages/base/versions/3.4.3/topics/nrow) [^5]
+- [`ncol`](https://www.rdocumentation.org/packages/base/versions/3.4.3/topics/nrow) [^6]
+
+[^1]:https://www.rdocumentation.org/packages/graphics/versions/3.4.3/topics/hist
+[^2]:https://www.rdocumentation.org/packages/utils/versions/3.4.3/topics/read.table
+[^3]:https://www.rdocumentation.org/packages/base/versions/3.4.3/topics/row.names
+[^4]:https://www.rdocumentation.org/packages/utils/versions/3.4.3/topics/head
+[^5]:https://www.rdocumentation.org/packages/utils/versions/3.4.3/topics/nrow
+[^6]:https://www.rdocumentation.org/packages/utils/versions/3.4.3/topics/nrow
+
+
+## Data Generation
+All the source code for the generation of the bad data and the original markdown for this tutorial can be found at [https://github.com/eilifm/rit_missing_data/tree/master/data_cleaning_tutorials](https://github.com/eilifm/rit_missing_data/tree/master/data_cleaning_tutorials).
+
+The dataset is a artificially generated set of blood alcohol concentration (BAC) observations including a collection of other variables that may or may not be used in the computation of BAC.
+This includes information about the weight, age, sex, number of drinks, and type of alcohol consumed for each fake participant. 
+BAC is computed according to NIH standards found [here](http://www.ndaa.org/pdf/toxicology_final.pdf)[^7]
+
+
+[^7]:http://www.ndaa.org/pdf/toxicology_final.pdf
+
+## The Data
+Let's start by loading and looking at the first few rows of the data. The ix columns is an arbitrary row number that was created along with the dataset. We will use this to uniquely identify rows. Additionally, we want all string columns to be treated as characters rather than "factors", a special R data type. 
 
 
 ```{r}
@@ -82,8 +104,10 @@ library(ggplot2)
 # Py/Pandas: pd.read_csv('./horrible_data.csv', index=0)
 in_data = read.csv('./horrible_data.csv', stringsAsFactors=FALSE)
 
-# Let's duplicate the data so we can keep a copy of the original. When we update data we will update wrk_data not in_data 
+# Let's duplicate the data so we can keep a copy of the original. 
+# When we update data we will update wrk_data not in_data 
 wrk_data = cbind(in_data)
+
 # Setting the row names to the `ix` column
 row.names(in_data) = in_data$ix
 
@@ -141,7 +165,7 @@ head(which(in_data$sex == "Male"))
 
 We see from the output that this dataset has two correct options for `sex`, Male and Female. We also observe that the dataset contains a variety of abbreviations and typos for the two categories. To standardize the values such that all observations that should be recorded as Male are updated accordingly. We will perform the same operation for Female. 
 
-To acomplish this task, we will need to use the `%in%` operator. The `%in%` operator checks if a value is in the supplied set. In a pseudocode example let `s = {1, 3, 6}`. The evaluation of `1 in s` returns `TRUE` while `2 in s` returns `FALSE`.
+To accomplish this task, we will need to use the `%in%` operator. The `%in%` operator checks if a value is in the supplied set. In a pseudocode example let `s = {1, 3, 6}`. The evaluation of `1 in s` returns `TRUE` while `2 in s` returns `FALSE`.
 
 ```{r}
 # A vector of all the values that should be classified as "Male"
@@ -184,7 +208,7 @@ Whoa, there appears to be a clear difference between `Male` and `Female`.  Given
 
 
 ## Cleaning `units`
-Alright! We have learned how to update rows/columns in a dataframe using boolean masking. The `units` column has similar issues. I won't go through the explaination again but the steps are the same as those for `sex` above. 
+Alright! We have learned how to update rows/columns in a dataframe using boolean masking. The `units` column has similar issues. I won't go through the explanation again but the steps are the same as those for `sex` above. 
 
 ```{r}
 # Let's print out the list of unique items in the units column
@@ -211,7 +235,7 @@ unique(wrk_data$drink_type)
 ```
 
 What we have here is known in the industry as a "hot mess". 
-If you didn't guess, the values are a mix of alocholic beverage brands and types in a variety of languages. 
+If you didn't guess, the values are a mix of alcoholic beverage brands and types in a variety of languages. 
 When encountering this sort of data, it's often worth taking the 20 mins. to go an Google each item. 
 
 I am not well read in the boozes of the world.
@@ -314,11 +338,13 @@ Tada! Using datetime objects gives a correct and useful result.
 
 ## A Brief Aside on Regular Expressions (Regex)
 
-WIP
+
+https://www.rstudio.com/wp-content/uploads/2016/09/RegExCheatsheet.pdf
+
 
 ## Using Regex to Sort Out `age`
 
-Looking at the first 10 values in the `age` column we can see immediatly that the type is mixed. Some of the values are the age in **months** while others are the birthday. Yikes!
+Looking at the first 10 values in the `age` column we can see immediately that the type is mixed. Some of the values are the age in **months** while others are the birthday. Yikes!
 
 ```{r}
 head(in_data$age, n = 10)
@@ -391,6 +417,7 @@ head(wrk_data[, 'age'])
 ```
 ```{r}
 head(wrk_data)
+
 ```
 
 # Units Conversions
@@ -445,7 +472,7 @@ head(wrk_data[which(wrk_data$units == 'metric'), "volume_consumed"])
 
 # Convert weight - kg to lbs
 wrk_data[which(wrk_data$units == 'metric'), "weight"] = 
-  wrk_data[which(wrk_data$units == 'metric'), "weight"]/1.453592
+  wrk_data[which(wrk_data$units == 'metric'), "weight"]/.453592
 
 head(wrk_data[which(wrk_data$units == 'metric'), "weight"])
 
@@ -578,3 +605,8 @@ qplot(num_drinks, BAC, colour = sex,
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+# To Dos
+
+- Include URLs to clickable links
+  * See "The Data" for my proposed method
