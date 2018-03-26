@@ -6,12 +6,13 @@
     </enabled-run-configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bc011b71-78b3-41ff-a1ab-20f8633d6180" name="Default" comment="finally have the inversion code working and testable again">
+    <list default="true" id="bc011b71-78b3-41ff-a1ab-20f8633d6180" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data_cleaning_tutorials/bac_data_generator.py" afterPath="$PROJECT_DIR$/data_cleaning_tutorials/bac_data_generator.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data_cleaning_tutorials/horrible_data.csv" afterPath="$PROJECT_DIR$/data_cleaning_tutorials/horrible_data.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data_cleaning_tutorials/rendered.Rmd" afterPath="$PROJECT_DIR$/data_cleaning_tutorials/rendered.Rmd" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data_cleaning_tutorials/rendered.nb.html" afterPath="$PROJECT_DIR$/data_cleaning_tutorials/rendered.nb.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Exploring and Fixing Errors.ipynb" afterPath="$PROJECT_DIR$/Exploring and Fixing Errors.ipynb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data_cleaning_tutorials/.Rhistory" afterPath="$PROJECT_DIR$/data_cleaning_tutorials/.Rhistory" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/exec_tools.py" afterPath="$PROJECT_DIR$/exec_tools.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fixer.py" afterPath="$PROJECT_DIR$/fixer.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parallel_exec_demo.py" afterPath="$PROJECT_DIR$/parallel_exec_demo.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -26,8 +27,8 @@
       <file leaf-file-name="generator.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/generator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1140">
-              <caret line="76" column="23" lean-forward="false" selection-start-line="76" selection-start-column="23" selection-end-line="76" selection-end-column="23" />
+            <state relative-caret-position="1860">
+              <caret line="129" column="20" lean-forward="false" selection-start-line="129" selection-start-column="20" selection-end-line="129" selection-end-column="20" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -38,8 +39,8 @@
       <file leaf-file-name="exec_tools.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/exec_tools.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="615">
-              <caret line="46" column="8" lean-forward="false" selection-start-line="46" selection-start-column="8" selection-end-line="46" selection-end-column="26" />
+            <state relative-caret-position="600">
+              <caret line="40" column="47" lean-forward="true" selection-start-line="40" selection-start-column="47" selection-end-line="40" selection-end-column="47" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -47,24 +48,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="parallel_exec_demo.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="parallel_exec_demo.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/parallel_exec_demo.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="653">
-              <caret line="46" column="19" lean-forward="false" selection-start-line="46" selection-start-column="19" selection-end-line="46" selection-end-column="19" />
+            <state relative-caret-position="277">
+              <caret line="39" column="23" lean-forward="true" selection-start-line="39" selection-start-column="23" selection-end-line="39" selection-end-column="23" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="bac_data_generator.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/data_cleaning_tutorials/bac_data_generator.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="8" column="44" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="44" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -72,8 +63,8 @@
       <file leaf-file-name="fixer.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/fixer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="625">
-              <caret line="255" column="14" lean-forward="false" selection-start-line="255" selection-start-column="14" selection-end-line="255" selection-end-column="14" />
+            <state relative-caret-position="53">
+              <caret line="171" column="0" lean-forward="false" selection-start-line="171" selection-start-column="0" selection-end-line="171" selection-end-column="0" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -81,11 +72,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sympy_test1.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sympy_test1.py">
+      <file leaf-file-name="utils.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -94,7 +85,7 @@
       <file leaf-file-name="testr3.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/testr3.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
+            <state relative-caret-position="397">
               <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
@@ -118,8 +109,8 @@
       <file leaf-file-name="fitter.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/fitter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1245">
-              <caret line="83" column="38" lean-forward="false" selection-start-line="83" selection-start-column="38" selection-end-line="83" selection-end-column="38" />
+            <state relative-caret-position="484">
+              <caret line="87" column="8" lean-forward="false" selection-start-line="87" selection-start-column="8" selection-end-line="87" selection-end-column="8" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -130,8 +121,8 @@
       <file leaf-file-name="testr4.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/testr4.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+            <state relative-caret-position="255">
+              <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -155,6 +146,7 @@
       <find>NULL</find>
       <find>.</find>
       <find>if test_mode or verbose:</find>
+      <find>target</find>
     </findStrings>
     <replaceStrings>
       <replace>data</replace>
@@ -185,21 +177,21 @@
         <option value="$PROJECT_DIR$/testr3.py" />
         <option value="$PROJECT_DIR$/testr4.py" />
         <option value="$PROJECT_DIR$/utils.py" />
+        <option value="$PROJECT_DIR$/sympy_test1.py" />
+        <option value="$PROJECT_DIR$/data_cleaning_tutorials/bac_data_generator.py" />
+        <option value="$PROJECT_DIR$/generator.py" />
+        <option value="$PROJECT_DIR$/fitter.py" />
+        <option value="$PROJECT_DIR$/fixer.py" />
         <option value="$PROJECT_DIR$/exec_tools.py" />
         <option value="$PROJECT_DIR$/parallel_exec_demo.py" />
-        <option value="$PROJECT_DIR$/sympy_test1.py" />
-        <option value="$PROJECT_DIR$/fitter.py" />
-        <option value="$PROJECT_DIR$/generator.py" />
-        <option value="$PROJECT_DIR$/fixer.py" />
-        <option value="$PROJECT_DIR$/data_cleaning_tutorials/bac_data_generator.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="4" />
     <option name="y" value="22" />
-    <option name="width" value="1916" />
-    <option name="height" value="1058" />
+    <option name="width" value="1646" />
+    <option name="height" value="1028" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -218,7 +210,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -231,22 +222,9 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rit_missing_data" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rit_missing_data" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data_cleaning_tutorials" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -270,7 +248,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.bac_data_generator">
+  <component name="RunManager" selected="Python.parallel_exec_demo">
     <configuration default="false" name="exec" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -488,9 +466,9 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.bac_data_generator" />
-        <item index="1" class="java.lang.String" itemvalue="Python.sympy_test1" />
-        <item index="2" class="java.lang.String" itemvalue="Python.parallel_exec_demo" />
+        <item index="0" class="java.lang.String" itemvalue="Python.parallel_exec_demo" />
+        <item index="1" class="java.lang.String" itemvalue="Python.bac_data_generator" />
+        <item index="2" class="java.lang.String" itemvalue="Python.sympy_test1" />
         <item index="3" class="java.lang.String" itemvalue="Python.exec" />
         <item index="4" class="java.lang.String" itemvalue="Python.testr4" />
       </list>
@@ -682,54 +660,61 @@
       <option name="project" value="LOCAL" />
       <updated>1520183998536</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="more bugs in the inverter">
+      <created>1521651193392</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1521651193392</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Doctest_olsinv_singlex - 2018.03.03 at 18h 10m 48s.xml">
+    <history-entry file="Doctest_olsinv_singlex - 2018.03.21 at 12h 19m 11s.xml">
       <configuration name="Doctest olsinv_singlex" configurationId="tests" />
     </history-entry>
-    <history-entry file="Doctest_olsinv_singlex - 2018.03.03 at 18h 11m 03s.xml">
+    <history-entry file="Doctest_olsinv_singlex - 2018.03.21 at 12h 19m 15s.xml">
       <configuration name="Doctest olsinv_singlex" configurationId="tests" />
     </history-entry>
-    <history-entry file="Doctest_olsinv_singlex - 2018.03.03 at 18h 11m 08s.xml">
+    <history-entry file="Doctest_olsinv_singlex - 2018.03.21 at 12h 19m 23s.xml">
       <configuration name="Doctest olsinv_singlex" configurationId="tests" />
     </history-entry>
-    <history-entry file="Doctest_olsinv_singlex - 2018.03.03 at 18h 11m 10s.xml">
+    <history-entry file="Doctest_olsinv_singlex - 2018.03.21 at 12h 20m 44s.xml">
       <configuration name="Doctest olsinv_singlex" configurationId="tests" />
     </history-entry>
-    <history-entry file="Doctest_olsinv_singlex - 2018.03.04 at 09h 39m 04s.xml">
+    <history-entry file="Doctest_olsinv_singlex - 2018.03.21 at 12h 21m 12s.xml">
       <configuration name="Doctest olsinv_singlex" configurationId="tests" />
     </history-entry>
-    <history-entry file="Doctest_olsinv_singlex - 2018.03.04 at 09h 39m 26s.xml">
+    <history-entry file="Doctest_olsinv_singlex - 2018.03.21 at 12h 21m 25s.xml">
       <configuration name="Doctest olsinv_singlex" configurationId="tests" />
     </history-entry>
-    <history-entry file="Doctest_olsinv_singlex - 2018.03.04 at 12h 20m 03s.xml">
+    <history-entry file="Doctest_olsinv_singlex - 2018.03.21 at 12h 21m 31s.xml">
       <configuration name="Doctest olsinv_singlex" configurationId="tests" />
     </history-entry>
-    <history-entry file="Doctest_olsinv_singlex - 2018.03.04 at 12h 20m 50s.xml">
+    <history-entry file="Doctest_olsinv_singlex - 2018.03.21 at 12h 21m 35s.xml">
       <configuration name="Doctest olsinv_singlex" configurationId="tests" />
     </history-entry>
-    <history-entry file="Doctest_olsinv_singlex - 2018.03.04 at 12h 21m 02s.xml">
+    <history-entry file="Doctest_olsinv_singlex - 2018.03.21 at 12h 22m 12s.xml">
       <configuration name="Doctest olsinv_singlex" configurationId="tests" />
     </history-entry>
-    <history-entry file="Doctest_olsinv_singlex - 2018.03.04 at 12h 21m 54s.xml">
+    <history-entry file="Doctest_olsinv_singlex - 2018.03.21 at 12h 22m 14s.xml">
       <configuration name="Doctest olsinv_singlex" configurationId="tests" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="4" y="22" width="1916" height="1058" extended-state="6" />
+    <frame x="4" y="22" width="1646" height="1028" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3043478" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30344108" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24895616" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14763062" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="MaxCompute Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="MaxCompute Job" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="MaxCompute Job Explorer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -764,7 +749,8 @@
     <MESSAGE value="playing with parallelizing things" />
     <MESSAGE value="adding two variables and proportional coefficients" />
     <MESSAGE value="finally have the inversion code working and testable again" />
-    <option name="LAST_COMMIT_MESSAGE" value="finally have the inversion code working and testable again" />
+    <MESSAGE value="more bugs in the inverter" />
+    <option name="LAST_COMMIT_MESSAGE" value="more bugs in the inverter" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1081,10 +1067,66 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/sympy_test1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/generator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1860">
+          <caret line="129" column="20" lean-forward="false" selection-start-line="129" selection-start-column="20" selection-end-line="129" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_cleaning_tutorials/bac_data_generator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fitter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="87" column="8" lean-forward="false" selection-start-line="87" selection-start-column="8" selection-end-line="87" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testr4.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testr3.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="397">
+          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/utils.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1098,68 +1140,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sympy_test1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/generator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1140">
-          <caret line="76" column="23" lean-forward="false" selection-start-line="76" selection-start-column="23" selection-end-line="76" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fitter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1245">
-          <caret line="83" column="38" lean-forward="false" selection-start-line="83" selection-start-column="38" selection-end-line="83" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/fixer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="625">
-          <caret line="255" column="14" lean-forward="false" selection-start-line="255" selection-start-column="14" selection-end-line="255" selection-end-column="14" />
+        <state relative-caret-position="53">
+          <caret line="171" column="0" lean-forward="false" selection-start-line="171" selection-start-column="0" selection-end-line="171" selection-end-column="0" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testr3.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testr4.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/exec_tools.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="46" column="8" lean-forward="false" selection-start-line="46" selection-start-column="8" selection-end-line="46" selection-end-column="26" />
+        <state relative-caret-position="600">
+          <caret line="40" column="47" lean-forward="true" selection-start-line="40" selection-start-column="47" selection-end-line="40" selection-end-column="47" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>
@@ -1168,19 +1162,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/parallel_exec_demo.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="653">
-          <caret line="46" column="19" lean-forward="false" selection-start-line="46" selection-start-column="19" selection-end-line="46" selection-end-column="19" />
+        <state relative-caret-position="277">
+          <caret line="39" column="23" lean-forward="true" selection-start-line="39" selection-start-column="23" selection-end-line="39" selection-end-column="23" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data_cleaning_tutorials/bac_data_generator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="8" column="44" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>

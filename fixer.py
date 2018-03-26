@@ -161,10 +161,14 @@ def olsinv_singlex(input_df, target, verbose=False, test_mode=False):
             input_df.columns.values != 'y'
         ]
 
+    # Handle the case where there is no data missing
+    if X_to_inv.shape[0] == 0:
+        return None, None
+
     # Error out if, by mistake, there is no missing data in the target column
 
     # Add in the constant column to the model matrix since it is not ordinarily part of the dataframe
-    X_to_inv = sm.add_constant(X_to_inv)
+    X_to_inv = sm.add_constant(X_to_inv, has_constant='add')
 
     # Select the "y" -- response values corresponding to the rows with missing data
     if test_mode:
@@ -183,6 +187,7 @@ def olsinv_singlex(input_df, target, verbose=False, test_mode=False):
 
     # Fit the model to complete observations.
     inv_mod = sm.OLS(y_init, X_init).fit()
+
 
     if verbose:
         print("Shape of data for Init model: {}".format(str(X_init.shape)))
@@ -210,6 +215,7 @@ def olsinv_singlex(input_df, target, verbose=False, test_mode=False):
             (inv_mod.params.index.str.contains(target + ":"))
         )
         ]
+
     if verbose:
         print("Matrix 1 Beta Estimates: {}".format(m1_betas))
 

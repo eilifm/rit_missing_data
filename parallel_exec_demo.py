@@ -24,9 +24,10 @@ if __name__ == "__main__":
 
     levels = [
         [config_maker(*args) for args in itertools.product(*maker_levels)],
-        ("mean", "invert", "drop"),
+        #("mean", "invert", "drop"),
+        ("invert", "drop"),
         (.1, .3),
-        (20, 50, 100),
+        (50, 100),
         (.05,),
         (0,),
         (.8,),
@@ -42,7 +43,7 @@ if __name__ == "__main__":
 
     # print(run(*runs[0]))
 
-    results = Parallel(n_jobs=-1, verbose=1)(delayed(run)(*args) for args in itertools.product(*levels))
+    results = Parallel(n_jobs=3, verbose=10)(delayed(run)(*args) for args in itertools.product(*levels))
 
     results = pd.concat(results)
     import datetime

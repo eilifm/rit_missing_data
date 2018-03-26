@@ -6,7 +6,6 @@ from collections import OrderedDict
 from sortedcontainers import SortedDict
 
 def run(data_gen_dict, action_type, beta_sigma, sample_size, incr, lower_pct, upper_pct, rep_num):
-
     fit_data, test_data, true_coeffs = generate_ind_model(
                                             data_gen_dict["dist_list"],
                                             data_gen_dict["main_coeffs"],
@@ -34,7 +33,17 @@ def run(data_gen_dict, action_type, beta_sigma, sample_size, incr, lower_pct, up
         elif action_type == 'mean':
             fixed_data = fix_cols({'x1': 'mean'}, wrecked_data)
         elif action_type == 'invert':
-            fixed_data, w_impute_coeff = inverse_fit_impute('x1', 'y', wrecked_data)
+
+            # fixed_data, w_impute_coeff = olsinv_singlex(wrecked_data, 'x1')
+
+            inverted, fitted_inv = olsinv_singlex(wrecked_data, 'x1')
+
+            if isinstance(inverted, pd.Series):
+                wrecked_data.loc[inverted.index, 'x1'] = inverted
+                fixed_data = wrecked_data
+            else:
+                fixed_data = wrecked_data
+            #fixed_data, w_impute_coeff = inverse_fit_impute('x1', 'y', wrecked_data)
         elif action_type == 'random':
             fixed_data = rand_replace('x1', wrecked_data)
         else:
@@ -62,7 +71,8 @@ def run(data_gen_dict, action_type, beta_sigma, sample_size, incr, lower_pct, up
         for x_var in w_fitted.params.index:
             param_results[x_var] = SortedDict()
             param_results[x_var]['ci_rng'] = w_metrics['beta_ci'][x_var]['range']
-            param_results[x_var]['in_target'] = b_estimate_results.loc[x_var, :].values[0]
+            # param_results[x_var]['in_target'] = b_estimate_results.loc[x_var, :].values[0]
+            param_results[x_var]['in_target'] = b_estimate_results[x_var]['in_ci']
             param_results[x_var]['estimate'] = w_fitted.params[x_var]
             param_results[x_var]['true_beta'] = true_coeffs[x_var]
 
