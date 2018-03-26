@@ -3,6 +3,8 @@ from shredder import *
 from fitter import *
 from fixer import *
 from collections import OrderedDict
+import itertools
+
 from sortedcontainers import SortedDict
 
 def run(data_gen_dict, action_type, beta_sigma, sample_size, incr, lower_pct, upper_pct, targets, num_rep):
@@ -112,15 +114,25 @@ def run(data_gen_dict, action_type, beta_sigma, sample_size, incr, lower_pct, up
     # results_agg = results.copy()
     # results_agg = results_agg.groupby('pct_missing').mean()
 
+    feature_cols = [
+        'pct_missing',
+        'fitted_nobs',
+        'beta_sigma',
+        'sample_size'
+    ]
     # results_agg.loc[:, 'action_type'] = action_type
     results.loc[:, 'action_type'] = action_type
     results.loc[:, 'beta_sigma'] = beta_sigma
     results.loc[:, 'sample_size'] = sample_size
     results.loc[:, 'targets'] = ", ".join(targets)
-    results.loc[:, 'beta_x2/beta_x1'] = true_coeffs['x2']/true_coeffs['x1']
-    results.loc[:, 'beta_x1:x2/beta_x1'] = true_coeffs['x1:x2']/true_coeffs['x1']
+    for keys in itertools.combinations(sorted(list(true_coeffs.keys())), 2):
+        results.loc[:, keys[0] + "/" + keys[1]] = true_coeffs[keys[0]]/true_coeffs[keys[1]]
+        feature_cols.append(keys[0] + "/" + keys[1])
 
+    #results.loc[:, 'beta_x1:x2/beta_x1'] = true_coeffs['x1:x2']/true_coeffs['x1']
 
-    return results
+    #print(feature_cols)
+
+    return results, feature_cols
 
 

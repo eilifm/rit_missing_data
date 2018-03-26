@@ -1,6 +1,7 @@
 from generator import *
 from shredder import *
 from fitter import *
+import datetime
 from fixer import *
 from exec_tools import run
 from sklearn.preprocessing import MinMaxScaler
@@ -25,43 +26,37 @@ if __name__ == "__main__":
 
     levels = [
         [config_maker(*args) for args in itertools.product(*maker_levels)],
-        #("mean", "invert", "drop"),
         ("mean", "invert", "drop"),
-        # (.1, .3),
         (.1, .3),
         (50, 100),  # Initial sample sized
         (.05,),
         (0,),  # Lower bound on percent missing data
-        (.4,),  # Upper bound on percent missing data
+        (.5,),  # Upper bound on percent missing data
         (['x1'], ['x2'], ['x1', 'x2']), # Select which columns to shred
-        range(1)
+        range(100)
     ]
 
     print(len(list(itertools.product(*levels))))
     # start = time.time()
 
     runs = list(itertools.product(*levels))
-    #
-    #
-
-    # print(run(*runs[0]))
 
     results = Parallel(n_jobs=-1, verbose=10)(delayed(run)(*args) for args in itertools.product(*levels))
 
-    results = pd.concat(results)
-    import datetime
+    numeric_levels = list(set(itertools.chain.from_iterable([result[1] for result in results])))
 
+    data_results = pd.concat([result[0] for result in results])
 
     scaler = MinMaxScaler()
 
-    scaler.fit(results[['beta_sigma', 'sample_size', 'beta_x2/beta_x1', 'pct_missing']])
+    scaler.fit(data_results.loc[:, numeric_levels])
 
-    results[['_beta_sigma', '_sample_size', '_beta_x2/beta_x1', '_beta_x1:x2/beta_x1']] = pd.DataFrame([[0,0,0,0]], index=results.index)
-    results.loc[:, ['_beta_sigma', '_sample_size', '_beta_x2/beta_x1', '_beta_x1:x2/beta_x1']] = scaler.transform(results.loc[:, ['beta_sigma', 'sample_size', 'beta_x2/beta_x1', 'beta_x1:x2/beta_x1']])
+    data_results = data_results.reindex(columns=data_results.columns.tolist() + ["cod_" + factor for factor in numeric_levels])
+    data_results.loc[:, ["cod_"+factor for factor in numeric_levels]] = scaler.transform(data_results.loc[:, numeric_levels])
 
-    results.to_csv(str(datetime.datetime.now()).replace("/", "-").replace(" ", '_').replace(":", '-')+".csv")
+    data_results.to_csv(str(datetime.datetime.now()).replace("/", "-").replace(" ", '_').replace(":", '-')+".csv")
 
 
-    print(results.shape)
+    print(data_results.shape)
     #
     # print(time.time() - start)
