@@ -16,7 +16,8 @@ if __name__ == "__main__":
         (10,),
         ([.05], [.1], [.5]), # beta_x2/beta_x1
         ([[1, 2]],), # Declare interactions
-        ([1], [5]) # Levels of interaction coeff
+        ([1], [5]),  # Levels of interaction coeff
+        ('uniform',)
     ]
 
     # start = time.time()
@@ -33,7 +34,7 @@ if __name__ == "__main__":
         (0,),  # Lower bound on percent missing data
         (.4,),  # Upper bound on percent missing data
         (['x1'], ['x2'], ['x1', 'x2']), # Select which columns to shred
-        range(10)
+        range(1)
     ]
 
     print(len(list(itertools.product(*levels))))

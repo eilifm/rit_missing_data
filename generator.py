@@ -116,17 +116,23 @@ def rel_coeff_manager(base: int, factor_weights: list):
 
     return main_coeffs
 
-def config_maker(num_x, base, coeff_weights, interactions, interaction_coeffs):
+def config_maker(num_x, base, coeff_weights, interactions, interaction_coeffs, underlying):
     if len(coeff_weights) + 1 > num_x:
         raise ValueError("len(coeff_weights) + 1 must be equal to num_x")
 
-    init_dict = {
-        "dist_list": [x_def_helper('uniform', low=0, high=1) for x in range(num_x)],
+    if underlying == "uniform":
+        init_dict = {
+            "dist_list": [x_def_helper('uniform', low=0, high=1) for x in range(num_x)],
 
-        "main_coeffs": rel_coeff_manager(base, coeff_weights),
-        "interactions": interactions,
-        "interaction_coeffs": interaction_coeffs
-    }
+            "main_coeffs": rel_coeff_manager(base, coeff_weights),
+            "interactions": interactions,
+            "interaction_coeffs": interaction_coeffs
+        }
+
+    else:
+        raise NotImplementedError()
+
+
     return init_dict
 
 
