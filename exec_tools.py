@@ -97,7 +97,6 @@ def run(data_gen_dict, action_type, beta_sigma, sample_size, incr, lower_pct, up
         run_results.append(results_rec+param_info)
 
     results_cols = [
-        'init_nobs',
         'pct_missing',
         'fitted_nobs',
         'r2',
@@ -118,6 +117,7 @@ def run(data_gen_dict, action_type, beta_sigma, sample_size, incr, lower_pct, up
     results.loc[:, 'action_type'] = action_type
     results.loc[:, 'beta_sigma'] = beta_sigma
     results.loc[:, 'sample_size'] = sample_size
+    results.loc[:, 'targets'] = ", ".join(targets)
     results.loc[:, 'beta_x2/beta_x1'] = true_coeffs['x2']/true_coeffs['x1']
     results.loc[:, 'beta_x1:x2/beta_x1'] = true_coeffs['x1:x2']/true_coeffs['x1']
 
