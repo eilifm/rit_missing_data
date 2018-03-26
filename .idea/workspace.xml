@@ -8,6 +8,8 @@
   <component name="ChangeListManager">
     <list default="true" id="bc011b71-78b3-41ff-a1ab-20f8633d6180" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/exec_tools.py" afterPath="$PROJECT_DIR$/exec_tools.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fixer.py" afterPath="$PROJECT_DIR$/fixer.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parallel_exec_demo.py" afterPath="$PROJECT_DIR$/parallel_exec_demo.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -35,8 +37,8 @@
       <file leaf-file-name="exec_tools.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/exec_tools.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="205">
-              <caret line="28" column="53" lean-forward="true" selection-start-line="28" selection-start-column="53" selection-end-line="28" selection-end-column="53" />
+            <state relative-caret-position="465">
+              <caret line="31" column="46" lean-forward="true" selection-start-line="31" selection-start-column="46" selection-end-line="31" selection-end-column="46" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -47,8 +49,8 @@
       <file leaf-file-name="parallel_exec_demo.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/parallel_exec_demo.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="109">
-              <caret line="34" column="17" lean-forward="false" selection-start-line="34" selection-start-column="17" selection-end-line="34" selection-end-column="17" />
+            <state relative-caret-position="270">
+              <caret line="18" column="46" lean-forward="false" selection-start-line="18" selection-start-column="46" selection-end-line="18" selection-end-column="46" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -59,8 +61,8 @@
       <file leaf-file-name="fixer.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/fixer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="53">
-              <caret line="171" column="0" lean-forward="false" selection-start-line="171" selection-start-column="0" selection-end-line="171" selection-end-column="0" />
+            <state relative-caret-position="325">
+              <caret line="25" column="41" lean-forward="true" selection-start-line="25" selection-start-column="41" selection-end-line="25" selection-end-column="41" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -176,9 +178,9 @@
         <option value="$PROJECT_DIR$/data_cleaning_tutorials/bac_data_generator.py" />
         <option value="$PROJECT_DIR$/generator.py" />
         <option value="$PROJECT_DIR$/fitter.py" />
+        <option value="$PROJECT_DIR$/shredder.py" />
         <option value="$PROJECT_DIR$/fixer.py" />
         <option value="$PROJECT_DIR$/exec_tools.py" />
-        <option value="$PROJECT_DIR$/shredder.py" />
         <option value="$PROJECT_DIR$/parallel_exec_demo.py" />
       </list>
     </option>
@@ -698,7 +700,14 @@
       <option name="project" value="LOCAL" />
       <updated>1522072596180</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="getting DOE back up!">
+      <created>1522072607725</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1522072607725</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1162,26 +1171,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/fixer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="53">
-          <caret line="171" column="0" lean-forward="false" selection-start-line="171" selection-start-column="0" selection-end-line="171" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/exec_tools.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="28" column="53" lean-forward="true" selection-start-line="28" selection-start-column="53" selection-end-line="28" selection-end-column="53" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/shredder.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
@@ -1192,10 +1181,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/fixer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="25" column="41" lean-forward="true" selection-start-line="25" selection-start-column="41" selection-end-line="25" selection-end-column="41" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exec_tools.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="31" column="46" lean-forward="true" selection-start-line="31" selection-start-column="46" selection-end-line="31" selection-end-column="46" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/parallel_exec_demo.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="109">
-          <caret line="34" column="17" lean-forward="false" selection-start-line="34" selection-start-column="17" selection-end-line="34" selection-end-column="17" />
+        <state relative-caret-position="270">
+          <caret line="18" column="46" lean-forward="false" selection-start-line="18" selection-start-column="46" selection-end-line="18" selection-end-column="46" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>

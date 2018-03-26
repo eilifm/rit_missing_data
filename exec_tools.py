@@ -5,7 +5,7 @@ from fixer import *
 from collections import OrderedDict
 from sortedcontainers import SortedDict
 
-def run(data_gen_dict, action_type, beta_sigma, sample_size, incr, lower_pct, upper_pct, rep_num):
+def run(data_gen_dict, action_type, beta_sigma, sample_size, incr, lower_pct, upper_pct, targets, num_rep):
     fit_data, test_data, true_coeffs = generate_ind_model(
                                             data_gen_dict["dist_list"],
                                             data_gen_dict["main_coeffs"],
@@ -26,23 +26,31 @@ def run(data_gen_dict, action_type, beta_sigma, sample_size, incr, lower_pct, up
 
         # Shred the data unless pct == 0
         # Specify that we are shredding x1
-        uniform_shred_cols(['x1'], pct, wrecked_data)
+        uniform_shred_cols(targets, pct, wrecked_data)
 
         if action_type == 'drop':
             fixed_data = wrecked_data.dropna()
         elif action_type == 'mean':
-            fixed_data = fix_cols({'x1': 'mean'}, wrecked_data)
+            fixing_dict = {}
+            for target in targets:
+                fixing_dict[target] = "mean"
+            fixed_data = fix_cols(fixing_dict, wrecked_data)
+
         elif action_type == 'invert':
 
             # fixed_data, w_impute_coeff = olsinv_singlex(wrecked_data, 'x1')
+            for target in targets:
+                inverted, fitted_inv = olsinv_singlex(wrecked_data, target)
 
-            inverted, fitted_inv = olsinv_singlex(wrecked_data, 'x1')
+                if isinstance(inverted, pd.Series):
+                    wrecked_data.loc[inverted.index, target] = inverted
+                    fixed_data = wrecked_data
+                else:
+                    fixed_data = wrecked_data
 
-            if isinstance(inverted, pd.Series):
-                wrecked_data.loc[inverted.index, 'x1'] = inverted
-                fixed_data = wrecked_data
-            else:
-                fixed_data = wrecked_data
+            # If more than one column is null, drop the samples
+            fixed_data = fixed_data.loc[fixed_data.isnull().sum(1) == 0, :]
+
             #fixed_data, w_impute_coeff = inverse_fit_impute('x1', 'y', wrecked_data)
         elif action_type == 'random':
             fixed_data = rand_replace('x1', wrecked_data)
@@ -56,14 +64,16 @@ def run(data_gen_dict, action_type, beta_sigma, sample_size, incr, lower_pct, up
         b_estimate_results = beta_target_check(w_metrics, true_coeffs, as_dataframe=True)
 
         # Collect some results
-        results_rec = [pct,
-                            w_fitted.nobs,
-                            w_metrics['r2'],
-                            w_metrics['r2_adj'],
-                            w_metrics['bic'],
-                            w_metrics['r2_pred'],
-                            w_metrics['mse_pred'],
-                            w_metrics['mape_pred']
+        results_rec = [
+            sample_size,
+            pct,
+            w_fitted.nobs,
+            w_metrics['r2'],
+            w_metrics['r2_adj'],
+            w_metrics['bic'],
+            w_metrics['r2_pred'],
+            w_metrics['mse_pred'],
+            w_metrics['mape_pred']
         ]
 
         # A TON OF FANCY FOOTWORK TO KEEP ALL THE PARAMS IN ORDER!
@@ -86,14 +96,17 @@ def run(data_gen_dict, action_type, beta_sigma, sample_size, incr, lower_pct, up
 
         run_results.append(results_rec+param_info)
 
-    results_cols = ['pct_missing',
-     'nobs',
-     'r2',
-     'r2_adj',
-     'bic',
-     'r2_pred',
-     'mse_pred',
-     'mape_pred']+param_cols
+    results_cols = [
+        'init_nobs',
+        'pct_missing',
+        'fitted_nobs',
+        'r2',
+        'r2_adj',
+        'bic',
+        'r2_pred',
+        'mse_pred',
+        'mape_pred'
+    ] + param_cols
 
     # # Load the results into a Pandas Dataframe
     results = pd.DataFrame(run_results, columns=results_cols)
