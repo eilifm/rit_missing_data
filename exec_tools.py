@@ -65,7 +65,6 @@ def run(data_gen_dict, action_type, beta_sigma, sample_size, incr, lower_pct, up
 
         # Collect some results
         results_rec = [
-            sample_size,
             pct,
             w_fitted.nobs,
             w_metrics['r2'],
