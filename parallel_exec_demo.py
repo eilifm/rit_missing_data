@@ -57,7 +57,7 @@ if __name__ == "__main__":
     results[['_beta_sigma', '_sample_size', '_beta_x2/beta_x1', '_beta_x1:x2/beta_x1']] = pd.DataFrame([[0,0,0,0]], index=results.index)
     results.loc[:, ['_beta_sigma', '_sample_size', '_beta_x2/beta_x1', '_beta_x1:x2/beta_x1']] = scaler.transform(results.loc[:, ['beta_sigma', 'sample_size', 'beta_x2/beta_x1', 'beta_x1:x2/beta_x1']])
 
-    results.to_csv(str(datetime.datetime.now()).replace("/", "-")+".csv")
+    results.to_csv(str(datetime.datetime.now()).replace("/", "-").replace(" ", '_')+".csv")
 
 
     print(results.shape)
