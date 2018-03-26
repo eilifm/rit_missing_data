@@ -14,9 +14,9 @@ if __name__ == "__main__":
     maker_levels = [
         (2,),
         (10,),
-        ([.05], [.5], [1]), # beta_x2/beta_x1
+        ([.05], [.5]), # beta_x2/beta_x1
         ([[1, 2]],), # Declare interactions
-        ([1], [5], [10]) # Levels of interaction coeff
+        ([1], [5]) # Levels of interaction coeff
     ]
 
     # start = time.time()
@@ -26,12 +26,13 @@ if __name__ == "__main__":
         [config_maker(*args) for args in itertools.product(*maker_levels)],
         #("mean", "invert", "drop"),
         ("invert", "drop"),
-        (.1, .3),
+        # (.1, .3),
+        (.1,),
         (50, 100),
         (.05,),
         (0,),
-        (.8,),
-        range(10)
+        (.2,),
+        range(100)
     ]
 
     print(len(list(itertools.product(*levels))))
@@ -56,9 +57,9 @@ if __name__ == "__main__":
     results[['_beta_sigma', '_sample_size', '_beta_x2/beta_x1', '_beta_x1:x2/beta_x1']] = pd.DataFrame([[0,0,0,0]], index=results.index)
     results.loc[:, ['_beta_sigma', '_sample_size', '_beta_x2/beta_x1', '_beta_x1:x2/beta_x1']] = scaler.transform(results.loc[:, ['beta_sigma', 'sample_size', 'beta_x2/beta_x1', 'beta_x1:x2/beta_x1']])
 
-    results.to_csv(str(datetime.datetime.now())+".csv")
+    results.to_csv(str(datetime.datetime.now()).replace("/", "-")+".csv")
 
 
-    # print(results.shape)
+    print(results.shape)
     #
     # print(time.time() - start)
