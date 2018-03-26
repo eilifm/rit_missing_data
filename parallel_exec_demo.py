@@ -32,7 +32,7 @@ if __name__ == "__main__":
         (.05,),
         (0,),
         (.2,),
-        range(1)
+        range(100)
     ]
 
     print(len(list(itertools.product(*levels))))
