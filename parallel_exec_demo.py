@@ -33,7 +33,7 @@ if __name__ == "__main__":
         (0,),  # Lower bound on percent missing data
         (.5,),  # Upper bound on percent missing data
         (['x1'], ['x2'], ['x1', 'x2']), # Select which columns to shred
-        range(100)
+        range(10)
     ]
 
     print(len(list(itertools.product(*levels))))

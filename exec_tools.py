@@ -113,7 +113,6 @@ def run(data_gen_dict, action_type, beta_sigma, sample_size, incr, lower_pct, up
 
     # results_agg = results.copy()
     # results_agg = results_agg.groupby('pct_missing').mean()
-
     feature_cols = [
         'pct_missing',
         'fitted_nobs',
