@@ -11,7 +11,7 @@ maker_levels = [
     ([
         [1, 2]
      ],), # Declare interactions
-    ([.0000001], [.5], [1]),  # Levels of interaction coeff
+    ([.0000001], [.5], [10]),  # Levels of interaction coeff
     ('uniform',)
 ]
 
@@ -23,8 +23,8 @@ gen_levels = [len(x) for x in maker_levels]
 levels = [
     [config_maker(*args) for args in itertools.product(*maker_levels)],
     ("mean", "invert", "drop"),
-    (.1, .3),
-#        (.1,),
+#    (.1, .3),
+        (.2,),
     (50, 100),  # Initial sample sized
 #        (50,),  # Initial sample sized
     (.05,),
