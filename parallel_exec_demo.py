@@ -2,9 +2,11 @@ from generator import *
 from shredder import *
 from fitter import *
 import datetime
+from data_collection import upload
 from fixer import *
 from exec_tools import run
 from sklearn.preprocessing import MinMaxScaler
+import json
 
 if __name__ == "__main__":
     from joblib import Parallel, delayed
@@ -29,13 +31,15 @@ if __name__ == "__main__":
     levels = [
         [config_maker(*args) for args in itertools.product(*maker_levels)],
         ("mean", "invert", "drop"),
-        (.1, .2, .3, .4),
-        (50, 100, 500, 1000),  # Initial sample sized
+        (.1, .2, .3),
+#        (.1,),
+        (50, 100, 500),  # Initial sample sized
+#        (50,),  # Initial sample sized
         (.05,),
         (0,),  # Lower bound on percent missing data
         (.6,),  # Upper bound on percent missing data
         (['x1'], ['x2'], ['x1', 'x2']),  # Select which columns to shred
-        range(100)
+        list(range(2))
     ]
 
     print(len(list(itertools.product(*levels))))
@@ -56,8 +60,13 @@ if __name__ == "__main__":
     data_results = data_results.reindex(columns=data_results.columns.tolist() + ["cod_" + factor for factor in numeric_levels])
     data_results.loc[:, ["cod_"+factor for factor in numeric_levels]] = scaler.transform(data_results.loc[:, numeric_levels])
 
-    data_results.to_csv(str(datetime.datetime.now()).replace("/", "-").replace(" ", '_').replace(":", '-')+".csv")
-
+    now = str(datetime.datetime.now()).replace("/", "-").replace(" ", '_').replace(":", '-')
+    outfile_name = now+".csv"
+    data_results.to_csv(outfile_name)
+    with open(now+".json", 'w') as json_out:
+        json.dump(list(itertools.product(*levels)), json_out, indent=4)
+    upload(outfile_name)
+    upload(now+".json")
 
     print(data_results.shape)
     #
