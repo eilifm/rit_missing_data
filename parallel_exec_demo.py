@@ -24,7 +24,7 @@ def parse():
     with open(args.config+".json", 'r') as config:
         levels = json.load(config)
 
-    return levels, args.config
+    return levels['levels'], args.config
 
 if __name__ == "__main__":
 

@@ -11,7 +11,7 @@ maker_levels = [
     ([
         [1, 2]
      ],), # Declare interactions
-    ([.0000001], [.5], [10]),  # Levels of interaction coeff
+    ([.0000001], [1], [10]),  # Levels of interaction coeff
     ('uniform',)
 ]
 
@@ -29,18 +29,23 @@ levels = [
 #        (50,),  # Initial sample sized
     (.05,),
     (0,),  # Lower bound on percent missing data
-    (.5,),  # Upper bound on percent missing data
+    (.55,),  # Upper bound on percent missing data
     (['x1'], ['x2'], ['x1', 'x2']),  # Select which columns to shred
-    list(range(1))
+    list(range(5))
 ]
 
 total_levels = gen_levels + [len(x) for x in levels[1::]]
 total_levels = map(str, total_levels)
 file_name = str("x".join(total_levels))+ ".json"
 
-print(file_name)
+metadata = maker_levels + levels[1::]
+
+levels = list(itertools.product(*levels))
+
+out_data = {"metadata": metadata, "levels": levels}
+
 with open(file_name, 'w') as json_out:
-    json.dump(list(itertools.product(*levels)), json_out)
+    json.dump(out_data, json_out)
 #
 upload(file_name)
 
