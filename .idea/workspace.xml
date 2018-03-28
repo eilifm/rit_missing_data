@@ -7,24 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bc011b71-78b3-41ff-a1ab-20f8633d6180" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/2018-02-26 10:45:49.785239.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/2018-02-26 10:54:57.815103.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/2018-02-26 11:06:53.707198.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/2018-02-26 11:11:15.171926.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/2018-02-26 11:17:51.646116.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/2018-02-26 11:30:49.978693.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/2018-02-26 11:34:28.682425.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/2018-02-26 11:38:16.705313.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/2018-02-26 11:53:29.318615.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/2018-02-26 12:20:26.806812.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/2018-02-26 12:22:27.959922.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/2018-02-26 12:26:06.187304.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/2018-02-26 12:40:22.114898.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sim_data.csv" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/rit_missing_data.iml" afterPath="$PROJECT_DIR$/.idea/rit_missing_data.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parallel_exec_demo.py" afterPath="$PROJECT_DIR$/parallel_exec_demo.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -66,9 +49,11 @@
       <file leaf-file-name="parallel_exec_demo.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/parallel_exec_demo.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="159">
-              <caret line="16" column="14" lean-forward="false" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
-              <folding />
+            <state relative-caret-position="313">
+              <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#23#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -204,8 +189,8 @@
         <option value="$PROJECT_DIR$/generator.py" />
         <option value="$PROJECT_DIR$/remote_exec.sh" />
         <option value="$PROJECT_DIR$/exec_tools.py" />
-        <option value="$PROJECT_DIR$/parallel_exec_demo.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/parallel_exec_demo.py" />
       </list>
     </option>
   </component>
@@ -808,11 +793,12 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="4" y="23" width="1916" height="1058" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24895616" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24895616" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3043478" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30425963" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1299,9 +1285,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/parallel_exec_demo.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="16" column="14" lean-forward="false" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
-          <folding />
+        <state relative-caret-position="313">
+          <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

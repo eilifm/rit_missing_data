@@ -15,9 +15,11 @@ if __name__ == "__main__":
     maker_levels = [
         (2,),
         (10,),
-        ([.05], [.1], [.5]), # beta_x2/beta_x1
-        ([[1, 2]],), # Declare interactions
-        ([1], [5]),  # Levels of interaction coeff
+        ([.2], [.3], [.6]), # beta_x2/beta_x1
+        ([
+            [1, 2]
+         ],), # Declare interactions
+        ([.0000001], [.1], [.5], [1], [3], [5], [10]),  # Levels of interaction coeff
         ('uniform',)
     ]
 
@@ -27,13 +29,13 @@ if __name__ == "__main__":
     levels = [
         [config_maker(*args) for args in itertools.product(*maker_levels)],
         ("mean", "invert", "drop"),
-        (.1, .3),
-        (50, 100),  # Initial sample sized
+        (.1, .2, .3, .4),
+        (50, 100, 500, 1000),  # Initial sample sized
         (.05,),
         (0,),  # Lower bound on percent missing data
-        (.5,),  # Upper bound on percent missing data
-        (['x1'], ['x2'], ['x1', 'x2']), # Select which columns to shred
-        range(10)
+        (.6,),  # Upper bound on percent missing data
+        (['x1'], ['x2'], ['x1', 'x2']),  # Select which columns to shred
+        range(100)
     ]
 
     print(len(list(itertools.product(*levels))))
