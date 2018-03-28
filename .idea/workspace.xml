@@ -7,9 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bc011b71-78b3-41ff-a1ab-20f8633d6180" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/exp_builder.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data_collection.py" afterPath="$PROJECT_DIR$/data_collection.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/exp_builder.py" afterPath="$PROJECT_DIR$/exp_builder.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parallel_exec_demo.py" afterPath="$PROJECT_DIR$/parallel_exec_demo.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -56,11 +55,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="parallel_exec_demo.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="parallel_exec_demo.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/parallel_exec_demo.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="129">
-              <caret line="22" column="33" lean-forward="true" selection-start-line="22" selection-start-column="33" selection-end-line="22" selection-end-column="33" />
+            <state relative-caret-position="440">
+              <caret line="46" column="50" lean-forward="false" selection-start-line="46" selection-start-column="50" selection-end-line="46" selection-end-column="50" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -68,11 +67,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="exp_builder.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="exp_builder.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/exp_builder.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="549">
-              <caret line="46" column="0" lean-forward="true" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+            <state relative-caret-position="434">
+              <caret line="33" column="16" lean-forward="false" selection-start-line="33" selection-start-column="16" selection-end-line="33" selection-end-column="16" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
               </folding>
@@ -194,8 +193,8 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/remote_exec.sh" />
         <option value="$PROJECT_DIR$/data_collection.py" />
-        <option value="$PROJECT_DIR$/parallel_exec_demo.py" />
         <option value="$PROJECT_DIR$/exp_builder.py" />
+        <option value="$PROJECT_DIR$/parallel_exec_demo.py" />
       </list>
     </option>
   </component>
@@ -275,7 +274,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.exp_builder">
+  <component name="RunManager" selected="Python.parallel_exec_demo">
     <configuration name="Doctest olsinv_singlex" type="tests" factoryName="Doctests" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -493,9 +492,9 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.exp_builder" />
-        <item index="1" class="java.lang.String" itemvalue="Python.data_collection" />
-        <item index="2" class="java.lang.String" itemvalue="Python.parallel_exec_demo" />
+        <item index="0" class="java.lang.String" itemvalue="Python.parallel_exec_demo" />
+        <item index="1" class="java.lang.String" itemvalue="Python.exp_builder" />
+        <item index="2" class="java.lang.String" itemvalue="Python.data_collection" />
         <item index="3" class="java.lang.String" itemvalue="Python.bac_data_generator" />
         <item index="4" class="java.lang.String" itemvalue="Python.sympy_test1" />
       </list>
@@ -785,7 +784,14 @@
       <option name="project" value="LOCAL" />
       <updated>1522078942947</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="robust configs">
+      <created>1522211424265</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1522211424265</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -822,11 +828,12 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="4" y="23" width="1916" height="1058" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24895616" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30425963" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30425963" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -880,7 +887,8 @@
     <MESSAGE value="more bugs in the inverter" />
     <MESSAGE value="getting DOE back up!" />
     <MESSAGE value="more DOE tweaks" />
-    <option name="LAST_COMMIT_MESSAGE" value="more DOE tweaks" />
+    <MESSAGE value="robust configs" />
+    <option name="LAST_COMMIT_MESSAGE" value="robust configs" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1300,22 +1308,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/parallel_exec_demo.py">
+    <entry file="file://$PROJECT_DIR$/exp_builder.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="22" column="33" lean-forward="true" selection-start-line="22" selection-start-column="33" selection-end-line="22" selection-end-column="33" />
+        <state relative-caret-position="434">
+          <caret line="33" column="16" lean-forward="false" selection-start-line="33" selection-start-column="16" selection-end-line="33" selection-end-column="16" />
           <folding>
-            <element signature="e#0#23#0" expanded="true" />
+            <element signature="e#0#16#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/exp_builder.py">
+    <entry file="file://$PROJECT_DIR$/parallel_exec_demo.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="549">
-          <caret line="46" column="0" lean-forward="true" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+        <state relative-caret-position="440">
+          <caret line="46" column="50" lean-forward="false" selection-start-line="46" selection-start-column="50" selection-end-line="46" selection-end-column="50" />
           <folding>
-            <element signature="e#0#16#0" expanded="true" />
+            <element signature="e#0#23#0" expanded="true" />
           </folding>
         </state>
       </provider>

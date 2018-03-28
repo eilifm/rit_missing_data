@@ -13,8 +13,7 @@ import time
 import itertools
 import argparse
 
-
-if __name__ == "__main__":
+def parse():
     parser = argparse.ArgumentParser()
     parser.add_argument("config")
     args = parser.parse_args()
@@ -25,6 +24,11 @@ if __name__ == "__main__":
     with open(args.config+".json", 'r') as config:
         levels = json.load(config)
 
+    return levels, args.config
+
+if __name__ == "__main__":
+
+    levels, config = parse()
     print(len(levels))
     #results = Parallel(n_jobs=-1, verbose=10)(delayed(run)(*args) for args in itertools.product(*levels))
     results = Parallel(n_jobs=-1, verbose=10)(delayed(run)(*args) for args in levels)
@@ -40,12 +44,12 @@ if __name__ == "__main__":
     data_results = data_results.reindex(columns=data_results.columns.tolist() + ["cod_" + factor for factor in numeric_levels])
     data_results.loc[:, ["cod_"+factor for factor in numeric_levels]] = scaler.transform(data_results.loc[:, numeric_levels])
 
-    now = str(datetime.datetime.now()).replace("/", "-").replace(" ", '_').replace(":", '-')
-    outfile_name = now+".csv"
+    now = str(datetime.datetime.now().isoformat()).replace("/", "-").replace(" ", '_').replace(":", '-')
+    outfile_name = config+"_"+now+".csv"
     data_results.to_csv(outfile_name)
 
-    with open(args.config + now+".json", 'w') as json_out:
-        json.dump(list(itertools.product(*levels)), json_out, indent=4)
+    # with open(config + now+".json", 'w') as json_out:
+    #     json.dump(list(itertools.product(*levels)), json_out, indent=4)
     upload(outfile_name)
 
     #
