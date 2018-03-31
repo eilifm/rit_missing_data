@@ -45,31 +45,43 @@ if __name__ == "__main__":
 
 #    data_results.drop(cod_cols, axis=1, inplace=True)
 
-    rat_cols = [col for col in data_results.columns if ('/' in col) and ("cod" not in col)]
-
+    # rat_cols = [col for col in data_results.columns if ('/' in col) and ("cod" not in col)]
+    #
     grp_cols = [
-                   "pct_missing",
-                   "x1_true_beta",
-                   "x1:x2_true_beta",
-                   "x2_true_beta",
-                   "action_type",
-                   "beta_sigma",
-                   "sample_size",
-                   "targets"
-               ] + rat_cols
-
+        "pct_missing",
+        "x1_true_beta",
+        "x1:x2_true_beta",
+        "x2_true_beta",
+        "const_true_beta",
+        "action_type",
+        "beta_sigma",
+        "sample_size",
+        "targets"
+    ]
     grouped_data = data_results.groupby(grp_cols).mean().reset_index()
+    #grouped_data = data_results
 
 #    data_results.loc[:, ["cod_"+factor for factor in numeric_levels]] = scaler.transform(data_results.loc[:, numeric_levels])
 
-
+    import time
     now = str(datetime.datetime.now().isoformat()).replace("/", "-").replace(" ", '_').replace(":", '-')
-    outfile_name = config+"_"+now+".csv"
-    grouped_data.to_csv(outfile_name)
+    now = str(int(time.time()*1000000))
+    outfile_name = config+"_"+now
+    grouped_data.to_csv(outfile_name+".csv")
+
+    scaler = MinMaxScaler()
+    scaler.fit(grouped_data.loc[:, grp_cols]._get_numeric_data())
+    numerics = grouped_data.loc[:, grp_cols]._get_numeric_data().columns
+
+    grouped_data.loc[:, numerics] = scaler.transform(grouped_data.loc[:, numerics])
+
+    grouped_data.to_csv(outfile_name+"_coded.csv")
+
 
     # with open(config + now+".json", 'w') as json_out:
     #     json.dump(list(itertools.product(*levels)), json_out, indent=4)
-    upload(outfile_name)
+    upload(outfile_name+".csv")
+    upload(outfile_name+"_coded.csv")
 
     #
     # print(time.time() - start)

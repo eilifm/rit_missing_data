@@ -7,11 +7,11 @@ from data_collection import upload
 maker_levels = [
     (2,),
     (10,),
-    ([.2], [.3]), # beta_x2/beta_x1
+    ([.1], [1]), # beta_x2/beta_x1
     ([
         [1, 2]
      ],), # Declare interactions
-    ([.0000001], [1], [10]),  # Levels of interaction coeff
+    ([.000001], [10], [50]),  # Levels of interaction coeff
     ('uniform',)
 ]
 
@@ -23,13 +23,11 @@ gen_levels = [len(x) for x in maker_levels]
 levels = [
     [config_maker(*args) for args in itertools.product(*maker_levels)],
     ("mean", "invert", "drop"),
-#    (.1, .3),
-        (.2,),
+    (.1, .3, .4),
     (50, 100),  # Initial sample sized
-#        (50,),  # Initial sample sized
     (.05,),
     (0,),  # Lower bound on percent missing data
-    (.55,),  # Upper bound on percent missing data
+    (.50,),  # Upper bound on percent missing data
     (['x1'], ['x2'], ['x1', 'x2']),  # Select which columns to shred
     list(range(5))
 ]
@@ -47,5 +45,6 @@ out_data = {"metadata": metadata, "levels": levels}
 with open(file_name, 'w') as json_out:
     json.dump(out_data, json_out)
 #
+print(file_name)
 upload(file_name)
 
