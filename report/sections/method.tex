@@ -1,0 +1,86 @@
+%!TEX root = ../paper.tex
+\documentclass[../paper.tex]{subfiles}
+
+\begin{document}
+\section{Methodology}
+The implementation of the methods explored in this paper were implemented using
+the Python/Numpy/Pandas stack with the Statsmodels package providing a robust
+implementation of Ordinary Least Squares linear regression.
+
+
+\subsection{Data Assumptions}
+The data set must be comprised of $n$ i.i.d variables. The response $y$ is computed
+to follow a linear model with all main effects and two factor interactions
+in accordance with equation \ref{eq:data_assumed_model}. In practice, most of
+the research focused on the two variable case shown in equation \ref{eq:2var_assumed_model}.
+
+\begin{equation}\label{eq:data_assumed_model}
+y = \beta_{0} + \beta_{ X_{1} } X_{1}  + \ldots + \beta_{X_{n}}X_{n} +
+\beta_{X_{1}X_{2}}X_{1}X_{2} + \ldots +\beta_{X_{n-1}X_{n}}X_{n-1}X_{n} + \epsilon
+\end{equation}
+
+
+\begin{equation}\label{eq:2var_assumed_model}
+y = \beta_{0} + \beta_{ X_{1}} X_{1} + \beta_{X_{2} }X_{2} + \beta_{ X_{1} X_{2} } X_{1}X_{2} + \epsilon
+\end{equation}
+
+
+\subsection{Simulating Missing Data}
+For a given observation, the probability that a given variable is missing is
+idependent from the probability that any other variable is missing. This randomness
+assumption is refered to as Missing Completely at Random (MCAR). For the implementation
+used in this study, a boolean mask was randomly created for each
+of the variables. The selection of data to eliminate can be written as
+\mintinline{random_choice(observation indexes, [TRUE, FALSE])} without replacement.
+The DataFrame method, \mintinline{Python}{pandas.DataFrame.sample} is used for
+performance and simplicity reasons. Removed values were set to NULL. The number of
+datapoints to remove is controlled as the fraction of data missing. Given MCAR,
+it is possible for more than one variable to be missing. These observations are
+removed from the dataset before imputation begins. The response y is never
+nulled.
+
+
+\subsection{Imputation Methods}
+%Three methods were used to fill in missing data values
+
+%It is assumed that the data can be modeled as
+\begin{equation}
+X_{m} = \begin{bmatrix} \label{eq:lol}
+  1 & X_{1} & X_{2} & X_{1}X_{2}
+\end{bmatrix}
+\end{equation}
+
+The complete observations are given as.
+\begin{equation}
+X_{c} = \begin{bmatrix} \label{eq:lol}
+  X_{m} \neq NULL
+\end{bmatrix}
+\end{equation}
+
+Compute the beta estimates for the data using the remaining complete observations.
+\begin{equation}
+\hat{\beta}_{} = (X_{c}^{T}X_{c})^{-1} X_{c}^{T} y
+\end{equation}
+
+
+
+\begin{algorithm}
+\caption{Inverse OLS}\label{alg:invert}
+\begin{algorithmic}[1]
+\State $D = $
+\Procedure{Invert}{$a,b$}\Comment{The g.c.d. of a and b}
+\State $X_{n}\gets []$
+\While{$r\not=0$}\Comment{We have the answer if r is 0}
+\State $a\gets b$
+\State $b\gets r$
+\State $r\gets a\bmod b$
+\EndWhile\label{euclidendwhile}
+\State \textbf{return} $b$\Comment{The gcd is b}
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+\end{document}
+
+
+\end{document}

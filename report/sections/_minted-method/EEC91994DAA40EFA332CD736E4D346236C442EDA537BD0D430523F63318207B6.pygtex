@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{pandas}\PYG{o}{.}\PYG{n}{DataFrame}\PYG{o}{.}\PYG{n}{sample}
+\end{Verbatim}
