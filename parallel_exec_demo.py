@@ -37,16 +37,6 @@ if __name__ == "__main__":
 
     data_results = pd.concat([result[0] for result in results])
 
-    # scaler = MinMaxScaler()
-    #
-    # scaler.fit(data_results.loc[:, numeric_levels])
-    #
-    # data_results = data_results.reindex(columns=data_results.columns.tolist() + ["cod_" + factor for factor in numeric_levels])
-
-#    data_results.drop(cod_cols, axis=1, inplace=True)
-
-    # rat_cols = [col for col in data_results.columns if ('/' in col) and ("cod" not in col)]
-    #
     grp_cols = [
         "pct_missing",
         "x1_true_beta",
@@ -59,13 +49,13 @@ if __name__ == "__main__":
         "targets"
     ]
     grouped_data = data_results.groupby(grp_cols).mean().reset_index()
-    #grouped_data = data_results
+
 
 #    data_results.loc[:, ["cod_"+factor for factor in numeric_levels]] = scaler.transform(data_results.loc[:, numeric_levels])
 
     import time
     now = str(datetime.datetime.now().isoformat()).replace("/", "-").replace(" ", '_').replace(":", '-')
-    now = str(int(time.time()*1000000))
+    now = str(int(time.time()*1000))
     outfile_name = config+"_"+now
     grouped_data.to_csv(outfile_name+".csv")
 

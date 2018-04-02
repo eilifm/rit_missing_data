@@ -3,12 +3,13 @@
 
 \begin{document}
 \section{Methodology}
-The implementation of the methods explored in this paper were implemented using
+The methods explored in this paper were implemented using
 the Python/Numpy/Pandas stack with the Statsmodels package providing a robust
-implementation of Ordinary Least Squares linear regression.
+implementation of Ordinary Least Squares linear regression modeling. The source
+is available under MIT license on GitHub for exploration by the reader.
 
 
-\subsection{Data Assumptions and Generation Details}
+\subsection{Input Data Characteristics}
 The data set must be comprised of $n$ i.i.d variables. The response $y$ is computed
 to follow a linear model with all main effects and two factor interactions
 in accordance with equation \ref{eq:data_assumed_model}. In practice, most of
@@ -27,8 +28,8 @@ the research focused on the two variable case shown in equation
 \end{equation}
 
 To simplify data generation, all $\beta$ values are proportional to $\beta_{X_{1}}$.
-For example, in a data set with three variables, let $\beta_{X_{1}} = 10$, then array
-$[0.1, 1.5]$ defines $\beta_{X_{2}}$ and $\beta_{X_{3}}$ to 1 and 15 respectively.
+For example, in a data set with three variables, let $\beta_{X_{1}} = 10$, then
+the array $[0.1, 1.5]$ defines $\beta_{X_{2}}$ and $\beta_{X_{3}}$ to 1 and 15 respectively.
 The $\beta$ values for interaction terms are set explicitly.
 
 As the dataset is artificially generated, noise is added to the final
@@ -70,10 +71,9 @@ nulled.
 
 
 \subsection{Imputation Methods}
-%Three methods were used to fill in missing data values
 Four methods of data imputations were explored in this experiment.
 
-\begin{enumerate}
+\begin{itemize}
   \item Drop Imputation; removal of observations where any value is null.
   \item Mean Imputation; replace missing values of a variable with the mean of
   the available samples for the respective variable.
@@ -124,14 +124,15 @@ Compute the beta estimates for the data using the remaining complete observation
 
 \begin{center}
     \begin{tabular}{ | l | p{1.5in} | p{3in} | }
-    \hline
-    Variable & Levels & Description \\ \hline
-    \mintinline{Python}{sample_size} & 50, 100, 500 &  Lots of stuff here \\ \hline
-    \mintinline{Python}{noise_factor} & 0.1, 0.3 &  Lots of stuff here \\ \hline
-    \mintinline{Python}{noise_factor} & 0.1, 0.3 &  Lots of stuff here \\ \hline
+      \hline
+      Variable & Levels & Description \\ \hline
+      \mintinline{Python}{sample_size} & 50, 100, 500 &  Samples in the generated data set \\ \hline
+      \mintinline{Python}{noise_factor} & 0.1, 0.3 &  Relative noise in the response \\ \hline
+      \mintinline{Python}{} & 0.1, 0.3 &  Lots of stuff here \\ \hline
     \end{tabular}
 \end{center}
 
-The objective of the experiment is to understand how
+ The objective of the experiment is to understand how
+
 
 \end{document}

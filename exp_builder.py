@@ -2,7 +2,19 @@ import itertools
 from generator import *
 import json
 from data_collection import upload
+import numpy
 
+
+class MyEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, numpy.integer):
+            return int(obj)
+        elif isinstance(obj, numpy.floating):
+            return float(obj)
+        elif isinstance(obj, numpy.ndarray):
+            return obj.tolist()
+        else:
+            return super(MyEncoder, self).default(obj)
 
 maker_levels = [
     (2,),
@@ -23,8 +35,8 @@ gen_levels = [len(x) for x in maker_levels]
 levels = [
     [config_maker(*args) for args in itertools.product(*maker_levels)],
     ("mean", "invert", "drop"),
-    (.1, .3, .4),
-    (50, 100),  # Initial sample sized
+    (.1, .3),
+    (50, 100, 200),  # Initial sample sized
     (.05,),
     (0,),  # Lower bound on percent missing data
     (.50,),  # Upper bound on percent missing data
@@ -43,7 +55,7 @@ levels = list(itertools.product(*levels))
 out_data = {"metadata": metadata, "levels": levels}
 
 with open(file_name, 'w') as json_out:
-    json.dump(out_data, json_out)
+    json.dump(out_data, json_out, cls=MyEncoder)
 #
 print(file_name)
 upload(file_name)
