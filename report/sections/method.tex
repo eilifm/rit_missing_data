@@ -79,12 +79,11 @@ Four methods of data imputations were explored in this experiment.
   the available samples for the respective variable.
   \item Random Imputation; random replacement from the set of available samples
   for the the respective variable.
-  \item Inversion Imputation; invert values using
+  \item Inversion Imputation; invert values using a model fit to the complete observations.
 \end{itemize}
 
-
 \begin{equation}
-  X_{m} = \begin{bmatrix} \label{eq:lol}
+  X_{m} = \begin{bmatrix}
   1 & X_{1} & X_{2} & X_{1}X_{2}
 \end{bmatrix}
 \end{equation}
@@ -92,7 +91,7 @@ Four methods of data imputations were explored in this experiment.
 The complete observations are given as.
 \begin{equation}
   X_{c} =
-  \begin{bmatrix} \label{eq:lol}
+  \begin{bmatrix}
     X_{m} \neq NULL
   \end{bmatrix}
 \end{equation}
@@ -123,22 +122,21 @@ Compute the beta estimates for the data using the remaining complete observation
 \subsection{Experimental Design}
 
 \begin{center}
-    \begin{tabular}{ | l | p{1.5in} | p{3in} | }
+    \begin{tabular}{ | l | p{1.7in} | p{3in} | }
 %    \begin{tabular}{ | l | p{1.5in} | p{3in} | }
       \hline
 
       \rule{0pt}{14pt} Variable & Levels & Description \\ \hline
       \rule{0pt}{14pt} \mintinline{Python}{sample_size} & 50, 100, 500 &  Samples in the generated data set \\ \hline
       \rule{0pt}{14pt} \mintinline{Python}{noise_factor} & 0.1, 0.3 &  Relative noise in the response \\ \hline
-      \rule{0pt}{14pt} Relative \beta_{X_{2}} Factor & 0.1, 1 &  Lots of stuff here \\ \hline
-      \rule{0pt}{14pt} Relative \beta_{X_{1}X_{2}} Factor & 0.000001, 10, 50 &  Lots of stuff here \\ \hline
-      \rule{0pt}{14pt} Imputation Method & Drop, Mean, Inverse &  \\ \hline
-      \rule{0pt}{14pt} Drop Column & X_{1}, X_{2}, X_{1} and X_{2} &  \\ \hline
-      
+      \rule{0pt}{14pt} $\beta_{X_{2}}$ Factor & 0.1, 1 &  $\beta_{X_{2}} = \beta_{X_{2}} Factor * \beta_{X_{1}}$ \\ \hline
+      \rule{0pt}{14pt} $\beta_{X_{1}X_{2}}$ Factor & 0.000001, 10, 50 &  $\beta_{X_{1}X_{2}} = \beta_{X_{1}X_{2}} Factor * \beta_{X_{1}}$ \\ \hline
+      \rule{0pt}{14pt} Imputation Method & Drop, Mean, Inverse, Random & Imputation method used \\ \hline
+      \rule{0pt}{14pt} Drop Column & $X_{1}$, $X_{2}$, $X_{1}$ and $X_{2}$ & Variables whos values are destrpyed in a run \\ \hline
     \end{tabular}
 \end{center}
 
- The objective of the experiment is to understand how
+%The objective of the experiment is to understand how
 
 
 \end{document}
