@@ -55,7 +55,10 @@ def run(data_gen_dict, action_type, beta_sigma, sample_size, incr, lower_pct, up
 
             #fixed_data, w_impute_coeff = inverse_fit_impute('x1', 'y', wrecked_data)
         elif action_type == 'random':
-            fixed_data = rand_replace('x1', wrecked_data)
+            for target in targets:
+                wrecked_data = rand_replace(target, wrecked_data)
+
+            fixed_data = wrecked_data
         else:
             raise ValueError("Invalid action_type: %s" % action_type)
 

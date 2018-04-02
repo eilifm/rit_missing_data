@@ -124,11 +124,17 @@ Compute the beta estimates for the data using the remaining complete observation
 
 \begin{center}
     \begin{tabular}{ | l | p{1.5in} | p{3in} | }
+%    \begin{tabular}{ | l | p{1.5in} | p{3in} | }
       \hline
-      Variable & Levels & Description \\ \hline
-      \mintinline{Python}{sample_size} & 50, 100, 500 &  Samples in the generated data set \\ \hline
-      \mintinline{Python}{noise_factor} & 0.1, 0.3 &  Relative noise in the response \\ \hline
-      \mintinline{Python}{} & 0.1, 0.3 &  Lots of stuff here \\ \hline
+
+      \rule{0pt}{14pt} Variable & Levels & Description \\ \hline
+      \rule{0pt}{14pt} \mintinline{Python}{sample_size} & 50, 100, 500 &  Samples in the generated data set \\ \hline
+      \rule{0pt}{14pt} \mintinline{Python}{noise_factor} & 0.1, 0.3 &  Relative noise in the response \\ \hline
+      \rule{0pt}{14pt} Relative \beta_{X_{2}} Factor & 0.1, 1 &  Lots of stuff here \\ \hline
+      \rule{0pt}{14pt} Relative \beta_{X_{1}X_{2}} Factor & 0.000001, 10, 50 &  Lots of stuff here \\ \hline
+      \rule{0pt}{14pt} Imputation Method & Drop, Mean, Inverse &  \\ \hline
+      \rule{0pt}{14pt} Drop Column & X_{1}, X_{2}, X_{1} and X_{2} &  \\ \hline
+      
     \end{tabular}
 \end{center}
 

@@ -34,7 +34,7 @@ gen_levels = [len(x) for x in maker_levels]
 
 levels = [
     [config_maker(*args) for args in itertools.product(*maker_levels)],
-    ("mean", "invert", "drop"),
+    ("mean", "invert", "drop", "random"),
     (.1, .3),
     (50, 100, 200),  # Initial sample sized
     (.05,),
