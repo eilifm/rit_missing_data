@@ -12,6 +12,7 @@ from math import sqrt
 import time
 import itertools
 import argparse
+import numpy as np
 
 def parse():
     parser = argparse.ArgumentParser()
@@ -29,8 +30,10 @@ def parse():
 if __name__ == "__main__":
 
     levels, config = parse()
+
     print(len(levels))
     #results = Parallel(n_jobs=-1, verbose=10)(delayed(run)(*args) for args in itertools.product(*levels))
+    np.random.shuffle(levels)
     results = Parallel(n_jobs=-1, verbose=10)(delayed(run)(*args) for args in levels)
 
     numeric_levels = list(set(itertools.chain.from_iterable([result[1] for result in results])))
