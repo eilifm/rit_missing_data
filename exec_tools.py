@@ -8,7 +8,7 @@ import itertools
 from sortedcontainers import SortedDict
 
 def run(data_gen_dict, action_type, beta_sigma, sample_size, incr, lower_pct, upper_pct, targets, num_rep):
-    fit_data, test_data, true_coeffs = generate_ind_model(
+    fit_data, test_data, true_coeffs, sigma = generate_ind_model(
                                             data_gen_dict["dist_list"],
                                             data_gen_dict["main_coeffs"],
                                             data_gen_dict["interaction_coeffs"],
@@ -85,10 +85,12 @@ def run(data_gen_dict, action_type, beta_sigma, sample_size, incr, lower_pct, up
         for x_var in w_fitted.params.index:
             param_results[x_var] = SortedDict()
             param_results[x_var]['ci_rng'] = w_metrics['beta_ci'][x_var]['range']
-            # param_results[x_var]['in_target'] = b_estimate_results.loc[x_var, :].values[0]
+            param_results[x_var]['ci_rng_pct'] = w_metrics['beta_ci'][x_var]['range']/true_coeffs[x_var]
             param_results[x_var]['in_target'] = b_estimate_results[x_var]['in_ci']
             param_results[x_var]['estimate'] = w_fitted.params[x_var]
             param_results[x_var]['true_beta'] = true_coeffs[x_var]
+            param_results[x_var]['bias'] = w_fitted.params[x_var] - true_coeffs[x_var]
+            param_results[x_var]['bias_pct'] = (w_fitted.params[x_var] - true_coeffs[x_var])/true_coeffs[x_var]
 
         # A TON OF FANCY FOOTWORK TO KEEP ALL THE PARAMS IN ORDER!
         param_info = []
@@ -113,6 +115,9 @@ def run(data_gen_dict, action_type, beta_sigma, sample_size, incr, lower_pct, up
 
     # # Load the results into a Pandas Dataframe
     results = pd.DataFrame(run_results, columns=results_cols)
+
+    results.loc[:, "rel_mse_pred"] = results.loc[:, "mse_pred"]/sigma
+
 
     # results_agg = results.copy()
     # results_agg = results_agg.groupby('pct_missing').mean()

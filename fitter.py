@@ -42,6 +42,7 @@ def make_fit_metrics(fittedmodel):
 
 def fit_lm(df, test_df, alpha=.05):
     """
+    Fit linear model to all variables that are not "y".
     
     Parameters
     ----------

@@ -39,6 +39,21 @@ def generate_ind_model(dist_types: list,
                        n=1000,
                        beta_sigma=1.0):
     """
+
+    Parameters
+    ----------
+    dist_types
+    main_coeffs
+    interaction_coeffs
+    interactions
+    test_set_size
+    intercept
+    n
+    beta_sigma
+
+    Returns
+    -------
+
     """
 
     data = pd.DataFrame()
@@ -77,7 +92,7 @@ def generate_ind_model(dist_types: list,
 
     fit = data.loc[0:n-1, :].copy()
     test = data.loc[n::, :].copy()
-    return fit, test, coeffs_dict
+    return fit, test, coeffs_dict, max(coeffs_)*beta_sigma
 
 
 def x_def_helper(name, **kwargs):

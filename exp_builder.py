@@ -16,16 +16,40 @@ class MyEncoder(json.JSONEncoder):
         else:
             return super(MyEncoder, self).default(obj)
 
+# maker_levels = [
+#     (2,),
+#     (10,),
+#     ([.1], [1]), # beta_x2/beta_x1
+#     ([
+#         [1, 2]
+#      ],), # Declare interactions
+#     ([.000001], [1],  [10], [50]),  # Levels of interaction coeff
+#     ('uniform',)
+# ]
+
 maker_levels = [
     (2,),
     (10,),
-    ([.1], [1]), # beta_x2/beta_x1
+    ([1],), # beta_x2/beta_x1
     ([
         [1, 2]
      ],), # Declare interactions
-    ([.000001], [10], [50]),  # Levels of interaction coeff
+    ([.000001], [.1], [.5], [1], [3], [10]),  # Levels of interaction coeff
     ('uniform',)
 ]
+
+maker_levels = [
+    (2,),
+    (10,),
+    ([1],), # beta_x2/beta_x1
+    ([
+        [1, 2]
+     ],), # Declare interactions
+    ([.000001], [1], [5]),  # Levels of interaction coeff
+    ('uniform',)
+]
+
+
 
 gen_levels = [len(x) for x in maker_levels]
 
@@ -34,14 +58,15 @@ gen_levels = [len(x) for x in maker_levels]
 
 levels = [
     [config_maker(*args) for args in itertools.product(*maker_levels)],
-    ("mean", "invert", "drop", "random"),
-    (.1, .3),
-    (50, 100, 200),  # Initial sample sized
-    (.05,),
+    #("mean", "invert", "drop", "random"),
+    ("invert",),
+    (.2,),
+    (100,),  # Initial sample sized
+    (.025,),
     (0,),  # Lower bound on percent missing data
-    (.50,),  # Upper bound on percent missing data
-    (['x1'], ['x2'], ['x1', 'x2']),  # Select which columns to shred
-    list(range(5))
+    (.6,),  # Upper bound on percent missing data
+    (['x1'],),  # Select which columns to shred
+    list(range(1000))
 ]
 
 total_levels = gen_levels + [len(x) for x in levels[1::]]
