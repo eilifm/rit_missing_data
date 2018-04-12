@@ -53,6 +53,7 @@ if __name__ == "__main__":
     ]
     grouped_data = data_results.groupby(grp_cols).mean().reset_index()
 
+    grouped_data = grouped_data.sample(frac=1).reset_index(drop=True)
 
 #    data_results.loc[:, ["cod_"+factor for factor in numeric_levels]] = scaler.transform(data_results.loc[:, numeric_levels])
 
