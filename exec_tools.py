@@ -7,6 +7,16 @@ import itertools
 
 from sortedcontainers import SortedDict
 
+def get_interactions(df, target):
+
+    inters = df.columns[
+                (df.columns.str.contains(target + ":")) |
+                (df.columns.str.contains(":" + target))].values
+
+    inters = [x.split(":") for x in inters]
+    return inters
+
+
 def run(data_gen_dict, action_type, beta_sigma, sample_size, incr, lower_pct, upper_pct, targets, num_rep):
     fit_data, test_data, true_coeffs, sigma = generate_ind_model(
                                             data_gen_dict["dist_list"],
@@ -17,7 +27,6 @@ def run(data_gen_dict, action_type, beta_sigma, sample_size, incr, lower_pct, up
                                             n=sample_size,
                                             beta_sigma=beta_sigma
                                         )
-
     param_cols = []
     run_results = []
     # Begin missing levels loop
@@ -39,13 +48,20 @@ def run(data_gen_dict, action_type, beta_sigma, sample_size, incr, lower_pct, up
             fixed_data = fix_cols(fixing_dict, wrecked_data)
 
         elif action_type == 'invert':
-
-            # fixed_data, w_impute_coeff = olsinv_singlex(wrecked_data, 'x1')
             for target in targets:
                 inverted, fitted_inv = olsinv_singlex(wrecked_data, target)
 
                 if isinstance(inverted, pd.Series):
                     wrecked_data.loc[inverted.index, target] = inverted
+
+                    # Find the interactions terms that use the target
+                    interactions = get_interactions(wrecked_data, target)
+
+                    for interaction in interactions:
+                        # Recompute the interaction term for all rows
+                        wrecked_data.loc[:, ":".join(interaction)] = wrecked_data.loc[
+                            :, interaction].prod(axis=1)
+
                     fixed_data = wrecked_data
                 else:
                     fixed_data = wrecked_data
@@ -53,7 +69,6 @@ def run(data_gen_dict, action_type, beta_sigma, sample_size, incr, lower_pct, up
             # If more than one column is null, drop the samples
             fixed_data = fixed_data.loc[fixed_data.isnull().sum(1) == 0, :]
 
-            #fixed_data, w_impute_coeff = inverse_fit_impute('x1', 'y', wrecked_data)
         elif action_type == 'random':
             for target in targets:
                 wrecked_data = rand_replace(target, wrecked_data)

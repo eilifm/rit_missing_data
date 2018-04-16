@@ -6,12 +6,20 @@
     </enabled-run-configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bc011b71-78b3-41ff-a1ab-20f8633d6180" name="Default" comment="slight tweaks">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report/paper.pdf" afterPath="$PROJECT_DIR$/report/paper.pdf" />
+    <list default="true" id="bc011b71-78b3-41ff-a1ab-20f8633d6180" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/report/main_fig_gen.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report/paper.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report/sections/method.tex" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2018-02-10_simple_case_4_methods.ipynb" afterPath="$PROJECT_DIR$/2018-02-10_simple_case_4_methods.ipynb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2018-02-10_simple_case_comparisons_4_method.ipynb" afterPath="$PROJECT_DIR$/2018-02-10_simple_case_comparisons_4_method.ipynb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/exec_tools.py" afterPath="$PROJECT_DIR$/exec_tools.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/exp_builder.py" afterPath="$PROJECT_DIR$/exp_builder.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parallel_exec_demo.py" afterPath="$PROJECT_DIR$/parallel_exec_demo.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report/paper.tex" afterPath="$PROJECT_DIR$/report/paper.tex" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report/sections/abstract.tex" afterPath="$PROJECT_DIR$/report/sections/abstract.tex" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report/sections/introduction.tex" afterPath="$PROJECT_DIR$/report/sections/introduction.tex" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report/sections/results.tex" afterPath="$PROJECT_DIR$/report/sections/results.tex" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report/sections/state_of_research.tex" afterPath="$PROJECT_DIR$/report/sections/state_of_research.tex" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -37,21 +45,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="exec_tools.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="exec_tools.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/exec_tools.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1710">
-              <caret line="121" column="11" lean-forward="false" selection-start-line="121" selection-start-column="11" selection-end-line="121" selection-end-column="11" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="remote_exec.sh" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/remote_exec.sh">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="31" lean-forward="false" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
+            <state relative-caret-position="378">
+              <caret line="68" column="63" lean-forward="true" selection-start-line="68" selection-start-column="63" selection-end-line="68" selection-end-column="63" />
               <folding />
             </state>
           </provider>
@@ -69,13 +67,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="exp_builder.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="exp_builder.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/exp_builder.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="474">
-              <caret line="72" column="50" lean-forward="false" selection-start-line="72" selection-start-column="50" selection-end-line="72" selection-end-column="50" />
+            <state relative-caret-position="1035">
+              <caret line="69" column="1" lean-forward="true" selection-start-line="69" selection-start-column="1" selection-end-line="69" selection-end-column="1" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main_fig_gen.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/report/main_fig_gen.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="405">
+              <caret line="27" column="70" lean-forward="false" selection-start-line="27" selection-start-column="70" selection-end-line="27" selection-end-column="70" />
+              <folding>
+                <element signature="e#0#19#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -96,8 +106,8 @@
       <file leaf-file-name="fixer.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/fixer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3345">
-              <caret line="229" column="0" lean-forward="false" selection-start-line="229" selection-start-column="0" selection-end-line="229" selection-end-column="0" />
+            <state relative-caret-position="384">
+              <caret line="200" column="83" lean-forward="false" selection-start-line="199" selection-start-column="34" selection-end-line="200" selection-end-column="83" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
                 <marker date="1522204604000" expanded="true" signature="213:221" ph="..." />
@@ -202,10 +212,11 @@
         <option value="$PROJECT_DIR$/remote_exec.sh" />
         <option value="$PROJECT_DIR$/data_collection.py" />
         <option value="$PROJECT_DIR$/fitter.py" />
-        <option value="$PROJECT_DIR$/exec_tools.py" />
         <option value="$PROJECT_DIR$/generator.py" />
         <option value="$PROJECT_DIR$/parallel_exec_demo.py" />
+        <option value="$PROJECT_DIR$/report/main_fig_gen.py" />
         <option value="$PROJECT_DIR$/exp_builder.py" />
+        <option value="$PROJECT_DIR$/exec_tools.py" />
       </list>
     </option>
   </component>
@@ -231,6 +242,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -238,12 +251,27 @@
               <item name="rit_missing_data" type="b2602c69:ProjectViewProjectNode" />
               <item name="rit_missing_data" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="rit_missing_data" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rit_missing_data" type="462c0819:PsiDirectoryNode" />
+              <item name="report" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="rit_missing_data" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rit_missing_data" type="462c0819:PsiDirectoryNode" />
+              <item name="report" type="462c0819:PsiDirectoryNode" />
+              <item name="figures" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="rit_missing_data" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rit_missing_data" type="462c0819:PsiDirectoryNode" />
+              <item name="report" type="462c0819:PsiDirectoryNode" />
+              <item name="report_data" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -457,6 +485,23 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
+    <configuration name="main_fig_gen" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/report" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="rit_missing_data" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/report/main_fig_gen.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+    </configuration>
     <configuration name="parallel_exec_demo" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -476,38 +521,21 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
-    <configuration name="sympy_test1" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="rit_missing_data" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/sympy_test1.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-    </configuration>
     <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Python tests.Doctest olsinv_singlex" />
       <item index="1" class="java.lang.String" itemvalue="Python.parallel_exec_demo" />
-      <item index="2" class="java.lang.String" itemvalue="Python.sympy_test1" />
-      <item index="3" class="java.lang.String" itemvalue="Python.bac_data_generator" />
-      <item index="4" class="java.lang.String" itemvalue="Python.data_collection" />
-      <item index="5" class="java.lang.String" itemvalue="Python.exp_builder" />
+      <item index="2" class="java.lang.String" itemvalue="Python.bac_data_generator" />
+      <item index="3" class="java.lang.String" itemvalue="Python.data_collection" />
+      <item index="4" class="java.lang.String" itemvalue="Python.exp_builder" />
+      <item index="5" class="java.lang.String" itemvalue="Python.main_fig_gen" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.exp_builder" />
-        <item index="1" class="java.lang.String" itemvalue="Python.parallel_exec_demo" />
-        <item index="2" class="java.lang.String" itemvalue="Python.data_collection" />
-        <item index="3" class="java.lang.String" itemvalue="Python.bac_data_generator" />
-        <item index="4" class="java.lang.String" itemvalue="Python.sympy_test1" />
+        <item index="1" class="java.lang.String" itemvalue="Python.main_fig_gen" />
+        <item index="2" class="java.lang.String" itemvalue="Python.parallel_exec_demo" />
+        <item index="3" class="java.lang.String" itemvalue="Python.data_collection" />
+        <item index="4" class="java.lang.String" itemvalue="Python.bac_data_generator" />
       </list>
     </recent_temporary>
   </component>
@@ -823,7 +851,14 @@
       <option name="project" value="LOCAL" />
       <updated>1523034017045</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="slight tweaks">
+      <created>1523563294596</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1523563294596</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -862,16 +897,16 @@
     <frame x="4" y="23" width="1916" height="1005" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15048026" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15208112" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30329672" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30329672" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39978564" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39978564" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -919,13 +954,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/data_cleaning_tutorials/bac_data_generator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1290">
-          <caret line="86" column="68" lean-forward="true" selection-start-line="86" selection-start-column="68" selection-end-line="86" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data_cleaning_tutorials/person_data.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="8160">
@@ -1149,7 +1177,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="7" column="31" lean-forward="false" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1204,31 +1231,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/fixer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3345">
-          <caret line="229" column="0" lean-forward="false" selection-start-line="229" selection-start-column="0" selection-end-line="229" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-            <marker date="1522204604000" expanded="true" signature="213:221" ph="..." />
-            <marker date="1522204604000" expanded="true" signature="5575:7324" ph="..." />
-            <marker date="1522204604000" expanded="true" signature="7355:7368" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/fitter.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1050">
           <caret line="77" column="0" lean-forward="false" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/exec_tools.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1710">
-          <caret line="121" column="11" lean-forward="false" selection-start-line="121" selection-start-column="11" selection-end-line="121" selection-end-column="11" />
           <folding />
         </state>
       </provider>
@@ -1243,13 +1249,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/report/main_fig_gen.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="70" lean-forward="false" selection-start-line="27" selection-start-column="70" selection-end-line="27" selection-end-column="70" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fixer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="384">
+          <caret line="200" column="83" lean-forward="false" selection-start-line="199" selection-start-column="34" selection-end-line="200" selection-end-column="83" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+            <marker date="1522204604000" expanded="true" signature="213:221" ph="..." />
+            <marker date="1522204604000" expanded="true" signature="5575:7324" ph="..." />
+            <marker date="1522204604000" expanded="true" signature="7355:7368" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/exp_builder.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="474">
-          <caret line="72" column="50" lean-forward="false" selection-start-line="72" selection-start-column="50" selection-end-line="72" selection-end-column="50" />
+        <state relative-caret-position="1035">
+          <caret line="69" column="1" lean-forward="true" selection-start-line="69" selection-start-column="1" selection-end-line="69" selection-end-column="1" />
           <folding>
             <element signature="e#0#16#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exec_tools.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="68" column="63" lean-forward="true" selection-start-line="68" selection-start-column="63" selection-end-line="68" selection-end-column="63" />
+          <folding />
         </state>
       </provider>
     </entry>

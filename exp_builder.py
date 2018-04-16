@@ -41,11 +41,11 @@ class MyEncoder(json.JSONEncoder):
 maker_levels = [
     (2,),
     (10,),
-    ([1],), # beta_x2/beta_x1
+    ([.5], [1], [2]), # beta_x2/beta_x1
     ([
         [1, 2]
      ],), # Declare interactions
-    ([.00001], [1], [2], [5], [10]),  # Levels of interaction coeff
+    ([.00001], [1], [2], [10]),  # Levels of interaction coeff
     ('uniform',)
 ]
 
@@ -65,8 +65,8 @@ levels = [
     (.05,),
     (.05,),  # Lower bound on percent missing data
     (.6,),  # Upper bound on percent missing data
-    (['x1'],),  # Select which columns to shred
-    list(range(100))
+    (['x1', 'x2'],),  # Select which columns to shred
+    list(range(10))
 ]
 
 impute_methods = "-".join(levels[1])+"_"
