@@ -7,11 +7,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bc011b71-78b3-41ff-a1ab-20f8633d6180" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/requirements.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/exec_tools.py" afterPath="$PROJECT_DIR$/exec_tools.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/exp_builder.py" afterPath="$PROJECT_DIR$/exp_builder.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/generator.py" afterPath="$PROJECT_DIR$/generator.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parallel_exec_demo.py" afterPath="$PROJECT_DIR$/parallel_exec_demo.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report/paper.tex" afterPath="$PROJECT_DIR$/report/paper.tex" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report/sections/challenges.tex" afterPath="$PROJECT_DIR$/report/sections/challenges.tex" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report/sections/method/experimental-design.tex" afterPath="$PROJECT_DIR$/report/sections/method/experimental-design.tex" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report/sections/results.tex" afterPath="$PROJECT_DIR$/report/sections/results.tex" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -22,16 +25,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="generator.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="generator.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/generator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="236">
-              <caret line="94" column="35" lean-forward="false" selection-start-line="94" selection-start-column="35" selection-end-line="94" selection-end-column="35" />
+            <state relative-caret-position="60">
+              <caret line="4" column="37" lean-forward="false" selection-start-line="4" selection-start-column="37" selection-end-line="4" selection-end-column="37" />
               <folding>
-                <element signature="e#0#18#0" expanded="true" />
-                <marker date="1525106775000" expanded="true" signature="234:250" ph="..." />
-                <marker date="1525106775000" expanded="true" signature="266:279" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-                <marker date="1525106775000" expanded="true" signature="3451:3472" ph="..." />
+                <marker date="1525283471000" expanded="true" signature="196:212" ph="..." />
+                <marker date="1525283471000" expanded="true" signature="228:241" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+                <marker date="1525283471000" expanded="true" signature="3413:3434" ph="..." />
               </folding>
             </state>
           </provider>
@@ -41,7 +43,7 @@
         <entry file="file://$PROJECT_DIR$/exec_tools.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="2115">
-              <caret line="141" column="69" lean-forward="true" selection-start-line="141" selection-start-column="69" selection-end-line="141" selection-end-column="69" />
+              <caret line="141" column="69" lean-forward="false" selection-start-line="141" selection-start-column="69" selection-end-line="141" selection-end-column="69" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -53,7 +55,7 @@
         <entry file="file://$PROJECT_DIR$/parallel_exec_demo.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="329">
-              <caret line="45" column="26" lean-forward="true" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
+              <caret line="45" column="26" lean-forward="false" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -64,8 +66,8 @@
       <file leaf-file-name="exp_builder.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/exp_builder.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="46">
-              <caret line="64" column="9" lean-forward="false" selection-start-line="64" selection-start-column="9" selection-end-line="64" selection-end-column="9" />
+            <state relative-caret-position="251">
+              <caret line="69" column="1" lean-forward="false" selection-start-line="69" selection-start-column="1" selection-end-line="69" selection-end-column="1" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
               </folding>
@@ -115,21 +117,21 @@
       <file leaf-file-name="fitter.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/fitter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="128">
-              <caret line="51" column="11" lean-forward="true" selection-start-line="51" selection-start-column="11" selection-end-line="51" selection-end-column="11" />
-              <folding />
+            <state relative-caret-position="391">
+              <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="testr3.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/testr3.py">
+      <file leaf-file-name="requirements.txt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/requirements.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#23#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="45">
+              <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -209,12 +211,13 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/remote_exec.sh" />
         <option value="$PROJECT_DIR$/data_collection.py" />
-        <option value="$PROJECT_DIR$/fitter.py" />
         <option value="$PROJECT_DIR$/report/main_fig_gen.py" />
         <option value="$PROJECT_DIR$/parallel_exec_demo.py" />
-        <option value="$PROJECT_DIR$/exp_builder.py" />
         <option value="$PROJECT_DIR$/exec_tools.py" />
+        <option value="$PROJECT_DIR$/exp_builder.py" />
         <option value="$PROJECT_DIR$/generator.py" />
+        <option value="$PROJECT_DIR$/fitter.py" />
+        <option value="$PROJECT_DIR$/requirements.txt" />
       </list>
     </option>
   </component>
@@ -900,6 +903,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="68" y="23" width="1916" height="1005" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15528281" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -959,13 +963,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/data_cleaning_tutorials/person_data.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8160">
-          <caret line="544" column="22" lean-forward="false" selection-start-line="544" selection-start-column="22" selection-end-line="544" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data_cleaning_tutorials/ref_implementation.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -992,10 +989,9 @@
         <state relative-caret-position="945">
           <caret line="63" column="0" lean-forward="false" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
-            <marker date="1525106775000" expanded="true" signature="234:250" ph="..." />
-            <marker date="1525106775000" expanded="true" signature="266:279" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-            <marker date="1525106775000" expanded="true" signature="3451:3472" ph="..." />
+            <marker date="1525283471000" expanded="true" signature="196:212" ph="..." />
+            <marker date="1525283471000" expanded="true" signature="228:241" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1525283471000" expanded="true" signature="3413:3434" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1232,6 +1228,48 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/parallel_exec_demo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="329">
+          <caret line="45" column="26" lean-forward="false" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/generator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="37" lean-forward="false" selection-start-line="4" selection-start-column="37" selection-end-line="4" selection-end-column="37" />
+          <folding>
+            <marker date="1525283471000" expanded="true" signature="196:212" ph="..." />
+            <marker date="1525283471000" expanded="true" signature="228:241" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1525283471000" expanded="true" signature="3413:3434" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exec_tools.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2115">
+          <caret line="141" column="69" lean-forward="false" selection-start-line="141" selection-start-column="69" selection-end-line="141" selection-end-column="69" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exp_builder.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="69" column="1" lean-forward="false" selection-start-line="69" selection-start-column="1" selection-end-line="69" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#16#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/fixer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="733">
@@ -1247,52 +1285,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/fitter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="51" column="11" lean-forward="true" selection-start-line="51" selection-start-column="11" selection-end-line="51" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/exp_builder.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="64" column="9" lean-forward="false" selection-start-line="64" selection-start-column="9" selection-end-line="64" selection-end-column="9" />
-          <folding>
-            <element signature="e#0#16#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/parallel_exec_demo.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="45" column="26" lean-forward="true" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/exec_tools.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2115">
-          <caret line="141" column="69" lean-forward="true" selection-start-line="141" selection-start-column="69" selection-end-line="141" selection-end-column="69" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/generator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="94" column="35" lean-forward="false" selection-start-line="94" selection-start-column="35" selection-end-line="94" selection-end-column="35" />
+        <state relative-caret-position="391">
+          <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-            <marker date="1525106775000" expanded="true" signature="234:250" ph="..." />
-            <marker date="1525106775000" expanded="true" signature="266:279" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-            <marker date="1525106775000" expanded="true" signature="3451:3472" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

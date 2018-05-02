@@ -3,11 +3,9 @@
 
 \begin{document}
 \subsection{Experimental Design}
-The full factorial experiment was constructed to include at least three levels of each to allow for the detection of nonlinear realtionships with the response.
+Originally, a full factorial experiment was constructed to include at least three levels of each to allow for the detection of nonlinear realtionships with the response.
 Additionally, the full factorial experiment provides resolution for high order interactions. Since the entire experiment is executed on a computer, there was not practical limitation to running all combinations.
 All runs are replicated 10 times with the responses averages to ensure representative results. Each of the imputation methods was performed as its own experiment to allow transformations of the factors and the response if required. The remaining factors and their respective levels can be found in Table \ref{table:factors_and_levels}.
-
-% The four methods for data imputation, as previously discussed, are Drop, Mean, Inverse, and Random.
 
 %\begin{table*}[htbp]
 
@@ -35,9 +33,17 @@ models. The three responses closely examined are relative MSE of prediction
 with respect to the known data variance $\sigma$ (Relative Prediction MSE), range of the confidence interval for $\hat{\beta}_{i}$ as a Percentage of $\hat{\beta}_{i}$
 and percent bias of $\hat{\beta}_{i}$ with respect to the true value of $\beta_{i}$.
 
-
-
 %The objective of the experiment is to understand how
+Attempts to run the above experiments revealed several issues that prevented direct comparison of the effects within a single model.
+The above experiments was reduced to two cases which could be discussed independently. These will be referred to as Case 1 and Case 2 for the remainder of this paper. They are defined as follows.
 
+\subsubsection{Case 1}
+Let $\beta_{ X_{1}} = \beta_{ X_{2}} = \beta_{ X_{12}} = 10$ such that the underlying model for the data is $y = 10 + 10X_{1} + 10X_{2} + 10X_{1}X_{2} + \epsilon $.
+$\epsilon \text{\textasciitilde} N(0, \sigma)$ The levels adjusted were the 
+
+
+\subsubsection{Case 2}
+
+%The execution of these two cases proved problemati
 
 \end{document}

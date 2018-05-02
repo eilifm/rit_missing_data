@@ -3,7 +3,6 @@ import pandas as pd
 import scipy.stats as stats
 import statsmodels.api as sm
 from statsmodels.stats.outliers_influence import variance_inflation_factor
-from sklearn.decomposition import PCA
 
 
 def generate_xvar(dist: str, size=1000, **kwargs):
