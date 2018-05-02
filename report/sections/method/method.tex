@@ -1,0 +1,270 @@
+%!TEX root = ../../paper.tex
+\documentclass[../../paper.tex]{subfiles}
+
+\begin{document}
+\section{Methodology}
+The methods explored in this paper were implemented using
+the Python/Numpy/Pandas stack with the Statsmodels package providing a robust
+implementation of Ordinary Least Squares linear regression modeling.
+The source code of this paper and the implementation are available under MIT license on GitHub for exploration by the reader.
+
+As the objective is to understand how imputation methods along with other attributes of the data impact model performance, a full factorial experiment is constructed observing the model behavior given all combinations of factors and levels.
+For each run, a new data set is generated, values artifically are removed, and the data imputed according to the run parameters. An OLS model is fit to the data  with a variety of performance metrics collected. All Python objects are destroyed between runs to guard against implementation bugs. The executed experment will be outlined in greater detail after additional concepts are introduced.
+
+
+\subsection{Input Data Characteristics}
+The data set constructed for each run must be comprised of $p$ i.i.d variables. The response $y$ is computed
+to follow a linear model with all main effects and two factor interactions
+in accordance with equation \ref{eq:data_assumed_model}. In practice, most of
+the research focused on the two variable case shown in Equation
+\ref{eq:2var_assumed_model}.
+
+\begin{equation}\label{eq:data_assumed_model}
+  y = \beta_{0} + \beta_{ X_{1} } X_{1}  + \ldots + \beta_{X_{p}}X_{p} +
+  \beta_{X_{1}X_{2}}X_{1}X_{2} + \ldots +\beta_{X_{p-1}X_{p}}X_{p-1}X_{p} + \epsilon
+\end{equation}
+
+
+\begin{equation}\label{eq:2var_assumed_model}
+  y = \beta_{0} + \beta_{ X_{1}} X_{1} + \beta_{X_{2} }X_{2} +
+  \beta_{ X_{1} X_{2} } X_{1}X_{2} + \epsilon
+\end{equation}
+
+To simplify data generation, all $\beta$ values are proportional to $\beta_{X_{1}}$.
+For example, in a data set with three variables, let $\beta_{X_{1}} = 10$, then
+the array $[0.1, 1.5]$ defines $\beta_{X_{2}}$ and $\beta_{X_{3}}$ to 1 and 15 respectively.
+The $\beta$ values for interaction terms are set explicitly.
+
+As the dataset is artificially generated, noise is added to the final
+computation of the response. A \mintinline{Python}{noise_factor} variable is
+introduced to control the variance of the noise proportional
+to the largest $\beta$ value of the main effects. The mean of the noise must be
+zero in accordance with the underlying assumptions of OLS. These
+relationships are described in equations \ref{eq:epsilon_def},
+\ref{eq:noise_factor_def} and \ref{eq:noise_factor_sigma_def}.
+
+\begin{equation}\label{eq:epsilon_def}
+  \epsilon \text{\textasciitilde} N(0, \sigma)
+\end{equation}
+
+\begin{equation}\label{eq:noise_factor_def}
+  \mintinline{Python}{noise_factor} \geq 0
+\end{equation}
+
+\begin{equation}\label{eq:noise_factor_sigma_def}
+  \sigma = MAX(\beta_{Main Effects}) * \mintinline{Python}{noise_factor}
+\end{equation}
+
+
+\subsection{Simulating Missing Data}
+For a given observation, the probability that a given variable is missing is
+idependent from the probability that any other variable is missing. This randomness
+assumption is refered to as Missing Completely at Random (MCAR). For the implementation
+used in this study, a boolean mask was randomly created for each
+of the variables. The selection of data to eliminate can be written as
+\mintinline{random_choice(observation indexes, [TRUE, FALSE])} without replacement.
+The DataFrame method, \mintinline{Python}{pandas.DataFrame.sample} is used for
+performance and simplicity reasons. Removed values were set to NULL. The number of
+datapoints to remove is controlled as the fraction of data missing. Given MCAR,
+it is possible for more than one variable to be missing. While this case was intentionally avoided in the experiments for this paper, such observations are dropped from the dataset before any imputation begins. The response y is never
+nulled.
+
+
+\subsection{Imputation Methods}
+
+Four methods are proposed and explored in these experiments. Drop imputation (Drop Imputation) simply removes an observations where any value is null while making no attempt to fill it in.
+Imputing with the mean (Mean Imputation) replace missing values of a variable with the mean of the available samples for the respective variable.
+Random value imputation (Random Imputation) replaces the missing value with a value from the set of available samples for the the respective variable. Imputation through model inversion (Inverse Imputation) replaces missing values with the computed values from the linear regression equation solved for the missing variable.
+
+\subsubsection*{On Inverse Imputation}
+To understand the inversion method, let's explore the general case solution.
+Let $X$ be the model matrix with $p$ main effects and ${}_{p}C_{2}$ interactions less the $X_{i}^2$ terms.
+$X$ has some missing data in at most one variable per observation. $X$ can be
+written as two components $X_{m}$ and $X_{c}$ containing observations with
+ missing values and complete observations respectively.
+
+\begin{equation}
+  X = \begin{bmatrix}
+  1 & X_{1} & X_{2} & \cdots & X_{1}X_{2} & .. &X_{p-1}X_{p}
+\end{bmatrix}
+\end{equation}
+
+
+\begin{equation}
+  X = \begin{bmatrix}
+  X_{m} \\
+  X_{c}
+\end{bmatrix}
+\end{equation}
+
+The response can be similarly split as
+\begin{equation}
+  y = \begin{bmatrix}
+  y_{m} \\
+  y_{c}
+\end{bmatrix}
+\end{equation}
+
+
+The complete observations are given as.
+\begin{equation}
+  X_{c} =
+  \begin{bmatrix}
+    X \neq NULL
+  \end{bmatrix}
+\end{equation}
+
+
+Next, the beta estimates for the data are computed from the complete observations.
+\begin{equation}
+  \hat{\beta}_{c} = (X_{c}^{T}X_{c})^{-1} X_{c}^{T} y_{c}
+\end{equation}
+
+
+For each variable that contains missing data $X_{md}$ and the remaining model
+terms $X_{j} \in X, j \neq md$
+
+\begin{equation}
+  y =
+  \begin{bmatrix}
+    1 & X_{md} & X_{j} & \cdots & X_{md}X_{j} & \cdots & X_{md}X_{p} & \cdot X_{j}X_{p}
+  \end{bmatrix}
+  \begin{bmatrix}
+    \hat{\beta}_{0} \\
+    \hat{\beta}_{1} \\
+    \hat{\beta}_{2} \\
+    \cdots \\
+    \hat{\beta}_{12} \\
+    \hat{\beta}_{p-1 p} \\
+
+  \end{bmatrix}
+\end{equation}
+
+This equation can be divided into two terms, those with $X_{md}$ and those without.
+
+\begin{equation}
+  y_{m} =
+\overbrace{
+  \begin{bmatrix}
+    1 & X_{1} & \cdots & X_{p}
+  \end{bmatrix}
+  \begin{bmatrix}
+    \hat{\beta}_{c_0} \\
+    \hat{\beta}_{c_1} \\
+    \cdots \\
+    \hat{\beta}_{c_p} \\
+  \end{bmatrix}}^{\text{terms without } X_{md}}
+   +
+  \overbrace{
+  \begin{bmatrix}
+    X_{md} & X_{md}X_{j} & \cdots & X_{md}X_{p}
+  \end{bmatrix}
+  \begin{bmatrix}
+    \hat{\beta}_{c_{md}} \\
+    \hat{\beta}_{c_{mdj}} \\
+    \cdots \\
+    \hat{\beta}_{c_{mdp}} \\
+  \end{bmatrix}}^{\text{terms including } X_{md}}
+\end{equation}
+
+Factor out the $X_{md}$ components from the second part of the equation.
+
+\begin{equation}
+  y_{m} =
+  \overbrace{
+  \begin{bmatrix}
+    1 & X_{1} & \cdots & X_{p}
+  \end{bmatrix}
+  \begin{bmatrix}
+    \hat{\beta}_{c_0} \\
+    \hat{\beta}_{c_1} \\
+    \cdots \\
+    \hat{\beta}_{c_p} \\
+  \end{bmatrix}}^{M_{1} = \text{ terms without } X_{md}} +
+  X_{md}
+  \overbrace{
+  \begin{bmatrix}
+    1 & X_{j} & \cdots & X_{p}
+  \end{bmatrix}
+  \begin{bmatrix}
+    \hat{\beta}_{c_{md}} \\
+    \hat{\beta}_{c_{mdj}} \\
+    \cdots \\
+    \hat{\beta}_{c_{mdp}} \\
+  \end{bmatrix}}^{M_{2} = \text{ terms with } X_{md}}
+\end{equation}
+
+Solve for $X_{md}$
+
+\begin{equation}
+X_{md} = \frac{y_{m} - M1}{M2}
+\end{equation}
+
+Insert the computed $X_{md}$ values back into the original dataset, compute the interactions and proceed with fitting the model.
+
+\subsubsection*{2 Variable Example Case}
+Two variable case where $X_{1}$ is missing values for some observations. The data
+is split into the missing and complete sets and the $\hat{\beta}_{c}$ vector is
+computed.
+
+\begin{equation}
+  y_{m} =
+  \begin{bmatrix}
+    1 & X_{2}
+  \end{bmatrix}
+  \begin{bmatrix}
+    \hat{\beta}_{c_0} \\
+    \hat{\beta}_{c_2}
+  \end{bmatrix} +
+  \begin{bmatrix}
+    X_{1} & X_{2}
+  \end{bmatrix}
+  \begin{bmatrix}
+    \hat{\beta}_{c_1} \\
+    \hat{\beta}_{c_{12}}
+  \end{bmatrix}
+\end{equation}
+
+\begin{equation}
+  y_{m} =
+  \begin{bmatrix}
+    1 & X_{2}
+  \end{bmatrix}
+  \begin{bmatrix}
+    \hat{\beta}_{0} \\
+    \hat{\beta}_{2}
+  \end{bmatrix} +
+  X_{1}
+  \begin{bmatrix}
+    1 & X_{2}
+  \end{bmatrix}
+  \begin{bmatrix}
+    \hat{\beta}_{c_1} \\
+    \hat{\beta}_{c_{12}}
+  \end{bmatrix}
+\end{equation}
+
+\begin{equation}
+  X_{1} =
+  \frac{
+    y_{m} -
+    \begin{bmatrix}
+        1 & X_{2}
+      \end{bmatrix}
+      \begin{bmatrix}
+        \hat{\beta}_{c_0} \\
+        \hat{\beta}_{c_2}
+      \end{bmatrix}
+    }{
+    \begin{bmatrix}
+      1 & X_{2}
+    \end{bmatrix}
+    \begin{bmatrix}
+      \hat{\beta}_{c_1} \\
+      \hat{\beta}_{c_{12}}
+    \end{bmatrix}
+    }
+\end{equation}
+
+
+\end{document}

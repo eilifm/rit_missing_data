@@ -25,8 +25,9 @@ def run(data_gen_dict, action_type, beta_sigma, sample_size, incr, lower_pct, up
                                             data_gen_dict["interactions"],
                                             intercept=10,
                                             n=sample_size,
-                                            beta_sigma=beta_sigma
+                                            sigma=beta_sigma
                                         )
+
     param_cols = []
     run_results = []
     # Begin missing levels loop
@@ -41,6 +42,7 @@ def run(data_gen_dict, action_type, beta_sigma, sample_size, incr, lower_pct, up
 
         if action_type == 'drop':
             fixed_data = wrecked_data.dropna()
+
         elif action_type == 'mean':
             fixing_dict = {}
             for target in targets:
@@ -95,6 +97,7 @@ def run(data_gen_dict, action_type, beta_sigma, sample_size, incr, lower_pct, up
             w_metrics['mape_pred']
         ]
 
+
         # A TON OF FANCY FOOTWORK TO KEEP ALL THE PARAMS IN ORDER!
         param_results = SortedDict()
         for x_var in w_fitted.params.index:
@@ -116,6 +119,11 @@ def run(data_gen_dict, action_type, beta_sigma, sample_size, incr, lower_pct, up
                     param_cols.append(x_var + "_" +info)
 
         run_results.append(results_rec+param_info)
+
+        del wrecked_data
+        del fixed_data
+        del param_info, w_fitted, w_metrics, results_rec, param_results, b_estimate_results
+
 
     results_cols = [
         'pct_missing',
@@ -139,12 +147,12 @@ def run(data_gen_dict, action_type, beta_sigma, sample_size, incr, lower_pct, up
     feature_cols = [
         'pct_missing',
         'fitted_nobs',
-        'beta_sigma',
+        'sigma',
         'sample_size'
     ]
     # results_agg.loc[:, 'action_type'] = action_type
     results.loc[:, 'action_type'] = action_type
-    results.loc[:, 'beta_sigma'] = beta_sigma
+    results.loc[:, 'sigma'] = sigma
     results.loc[:, 'sample_size'] = sample_size
     results.loc[:, 'targets'] = ", ".join(targets)
     for keys in itertools.combinations(sorted(list(true_coeffs.keys())), 2):
@@ -156,5 +164,6 @@ def run(data_gen_dict, action_type, beta_sigma, sample_size, incr, lower_pct, up
     #print(feature_cols)
 
     return results, feature_cols
+
 
 

@@ -37,7 +37,7 @@ def generate_ind_model(dist_types: list,
                        test_set_size=.5,
                        intercept=10,
                        n=1000,
-                       beta_sigma=1.0):
+                       sigma=1.0):
     """
 
     Parameters
@@ -49,7 +49,7 @@ def generate_ind_model(dist_types: list,
     test_set_size
     intercept
     n
-    beta_sigma
+    sigma
 
     Returns
     -------
@@ -88,11 +88,11 @@ def generate_ind_model(dist_types: list,
 
     coeffs_dict['const'] = intercept
 
-    data['y'] = dotted + np.random.normal(0, max(coeffs_)*beta_sigma, size=int(n*(1+test_set_size)))
+    data['y'] = dotted + np.random.normal(0, sigma, size=int(n*(1+test_set_size)))
 
     fit = data.loc[0:n-1, :].copy()
     test = data.loc[n::, :].copy()
-    return fit, test, coeffs_dict, max(coeffs_)*beta_sigma
+    return fit, test, coeffs_dict, sigma
 
 
 def x_def_helper(name, **kwargs):

@@ -41,11 +41,11 @@ class MyEncoder(json.JSONEncoder):
 maker_levels = [
     (2,),
     (10,),
-    ([.5], [1], [2]), # beta_x2/beta_x1
+    ([1],), # beta_x2/beta_x1
     ([
         [1, 2]
      ],), # Declare interactions
-    ([.00001], [1], [2], [10]),  # Levels of interaction coeff
+    ([10], ),  # Levels of interaction coeff
     ('uniform',)
 ]
 
@@ -59,20 +59,21 @@ gen_levels = [len(x) for x in maker_levels]
 levels = [
     [config_maker(*args) for args in itertools.product(*maker_levels)],
     #("mean", "invert", "drop", "random"),
-    ("invert",),
-    (.2, .3),
-    (100, 500),  # Initial sample sized
-    (.05,),
+    ("drop", "invert"),
+    (2, 4),
+    (200, ),  # Initial sample sized
+    (.025,),
     (.05,),  # Lower bound on percent missing data
     (.6,),  # Upper bound on percent missing data
-    (['x1', 'x2'],),  # Select which columns to shred
-    list(range(10))
+    (['x1'],),  # Select which columns to shred
+    list(range(1000))
 ]
 
 impute_methods = "-".join(levels[1])+"_"
+beta_levels = "beta12-"+str(maker_levels[4][0][0])+"_"
 total_levels = gen_levels + [len(x) for x in levels[1::]]
 total_levels = map(str, total_levels)
-file_name = impute_methods+str("x".join(total_levels))+ ".json"
+file_name = impute_methods+beta_levels+str("x".join(total_levels))+ ".json"
 
 metadata = maker_levels + levels[1::]
 

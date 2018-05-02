@@ -33,7 +33,7 @@ if __name__ == "__main__":
 
     print(len(levels))
     #results = Parallel(n_jobs=-1, verbose=10)(delayed(run)(*args) for args in itertools.product(*levels))
-    np.random.shuffle(levels)
+#    np.random.shuffle(levels)
     results = Parallel(n_jobs=-1, verbose=10)(delayed(run)(*args) for args in levels)
 
     numeric_levels = list(set(itertools.chain.from_iterable([result[1] for result in results])))
@@ -47,7 +47,7 @@ if __name__ == "__main__":
         "x2_true_beta",
         "const_true_beta",
         "action_type",
-        "beta_sigma",
+        "sigma",
         "sample_size",
         "targets"
     ]

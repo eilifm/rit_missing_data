@@ -1,0 +1,43 @@
+%!TEX root = ../../paper.tex
+\documentclass[../../paper.tex]{subfiles}
+
+\begin{document}
+\subsection{Experimental Design}
+The full factorial experiment was constructed to include at least three levels of each to allow for the detection of nonlinear realtionships with the response.
+Additionally, the full factorial experiment provides resolution for high order interactions. Since the entire experiment is executed on a computer, there was not practical limitation to running all combinations.
+All runs are replicated 10 times with the responses averages to ensure representative results. Each of the imputation methods was performed as its own experiment to allow transformations of the factors and the response if required. The remaining factors and their respective levels can be found in Table \ref{table:factors_and_levels}.
+
+% The four methods for data imputation, as previously discussed, are Drop, Mean, Inverse, and Random.
+
+%\begin{table*}[htbp]
+
+\begin{table}[H]
+\begin{center}\label{table:factors_and_levels}
+    \begin{tabular}{  l | p{1.9in} | l   }
+%    \begin{tabular}{ | l | p{1.5in} | p{3in} | }
+%      \hline
+
+      \rule{0pt}{14pt} \textbf{Factor} & \textbf{Levels} & \textbf{Description} \\ \hline
+      \rule{0pt}{14pt} Imputation Method & Drop, Mean, Inverse, Random & Imputation method used \\ %\hline
+      \rule{0pt}{14pt} \mintinline{Python}{sample_size} & 100, 500 &  Samples in the generated data set \\ %\hline
+      \rule{0pt}{14pt} \mintinline{Python}{noise_factor} & 0.1, 0.3 &  Relative noise in the response \\ %\hline
+      \rule{0pt}{14pt} $\beta_{X_{2}}$ Factor & 0.1, 1 &  $\beta_{X_{2}} = \beta_{X_{2}} Factor * \beta_{X_{1}}$ \\ %\hline
+      \rule{0pt}{14pt} $\beta_{X_{1}X_{2}}$ Factor & 0.000001, 1, 2, 10 &  $\beta_{X_{1}X_{2}} = \beta_{X_{1}X_{2}} Factor * \beta_{X_{1}}$ \\ %\hline
+      \rule{0pt}{14pt} Drop Column & $X_{1}$, $X_{2}$ & Variables whos values are destroyed in a run \\ %\hline
+    \end{tabular}
+    \caption{Factors and Levels}\label{table:factors_and_levels}
+\end{center}
+\end{table}
+
+Response variables for the experiment were chosen to represent the model performance
+and degradation while also being normalized to allow for valid comparison across
+models. The three responses closely examined are relative MSE of prediction
+with respect to the known data variance $\sigma$ (Relative Prediction MSE), range of the confidence interval for $\hat{\beta}_{i}$ as a Percentage of $\hat{\beta}_{i}$
+and percent bias of $\hat{\beta}_{i}$ with respect to the true value of $\beta_{i}$.
+
+
+
+%The objective of the experiment is to understand how
+
+
+\end{document}

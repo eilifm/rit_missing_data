@@ -7,19 +7,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bc011b71-78b3-41ff-a1ab-20f8633d6180" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/report/main_fig_gen.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/report/paper.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/report/sections/method.tex" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2018-02-10_simple_case_4_methods.ipynb" afterPath="$PROJECT_DIR$/2018-02-10_simple_case_4_methods.ipynb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2018-02-10_simple_case_comparisons_4_method.ipynb" afterPath="$PROJECT_DIR$/2018-02-10_simple_case_comparisons_4_method.ipynb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/exec_tools.py" afterPath="$PROJECT_DIR$/exec_tools.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/exp_builder.py" afterPath="$PROJECT_DIR$/exp_builder.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report/paper.tex" afterPath="$PROJECT_DIR$/report/paper.tex" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report/sections/abstract.tex" afterPath="$PROJECT_DIR$/report/sections/abstract.tex" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report/sections/introduction.tex" afterPath="$PROJECT_DIR$/report/sections/introduction.tex" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report/sections/results.tex" afterPath="$PROJECT_DIR$/report/sections/results.tex" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report/sections/state_of_research.tex" afterPath="$PROJECT_DIR$/report/sections/state_of_research.tex" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/generator.py" afterPath="$PROJECT_DIR$/generator.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parallel_exec_demo.py" afterPath="$PROJECT_DIR$/parallel_exec_demo.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -30,27 +22,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="generator.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="generator.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/generator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="780">
-              <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+            <state relative-caret-position="236">
+              <caret line="94" column="35" lean-forward="false" selection-start-line="94" selection-start-column="35" selection-end-line="94" selection-end-column="35" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
-                <marker date="1523033476000" expanded="true" signature="234:250" ph="..." />
-                <marker date="1523033476000" expanded="true" signature="266:279" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-                <marker date="1523033476000" expanded="true" signature="3497:3518" ph="..." />
+                <marker date="1525106775000" expanded="true" signature="234:250" ph="..." />
+                <marker date="1525106775000" expanded="true" signature="266:279" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+                <marker date="1525106775000" expanded="true" signature="3451:3472" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="exec_tools.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="exec_tools.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/exec_tools.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="68" column="63" lean-forward="true" selection-start-line="68" selection-start-column="63" selection-end-line="68" selection-end-column="63" />
-              <folding />
+            <state relative-caret-position="2115">
+              <caret line="141" column="69" lean-forward="true" selection-start-line="141" selection-start-column="69" selection-end-line="141" selection-end-column="69" />
+              <folding>
+                <element signature="e#0#23#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -58,8 +52,8 @@
       <file leaf-file-name="parallel_exec_demo.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/parallel_exec_demo.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="630">
-              <caret line="56" column="0" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+            <state relative-caret-position="329">
+              <caret line="45" column="26" lean-forward="true" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -70,8 +64,8 @@
       <file leaf-file-name="exp_builder.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/exp_builder.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1035">
-              <caret line="69" column="1" lean-forward="true" selection-start-line="69" selection-start-column="1" selection-end-line="69" selection-end-column="1" />
+            <state relative-caret-position="46">
+              <caret line="64" column="9" lean-forward="false" selection-start-line="64" selection-start-column="9" selection-end-line="64" selection-end-column="9" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
               </folding>
@@ -82,8 +76,8 @@
       <file leaf-file-name="main_fig_gen.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/report/main_fig_gen.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="27" column="70" lean-forward="false" selection-start-line="27" selection-start-column="70" selection-end-line="27" selection-end-column="70" />
+            <state relative-caret-position="583">
+              <caret line="39" column="57" lean-forward="false" selection-start-line="39" selection-start-column="57" selection-end-line="39" selection-end-column="57" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -106,7 +100,7 @@
       <file leaf-file-name="fixer.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/fixer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
+            <state relative-caret-position="733">
               <caret line="200" column="83" lean-forward="false" selection-start-line="199" selection-start-column="34" selection-end-line="200" selection-end-column="83" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
@@ -121,8 +115,8 @@
       <file leaf-file-name="fitter.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/fitter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1050">
-              <caret line="77" column="0" lean-forward="false" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
+            <state relative-caret-position="128">
+              <caret line="51" column="11" lean-forward="true" selection-start-line="51" selection-start-column="11" selection-end-line="51" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -172,6 +166,9 @@
       <find>_</find>
       <find>SECRET_KEY</find>
       <find>data.</find>
+      <find>beta_sigma</find>
+      <find>random</find>
+      <find>rel</find>
     </findStrings>
     <replaceStrings>
       <replace>data</replace>
@@ -181,6 +178,7 @@
       <replace>os.environ['SPACES_ACCESS']</replace>
       <replace>os.environ['SPACES_SECRET']</replace>
       <replace>grouped_data.</replace>
+      <replace>sigma</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -212,16 +210,16 @@
         <option value="$PROJECT_DIR$/remote_exec.sh" />
         <option value="$PROJECT_DIR$/data_collection.py" />
         <option value="$PROJECT_DIR$/fitter.py" />
-        <option value="$PROJECT_DIR$/generator.py" />
-        <option value="$PROJECT_DIR$/parallel_exec_demo.py" />
         <option value="$PROJECT_DIR$/report/main_fig_gen.py" />
+        <option value="$PROJECT_DIR$/parallel_exec_demo.py" />
         <option value="$PROJECT_DIR$/exp_builder.py" />
         <option value="$PROJECT_DIR$/exec_tools.py" />
+        <option value="$PROJECT_DIR$/generator.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="4" />
+    <option name="x" value="68" />
     <option name="y" value="23" />
     <option name="width" value="1916" />
     <option name="height" value="1005" />
@@ -242,8 +240,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -272,6 +268,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -858,7 +856,14 @@
       <option name="project" value="LOCAL" />
       <updated>1523563294596</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="correct imputed interaction computation">
+      <created>1523893834412</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1523893834412</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -894,15 +899,14 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="4" y="23" width="1916" height="1005" extended-state="0" />
-    <editor active="true" />
+    <frame x="68" y="23" width="1916" height="1005" extended-state="0" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15208112" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15528281" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30329672" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3868132" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -945,7 +949,8 @@
     <MESSAGE value="more DOE tweaks" />
     <MESSAGE value="robust configs" />
     <MESSAGE value="slight tweaks" />
-    <option name="LAST_COMMIT_MESSAGE" value="slight tweaks" />
+    <MESSAGE value="correct imputed interaction computation" />
+    <option name="LAST_COMMIT_MESSAGE" value="correct imputed interaction computation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -988,9 +993,9 @@
           <caret line="63" column="0" lean-forward="false" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-            <marker date="1523033476000" expanded="true" signature="234:250" ph="..." />
-            <marker date="1523033476000" expanded="true" signature="266:279" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-            <marker date="1523033476000" expanded="true" signature="3497:3518" ph="..." />
+            <marker date="1525106775000" expanded="true" signature="234:250" ph="..." />
+            <marker date="1525106775000" expanded="true" signature="266:279" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1525106775000" expanded="true" signature="3451:3472" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1204,7 +1209,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="721">
           <caret line="436" column="27" lean-forward="true" selection-start-line="436" selection-start-column="27" selection-end-line="436" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1218,41 +1222,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/generator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="780">
-          <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-            <marker date="1523033476000" expanded="true" signature="234:250" ph="..." />
-            <marker date="1523033476000" expanded="true" signature="266:279" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-            <marker date="1523033476000" expanded="true" signature="3497:3518" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fitter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1050">
-          <caret line="77" column="0" lean-forward="false" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/parallel_exec_demo.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="56" column="0" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/report/main_fig_gen.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="70" lean-forward="false" selection-start-line="27" selection-start-column="70" selection-end-line="27" selection-end-column="70" />
+        <state relative-caret-position="583">
+          <caret line="39" column="57" lean-forward="false" selection-start-line="39" selection-start-column="57" selection-end-line="39" selection-end-column="57" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
@@ -1261,7 +1234,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/fixer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
+        <state relative-caret-position="733">
           <caret line="200" column="83" lean-forward="false" selection-start-line="199" selection-start-column="34" selection-end-line="200" selection-end-column="83" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
@@ -1272,21 +1245,54 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/fitter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="51" column="11" lean-forward="true" selection-start-line="51" selection-start-column="11" selection-end-line="51" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/exp_builder.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1035">
-          <caret line="69" column="1" lean-forward="true" selection-start-line="69" selection-start-column="1" selection-end-line="69" selection-end-column="1" />
+        <state relative-caret-position="46">
+          <caret line="64" column="9" lean-forward="false" selection-start-line="64" selection-start-column="9" selection-end-line="64" selection-end-column="9" />
           <folding>
             <element signature="e#0#16#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/parallel_exec_demo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="329">
+          <caret line="45" column="26" lean-forward="true" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/exec_tools.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="68" column="63" lean-forward="true" selection-start-line="68" selection-start-column="63" selection-end-line="68" selection-end-column="63" />
-          <folding />
+        <state relative-caret-position="2115">
+          <caret line="141" column="69" lean-forward="true" selection-start-line="141" selection-start-column="69" selection-end-line="141" selection-end-column="69" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/generator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="94" column="35" lean-forward="false" selection-start-line="94" selection-start-column="35" selection-end-line="94" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+            <marker date="1525106775000" expanded="true" signature="234:250" ph="..." />
+            <marker date="1525106775000" expanded="true" signature="266:279" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1525106775000" expanded="true" signature="3451:3472" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
