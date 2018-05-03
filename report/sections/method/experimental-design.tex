@@ -18,7 +18,7 @@ Each of the imputation methods was performed as its own experiment to allow tran
 
       \rule{0pt}{14pt} \textbf{Factor} & \textbf{Levels} & \textbf{Description} \\ \hline
       \rule{0pt}{14pt} Imputation Method & Drop, Mean, Inverse, Random & Imputation method used \\ %\hline
-      \rule{0pt}{14pt} \mintinline{Python}{sample_size} & 100, 500 &  Samples in the generated data set \\ %\hline
+      \rule{0pt}{14pt} \# of Observations & 100, 500 &  Samples in the generated data set \\ %\hline
       \rule{0pt}{14pt} $\sigma$ & 0.1, 0.3 &  Relative noise in the response \\ %\hline
       \rule{0pt}{14pt} $\beta_{X_{2}}$ Factor & 0.1, 1 &  $\beta_{X_{2}} = \beta_{X_{2}} Factor * \beta_{X_{1}}$ \\ %\hline
       \rule{0pt}{14pt} $\beta_{X_{1}X_{2}}$ Factor & 0.000001, 1, 2, 10 &  $\beta_{X_{1}X_{2}} = \beta_{X_{1}X_{2}} Factor * \beta_{X_{1}}$ \\ %\hline
@@ -35,7 +35,8 @@ with respect to the known data variance $\sigma$ (Relative Prediction MSE), rang
 and percent bias of $\hat{\beta}_{i}$ with respect to the true value of $\beta_{i}$.
 
 %The objective of the experiment is to understand how
-Attempts to run the above experiments revealed several issues that prevented direct comparison of the effects within a single model.
+Attempts to run the above experiments revealed several issues that prevented direct comparison of the effects within a single model. Among other problems, adjusting the noise level in combination with the coefficient levels introduced compounded signal-to-noise changes that were difficult to standardize into a comparable response.
+
 The above experiments was reduced to two cases which could be discussed independently.
 These will be referred to as Case 1 and Case 2 for the remainder of this paper.
 They are defined as follows.
@@ -44,9 +45,9 @@ They are defined as follows.
 Let $\beta_{ X_{1}} = \beta_{ X_{2}} = \beta_{ X_{12}} = 10$ such that the underlying model for the data is $y = 10 + 10X_{1} + 10X_{2} + 10X_{1}X_{2} + \epsilon $.
 Each dataset included 200 observations.
 Since $\beta_{ X_{1}} = \beta_{ X_{2}}$, only one must be simulated to be missing and imputed.
-$\epsilon $ remains normally distributed with a mean of zero and two levels of $\sigma$ at 2.5 and 3.5. The fraction of missing data ranged from .05 to .7 in increments of .025.
+$\epsilon $ remains normally distributed with a mean of zero and two levels of $\sigma$ at 1 and 2. The fraction of missing data ranged from .05 to .7 in increments of .025.
 
-These levels of $\sigma$ yield underlying models with specified.
+These levels of $\sigma$ yield underlying models with $R^2$ values between .97 and .8.
 
 \subsubsection{Case 2}
 

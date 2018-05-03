@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import scipy.stats as stats
 
 import random
 
@@ -91,9 +92,9 @@ def gen2(datafile, outname, factor, responses=["rel_mse_pred", "r2"], x="pct_mis
     f.savefig('figures/'+outname, bbox_inches='tight', dpi=600)
 
 
-def gen3(path, subset_cols, subset_vals, factor, response, outname, dpi, pct=False):
+def gen3(df, subset_cols, subset_vals, factor, response, outname, dpi, pct=False):
     # Load data
-    data = pd.read_csv("./report_data/"+path, index_col=0)
+    data = df.copy()
 
     # Type checks on factor
     if not isinstance(factor, list):
@@ -135,25 +136,14 @@ def gen3(path, subset_cols, subset_vals, factor, response, outname, dpi, pct=Fal
     f.savefig('figures/' + outname, bbox_inches='tight', dpi=dpi)
 
 
-
-# Bias Problems Discussion
-# 100 Replications
-# No Mean - All action_types
-gen3("drop-invert-mean_beta12-10_x101_1.csv",
-     ['action_type', 'sigma'],
-     [
-         ['invert', 'drop'],
-         [1, 2]
-     ],
-     'action_type',
-     'x1_bias_pct',
-     'drop_invert_bias_demo1.png', 150, pct=True)
+master_dpi = 150
 
 
 # Bias Problems Discussion
 # 100 Replications
 # No Mean - All action_types
-gen3("drop-invert-mean_beta12-10_x101_2.csv",
+data = pd.read_csv("./report_data/"+"drop-invert-mean_beta12-10_x101_1.csv", index_col=0)
+gen3(data,
      ['action_type', 'sigma'],
      [
          ['invert', 'drop'],
@@ -161,13 +151,16 @@ gen3("drop-invert-mean_beta12-10_x101_2.csv",
      ],
      'action_type',
      'x1_bias_pct',
-     'drop_invert_bias_demo2.png', 150, pct=True)
+     'drop_invert_bias_demo1.png', master_dpi, pct=True)
+
+print(stats.ttest_1samp(data.loc[data['action_type'].isin(['drop'])]['x1_bias_pct'], 0))
 
 
 # Bias Problems Discussion
-# 500 Replications
+# 100 Replications
 # No Mean - All action_types
-gen3("drop-invert-mean_beta12-10_x501_1.csv",
+data = pd.read_csv("./report_data/"+"drop-invert-mean_beta12-10_x101_2.csv", index_col=0)
+gen3(data,
      ['action_type', 'sigma'],
      [
          ['invert', 'drop'],
@@ -175,13 +168,16 @@ gen3("drop-invert-mean_beta12-10_x501_1.csv",
      ],
      'action_type',
      'x1_bias_pct',
-     'drop_invert_bias_demo3.png', 150, pct=True)
+     'drop_invert_bias_demo2.png', master_dpi, pct=True)
+
+print(stats.ttest_1samp(data.loc[data['action_type'].isin(['drop'])]['x1_bias_pct'], 0))
 
 
 # Bias Problems Discussion
 # 5 Replications
 # No Mean - All action_types
-gen3("drop-invert-mean_beta12-10_x5_1.csv",
+data = pd.read_csv("./report_data/"+"drop-invert-mean_beta12-10_x5_1.csv", index_col=0)
+gen3(data,
      ['action_type', 'sigma'],
      [
          ['invert', 'drop'],
@@ -189,9 +185,52 @@ gen3("drop-invert-mean_beta12-10_x5_1.csv",
      ],
      'action_type',
      'x1_bias_pct',
-     'drop_invert_bias_demo_low_rep.png', 150, pct=True)
+     'drop_invert_bias_demo_low_rep.png', master_dpi, pct=True)
+
+
+# Bias Problems Discussion
+# 500 Replications
+# No Mean - All action_types
+data = pd.read_csv("./report_data/"+"drop-invert-mean_beta12-10_x501_1.csv", index_col=0)
+gen3(data,
+     ['action_type', 'sigma'],
+     [
+         ['invert', 'drop'],
+         [1, 2]
+     ],
+     'action_type',
+     'x1_bias_pct',
+     'drop_invert_bias_demo3.png', master_dpi, pct=True)
+
+print(stats.ttest_1samp(data.loc[data['action_type'].isin(['drop'])]['x1_bias_pct'], 0))
+
+
+# Bias Shape All Methods
+# 501 Replications
+# No Mean - All action_types
+gen3(data,
+     ['action_type', 'sigma'],
+     [
+         ['invert', 'drop', 'mean'],
+         [1, 2]
+     ],
+     'action_type',
+     'x1_bias_pct',
+     'drop_invert_mean_bias_shape.png', master_dpi, pct=True)
+
+gen3(data,
+     ['action_type', 'sigma'],
+     [
+         ['invert', 'drop'],
+         [1, 2]
+     ],
+     'action_type',
+     'rel_mse_pred',
+     'drop_invert_mean_rel_mse_shape.png', master_dpi)
 
 
 
-gen1("drop-invert-mean_beta12-10_x501_1.csv", "ci_rng_demo", ["action_type"], responses=["x1_bias", "x1_ci_rng"])
-print(make_styles(3))
+
+gen1("drop-invert-mean_beta12-10_x501_1.csv", "ci_rng_demo", ["action_type"], responses=["x1_ci_rng", 'rel_mse_pred'])
+
+#print(make_styles(3))

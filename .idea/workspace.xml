@@ -11,11 +11,9 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/exp_builder.py" afterPath="$PROJECT_DIR$/exp_builder.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parallel_exec_demo.py" afterPath="$PROJECT_DIR$/parallel_exec_demo.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report/main_fig_gen.py" afterPath="$PROJECT_DIR$/report/main_fig_gen.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report/paper.tex" afterPath="$PROJECT_DIR$/report/paper.tex" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report/sections/abstract.tex" afterPath="$PROJECT_DIR$/report/sections/abstract.tex" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report/sections/challenges.tex" afterPath="$PROJECT_DIR$/report/sections/challenges.tex" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report/sections/method/experimental-design.tex" afterPath="$PROJECT_DIR$/report/sections/method/experimental-design.tex" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report/sections/method/method.tex" afterPath="$PROJECT_DIR$/report/sections/method/method.tex" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report/sections/reccomendation-conclusion.tex" afterPath="$PROJECT_DIR$/report/sections/reccomendation-conclusion.tex" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report/sections/results.tex" afterPath="$PROJECT_DIR$/report/sections/results.tex" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -53,10 +51,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="parallel_exec_demo.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="parallel_exec_demo.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/parallel_exec_demo.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-157">
+            <state relative-caret-position="362">
               <caret line="36" column="32" lean-forward="false" selection-start-line="36" selection-start-column="32" selection-end-line="36" selection-end-column="32" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
@@ -68,8 +66,8 @@
       <file leaf-file-name="exp_builder.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/exp_builder.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="106">
-              <caret line="68" column="16" lean-forward="false" selection-start-line="68" selection-start-column="16" selection-end-line="68" selection-end-column="16" />
+            <state relative-caret-position="151">
+              <caret line="52" column="0" lean-forward="true" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
               </folding>
@@ -77,11 +75,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main_fig_gen.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main_fig_gen.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/report/main_fig_gen.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="111" column="60" lean-forward="false" selection-start-line="111" selection-start-column="60" selection-end-line="111" selection-end-column="60" />
+            <state relative-caret-position="-653">
+              <caret line="140" column="0" lean-forward="true" selection-start-line="140" selection-start-column="0" selection-end-line="140" selection-end-column="0" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -218,9 +216,9 @@
         <option value="$PROJECT_DIR$/generator.py" />
         <option value="$PROJECT_DIR$/fitter.py" />
         <option value="$PROJECT_DIR$/requirements.txt" />
-        <option value="$PROJECT_DIR$/parallel_exec_demo.py" />
-        <option value="$PROJECT_DIR$/exp_builder.py" />
         <option value="$PROJECT_DIR$/report/main_fig_gen.py" />
+        <option value="$PROJECT_DIR$/exp_builder.py" />
+        <option value="$PROJECT_DIR$/parallel_exec_demo.py" />
       </list>
     </option>
   </component>
@@ -317,7 +315,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.main_fig_gen">
+  <component name="RunManager" selected="Python.exp_builder">
     <configuration name="Doctest olsinv_singlex" type="tests" factoryName="Doctests" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -535,8 +533,8 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.main_fig_gen" />
-        <item index="1" class="java.lang.String" itemvalue="Python.exp_builder" />
+        <item index="0" class="java.lang.String" itemvalue="Python.exp_builder" />
+        <item index="1" class="java.lang.String" itemvalue="Python.main_fig_gen" />
         <item index="2" class="java.lang.String" itemvalue="Python.parallel_exec_demo" />
         <item index="3" class="java.lang.String" itemvalue="Python.data_collection" />
         <item index="4" class="java.lang.String" itemvalue="Python.bac_data_generator" />
@@ -876,7 +874,14 @@
       <option name="project" value="LOCAL" />
       <updated>1525286838827</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="paper!">
+      <created>1525324513150</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1525324513150</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -964,7 +969,8 @@
     <MESSAGE value="robust configs" />
     <MESSAGE value="slight tweaks" />
     <MESSAGE value="correct imputed interaction computation" />
-    <option name="LAST_COMMIT_MESSAGE" value="correct imputed interaction computation" />
+    <MESSAGE value="paper!" />
+    <option name="LAST_COMMIT_MESSAGE" value="paper!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1281,32 +1287,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/parallel_exec_demo.py">
+    <entry file="file://$PROJECT_DIR$/report/main_fig_gen.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-157">
-          <caret line="36" column="32" lean-forward="false" selection-start-line="36" selection-start-column="32" selection-end-line="36" selection-end-column="32" />
+        <state relative-caret-position="-653">
+          <caret line="140" column="0" lean-forward="true" selection-start-line="140" selection-start-column="0" selection-end-line="140" selection-end-column="0" />
           <folding>
-            <element signature="e#0#23#0" expanded="true" />
+            <element signature="e#0#19#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/exp_builder.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="106">
-          <caret line="68" column="16" lean-forward="false" selection-start-line="68" selection-start-column="16" selection-end-line="68" selection-end-column="16" />
+        <state relative-caret-position="151">
+          <caret line="52" column="0" lean-forward="true" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
           <folding>
             <element signature="e#0#16#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/report/main_fig_gen.py">
+    <entry file="file://$PROJECT_DIR$/parallel_exec_demo.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="111" column="60" lean-forward="false" selection-start-line="111" selection-start-column="60" selection-end-line="111" selection-end-column="60" />
+        <state relative-caret-position="362">
+          <caret line="36" column="32" lean-forward="false" selection-start-line="36" selection-start-column="32" selection-end-line="36" selection-end-column="32" />
           <folding>
-            <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#0#23#0" expanded="true" />
           </folding>
         </state>
       </provider>

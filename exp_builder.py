@@ -61,12 +61,13 @@ levels = [
     #("mean", "invert", "drop", "random"),
     ("drop", 'invert', 'mean'),#, "invert", "mean"),
     (1, 2,),
+    #(2, 3,),
     (200, ),  # Initial sample sized
     (.025,),
     (.05,),  # Lower bound on percent missing data
     (.6,),  # Upper bound on percent missing data
     (['x1'],),  # Select which columns to shred
-    list(range(5))
+    list(range(1001))
 ]
 
 impute_methods = "-".join(levels[1])+"_"

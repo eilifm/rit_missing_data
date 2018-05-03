@@ -230,16 +230,16 @@ is split into the missing and complete sets and the $\hat{\beta}_{c}$ vector is
 computed.
 
 \begin{equation}
-  y_{m} =
+  y_{m1} =
   \begin{bmatrix}
-    1 & X_{2}
+    1 & x_{2}
   \end{bmatrix}
   \begin{bmatrix}
     \hat{\beta}_{c_0} \\
     \hat{\beta}_{c_2}
   \end{bmatrix} +
   \begin{bmatrix}
-    X_{1} & X_{2}
+    x_{1} & x_{2}
   \end{bmatrix}
   \begin{bmatrix}
     \hat{\beta}_{c_1} \\
@@ -248,17 +248,17 @@ computed.
 \end{equation}
 
 \begin{equation}
-  y_{m} =
+  y_{m1} =
   \begin{bmatrix}
-    1 & X_{2}
+    1 & x_{2}
   \end{bmatrix}
   \begin{bmatrix}
     \hat{\beta}_{0} \\
     \hat{\beta}_{2}
   \end{bmatrix} +
-  X_{1}
+  x_{1}
   \begin{bmatrix}
-    1 & X_{2}
+    1 & x_{2}
   \end{bmatrix}
   \begin{bmatrix}
     \hat{\beta}_{c_1} \\
@@ -267,11 +267,11 @@ computed.
 \end{equation}
 
 \begin{equation}
-  X_{1} =
+  x_{1} =
   \frac{
-    y_{m} -
+    y_{m1} -
     \begin{bmatrix}
-        1 & X_{2}
+        1 & x_{2}
       \end{bmatrix}
       \begin{bmatrix}
         \hat{\beta}_{c_0} \\
@@ -279,7 +279,7 @@ computed.
       \end{bmatrix}
     }{
     \begin{bmatrix}
-      1 & X_{2}
+      1 & x_{2}
     \end{bmatrix}
     \begin{bmatrix}
       \hat{\beta}_{c_1} \\

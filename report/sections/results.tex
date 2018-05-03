@@ -4,32 +4,38 @@
 \begin{document}
 
 \section{Results and Analysis}
+As the initially planned experiment proved to be beyond the constraints of this research, the results, analysis, and discussion will only cover Case 1.
 
 \subsection{Data Collection Challenges}
 Initially the original experiment and the cases were conducted under the assumption that parameter estimation in the underlying models was low variance.
 Accordingly, replication of runs served to help reduce the noise in the measurement with experiments run with between 5 and 50 replications.
 While there was little information about what to expect from the Invert method, the common understanding of OLS model behavior leads that the estimates of a coefficient for the main effects using the Drop method should show no bias.
 
-The bias for a run with 5 replications can be seen in Figure \ref{fig:drop_invert_bias_demo_low_rep}. In this particular run of the experiment the bias for $\hat{\beta}_{X_{1}}$ using the Invert and Drop methods appears to be 0.5 and -0.5 respectively.
+The bias for a run with 5 replications can be seen in Figure \ref{fig:drop_invert_bias_demo_low_rep}. In this particular run of the experiment the bias for $\hat{\beta}_{X_{1}}$ using the Invert and Drop methods appears to be 8\% and -8\% respectively.
 
 \begin{figure}[H]
 
 \centering
 \includegraphics[width=.8\textwidth]{drop_invert_bias_demo_low_rep}
 %\caption{Example of a parametric plot ($\sin (x), \cos(x), x$)}
-\caption{$\hat{\beta}_{X_{1}}$ bias  for Invert and Drop methods -- 5 Replications}
+\caption{$\hat{\beta}_{1}$ bias  for Invert and Drop methods -- 5 Replications}
 \label{fig:drop_invert_bias_demo_low_rep}
 \end{figure}
 
 
 The observation of non-zero bias in the Drop method triggered a full review of the experimental implementation.
+The data generation and fit code was replicated in R.
+In the presence of moderate noise in the underlying datasets, the models
+
+The simplest solution to this problem was a significant increase in the number of replications for each run.
+Through trial and error it was determined that between 400 and 1000 replications was required to ensure that Drop method beta estimates converged correctly. Figures \ref{fig:drop_invert_bias_demo2} and \ref{fig:drop_invert_bias_demo3} show improved convergence with increased replications. In these plots as with the plot above, the measure of bias is the percentage difference between the coefficient estimate and the true value.
 
 \begin{figure}[H]
 
 \centering
 \includegraphics[width=.8\textwidth]{drop_invert_bias_demo2}
 %\caption{Example of a parametric plot ($\sin (x), \cos(x), x$)}
-\caption{$\hat{\beta}_{X_{1}}$ bias for Invert and Drop methods -- 101 Replications}
+\caption{$\hat{\beta}_{1}$ bias for Invert and Drop methods -- 101 Replications}
 \label{fig:drop_invert_bias_demo2}
 \end{figure}
 
@@ -38,10 +44,21 @@ The observation of non-zero bias in the Drop method triggered a full review of t
 \centering
 \includegraphics[width=.8\textwidth]{drop_invert_bias_demo3}
 %\caption{Example of a parametric plot ($\sin (x), \cos(x), x$)}
-\caption{$\hat{\beta}_{X_{1}}$  bias for Invert and Drop methods -- 501 Replications}
+\caption{$\hat{\beta}_{1}$  bias for Invert and Drop methods -- 501 Replications}
 \label{fig:drop_invert_bias_demo3}
 \end{figure}
 
+Given the concern, a one sample two tail T Test was performed to check the mean of the bias against a null hypothesis that the mean is zero.
+This test was performed on two otherwise identical sets of 101 replications and one otherwise identical set with 501 replications.
+In the 101 set, the p-value was 0.470 and as such there is not enough evidence to conclude the mean is not zero as a confidence level of 0.05.
+In another 101 set, the p-value was 4.064e-06 and as such there is enough evidence reject the null at a confidence level of 0.05 and conclude that the mean was not zero.
+In the 501 set, the p-value was 0.000339 also providing enough evidence at a confidence level of 0.05 to conclude that the mean was not zero.
+
+These tests leave any conclusions about non-zero bias in doubt as it is difficult to conclude zero bias even with extensive replication. A comparison between the Drop, Invert, and Mean methods can be compared to eachother and inspected visually.
+
+\subsection{Model Degradation Comparison}
+
+\textcolor{red}{Two Sample difference of means Hypothesis Test}
 
 % Inversion imputation forces the missing data onto the line defined by the remaining data. The imputed data set is now biased toward the model with which it was imputed.
 % When a model is fit again to the whole data set, the result is a
@@ -50,13 +67,5 @@ The observation of non-zero bias in the Drop method triggered a full review of t
 % also converge on zero error as the vast majority of data points will be exactly on the inverted model line. Whether or
 % not this is the correct line, the model will converge on perfect fit as seen in the $R^2$ plots.
 
-% \begin{figure}[H]
-%
-% \centering
-% \includegraphics[width=.9\textwidth]{lol1}
-% %\caption{Example of a parametric plot ($\sin (x), \cos(x), x$)}
-% \caption{Plots of responses at various levels of $\beta_{X_{1}X_{2}}$}
-% \label{fig:lol1}
-% \end{figure}
 
 \end{document}
