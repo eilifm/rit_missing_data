@@ -61,7 +61,8 @@ For a given observation, the probability that a given variable is missing is
 independent from the probability that any other variable is missing. This randomness
 assumption is refered to as Missing Completely at Random (MCAR). For the implementation
 used in this study, a boolean mask was randomly created for each
-of the variables. \\
+of the variables.
+
 In the implementation, the selection of data to eliminate can be written as
 \mintinline{random_choice(observation indexes, [TRUE, FALSE])} without replacement.
 The DataFrame method, \mintinline{Python}{pandas.DataFrame.sample} is used for
@@ -186,40 +187,40 @@ This equation can be divided into two terms, those with $x_{j}$ and those withou
     \hat{\beta}_{c_{j,i}} \\
     \cdots \\
     \hat{\beta}_{c_{j,p}} \\
-  \end{bmatrix}}^{\text{terms including } X_{md}}
+  \end{bmatrix}}^{\text{terms including } x_{j}}
 \end{equation}
 
-Factor out the $X_{md}$ components from the second part of the equation.
+Factor out the $x_{j}$ components from the second part of the equation.
 
 \begin{equation}
   y_{m} =
   \overbrace{
   \begin{bmatrix}
-    1 & X_{1} & \cdots & X_{p}
+    1 & x_{i} & \cdots & x_{p}
   \end{bmatrix}
   \begin{bmatrix}
     \hat{\beta}_{c_0} \\
-    \hat{\beta}_{c_1} \\
+    \hat{\beta}_{c_i} \\
     \cdots \\
     \hat{\beta}_{c_p} \\
-  \end{bmatrix}}^{M_{1} = \text{ terms without } X_{md}} +
-  X_{md}
+  \end{bmatrix}}^{M_{1} = \text{ terms without } x_{j}} +
+  x_{j}
   \overbrace{
   \begin{bmatrix}
-    1 & X_{j} & \cdots & X_{p}
+    1 & x_{j} & \cdots & x_{p}
   \end{bmatrix}
   \begin{bmatrix}
-    \hat{\beta}_{c_{md}} \\
-    \hat{\beta}_{c_{mdj}} \\
+    \hat{\beta}_{c_{j}} \\
+    \hat{\beta}_{c_{ji}} \\
     \cdots \\
-    \hat{\beta}_{c_{mdp}} \\
-  \end{bmatrix}}^{M_{2} = \text{ terms with } X_{md}}
+    \hat{\beta}_{c_{jp}} \\
+  \end{bmatrix}}^{M_{2} = \text{ terms with } x_{j}}
 \end{equation}
 
-Solve for $X_{md}$
+Solve for $x_{j}$
 
 \begin{equation}
-X_{md} = \frac{y_{m} - M1}{M2}
+x_{j} = \frac{y_{m} - M1}{M2}
 \end{equation}
 
 Insert the computed $x_{j}$ values back into the original dataset, compute the interactions and proceed with fitting the model.

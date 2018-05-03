@@ -230,6 +230,17 @@ gen3(data,
 
 
 
+# A look at R^2
+gen3(data,
+     ['action_type', 'sigma'],
+     [
+         ['invert', 'drop', 'mean'],
+         [1, 2]
+     ],
+     'action_type',
+     'r2',
+     'drop_invert_mean_r2_1.png', master_dpi)
+
 
 gen1("drop-invert-mean_beta12-10_x501_1.csv", "ci_rng_demo", ["action_type"], responses=["x1_ci_rng", 'rel_mse_pred'])
 
