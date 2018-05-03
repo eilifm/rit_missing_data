@@ -4,15 +4,21 @@
 \begin{document}
 \section{Introduction}
 Datasets often have missing data in some or all of the features of interest.
-Given a data set with independent regressors that can be described using ordinary
+Given a data set with orthogonal regressors that can be described using ordinary
 least squares (OLS) linear regression, what is the best way to fill in any missing data?
 
-There is extensive literature on how to leverage feature relationships
-to fill in missing data however there is little information on the best practices
-for data imputation of independent data sets.
+Imputation methods discussed in literature include mean or median substitution, random substitution and multiple imputation using Markov Chain Monte Carlo methods. Single imputation is a general term which refers to a class of simple methods that replace missing values with one of mean, median, or mode for the variable.
+Hasan, Haliza, et al conducted a simulation study with independent underlying data sets similar to that of this study.
+They conclude that maximum likelihood and multiple imputation methods always outperformed single imputation. While estimate bias was discussed they did not extensive examine the bias introduced by the various imputation methods.
+\footnote{Hasan, Haliza, et al. “A Comparison of Model-Based Imputation Methods for Handling Missing Predictor Values in a Linear Regression Model: A Simulation Study.” AIP Conference Proceedings , 2017, doi:10.1063/1.4995930.}
+
+When looking for information on data imputation for regression datasets, the majority of work covers methods that leverage feature relationships to fill in missing data.
+These ``model based'' approaches use multiple imputation and Markov Chain Monte Carlo methods in real-world applications and explore the results. KNN and similar algorithms are popular choices for finding potential substitute values. These models are fit dozens of times changing parameters and input data to optimize the end model performance.
+In work by Steiner, Stefan, et al. in 2016, the authors investigated the best imputation approach for quality prediction in manufacturing. Their dataset was a stream of sensor data from the production line. They leveraged ``recent'' observations and feature relationships modeled using multiple imputation to produce results superior to single imputation.\footnote{Steiner, Stefan, et al. “A Study of Missing Data Imputation in Predictive Modeling of a Wood-Composite Manufacturing Process.” Journal of Quality Technology, vol. 48, no. 3, 2016, pp. 284–296., doi:10.1080/00224065.2016.11918167.}
+
+As this study focuses on orthogonal data sets, methods that leverage relationships between regressors are unsuitable.
 The objective of this study is to quantify the impact of various data
-imputation methods on the model performance and provide recommendations on best
-practices for independent datasets.
+imputation methods on the model performance in the presence of a set of data characteristics hopefully leading to a set of recommendations.
 
 
 \end{document}

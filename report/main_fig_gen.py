@@ -136,7 +136,7 @@ def gen3(df, subset_cols, subset_vals, factor, response, outname, dpi, pct=False
     f.savefig('figures/' + outname, bbox_inches='tight', dpi=dpi)
 
 
-master_dpi = 150
+master_dpi = 300
 
 
 # Bias Problems Discussion
@@ -173,6 +173,7 @@ gen3(data,
 print(stats.ttest_1samp(data.loc[data['action_type'].isin(['drop'])]['x1_bias_pct'], 0))
 
 
+
 # Bias Problems Discussion
 # 5 Replications
 # No Mean - All action_types
@@ -205,6 +206,50 @@ gen3(data,
 print(stats.ttest_1samp(data.loc[data['action_type'].isin(['drop'])]['x1_bias_pct'], 0))
 
 
+# A look at R^2
+gen3(data,
+     ['action_type', 'sigma'],
+     [
+         ['invert', 'drop', 'mean'],
+         [1, 2]
+     ],
+     'action_type',
+     'r2',
+     'drop_invert_mean_r2_1.png', master_dpi)
+
+# A look at CI range
+gen3(data,
+     ['action_type', 'sigma'],
+     [
+         ['invert', 'drop', 'mean'],
+         [1, 2]
+     ],
+     'action_type',
+     'x1_ci_rng',
+     'drop_invert_mean_ci_rng_1.png', master_dpi)
+
+# A look at MSE
+gen3(data,
+     ['action_type', 'sigma'],
+     [
+         ['invert', 'drop', 'mean'],
+         [1, 2]
+     ],
+     'action_type',
+     'rel_mse_pred',
+     'drop_invert_mean_rel_mse_1.png', master_dpi)
+
+# A look at MSE
+gen3(data,
+     ['action_type', 'sigma'],
+     [
+         ['invert', 'drop'],
+         [1, 2]
+     ],
+     'action_type',
+     'rel_mse_pred',
+     'drop_invert_mean_rel_mse_2.png', master_dpi)
+
 # Bias Shape All Methods
 # 501 Replications
 # No Mean - All action_types
@@ -230,16 +275,6 @@ gen3(data,
 
 
 
-# A look at R^2
-gen3(data,
-     ['action_type', 'sigma'],
-     [
-         ['invert', 'drop', 'mean'],
-         [1, 2]
-     ],
-     'action_type',
-     'r2',
-     'drop_invert_mean_r2_1.png', master_dpi)
 
 
 gen1("drop-invert-mean_beta12-10_x501_1.csv", "ci_rng_demo", ["action_type"], responses=["x1_ci_rng", 'rel_mse_pred'])

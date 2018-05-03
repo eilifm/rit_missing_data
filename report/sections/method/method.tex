@@ -8,20 +8,21 @@ the Python/Numpy/Pandas stack with the Statsmodels package providing a robust
 implementation of Ordinary Least Squares linear regression modeling.
 The source code of this paper and the implementation are available under MIT license on GitHub for exploration by the reader.
 
-As the objective is to understand how imputation methods along with other attributes of the data impact model performance, a full factorial experiment is constructed observing the model behavior given all combinations of factors and levels.
-For each run, a new data set is generated, values artifically are removed, and the data imputed according to the run parameters. An OLS model is fit to the data  with a variety of performance metrics collected. All Python objects are destroyed between runs to guard against implementation bugs. The executed experment will be outlined in greater detail after additional concepts are introduced.
+As the objective is to understand how imputation methods, along with other attributes of the data, impact model performance, a full factorial experiment is constructed observing the model behavior given all combinations of factors and levels.
+For each run, a new data set is generated, values artificially are removed, and the data imputed according to the run parameters.
+An OLS model is fit to the data with a variety of performance metrics collected.
+All Python objects are destroyed between runs to guard against implementation bugs.
+The executed experiment will be outlined in greater detail after additional concepts are introduced.
 
 
 \subsection{Input Data Characteristics}
 The data set constructed for each run must be comprised of $p$ i.i.d variables.
-The response $y$ is computed to follow a linear model with all main effects and two factor interactions
-in accordance with equation \ref{eq:data_assumed_model}. In practice, most of
-the research focused on the two variable case shown in Equation
-\ref{eq:2var_assumed_model}.
+The response $y$ is computed to follow a linear model with all main effects and two factor interactions in accordance with equation \ref{eq:data_assumed_model}.
+In practice, most of the research focused on the two variable case shown in Equation \ref{eq:2var_assumed_model}.
 
 \begin{equation}\label{eq:data_assumed_model}
-  y = \beta_{0} + \beta_{ 1 } x_{1}  + \ldots + \beta_{p}x_{p} +
-  \beta_{12}x_{1}x_{2} + \ldots +\beta_{p-1,p}x_{p-1}x_{p} + \epsilon
+  y = \beta_{0} + \beta_{ 1 } x_{1}  + \cdots + \beta_{p}x_{p} +
+  \beta_{1,2}x_{1}x_{2} + \cdots +\beta_{p-1,p}x_{p-1}x_{p} + \epsilon
 \end{equation}
 
 
@@ -37,12 +38,10 @@ The $\beta$ values for interaction terms are set explicitly.
 
 As the dataset is artificially generated, noise is added to the final
 computation of the response.
-The noise is directly controled by adjusting the standard deviation of noise distribution.
+The noise is directly controlled by adjusting the standard deviation of noise distribution.
 The mean of the noise must be zero in accordance with the underlying assumptions of OLS.
 
-% These relationships are described in equations \ref{eq:epsilon_def},
-% \ref{eq:noise_factor_def} and \ref{eq:noise_factor_sigma_def}.
-%
+
 \begin{equation}\label{eq:epsilon_def}
   \epsilon \text{\textasciitilde} N(0, \sigma)
 \end{equation}
@@ -59,7 +58,7 @@ The mean of the noise must be zero in accordance with the underlying assumptions
 \subsection{Simulating Missing Data}
 For a given observation, the probability that a given variable is missing is
 independent from the probability that any other variable is missing. This randomness
-assumption is refered to as Missing Completely at Random (MCAR). For the implementation
+assumption is referred to as Missing Completely at Random (MCAR). For the implementation
 used in this study, a boolean mask was randomly created for each
 of the variables.
 
@@ -67,7 +66,7 @@ In the implementation, the selection of data to eliminate can be written as
 \mintinline{random_choice(observation indexes, [TRUE, FALSE])} without replacement.
 The DataFrame method, \mintinline{Python}{pandas.DataFrame.sample} is used for
 performance and simplicity reasons. Removed values were set to NULL. The number of
-datapoints to remove is controlled as the fraction of data missing. Given MCAR,
+data points to remove is controlled as the fraction of data missing. Given MCAR,
 it is possible for more than one variable to be missing. While this case was intentionally avoided in the experiments for this paper, such observations are dropped from the dataset before any imputation begins.
 The response $y$ is never nulled.
 
@@ -76,11 +75,11 @@ The response $y$ is never nulled.
 
 Four methods are proposed and explored in these experiments.
 Drop imputation (Drop Imputation) simply removes an observations where any value is null while making no attempt to fill it in.
-Imputing with the mean (Mean Imputation) replace missing values of a variable with the mean of the available samples for the respective variable.
+Imputing with the mean (Mean Imputation) replaces missing values of a variable with the mean of the available samples for the respective variable.
 Random value imputation (Random Imputation) replaces the missing value with a value from the set of available samples for the the respective variable.
 Imputation through model inversion (Inverse Imputation) replaces missing values with the computed values from the linear regression equation solved for the missing variable.
 
-\subsubsection*{On Inverse Imputation}
+\subsubsection{On Inverse Imputation}
 To understand the inversion method, let's explore the general case solution.
 Let $X$ be the model matrix with $p$ main effects and ${}_{p}C_{2}$ interactions less the $X_{i}^2$ terms.
 $X$ has some missing data in at most one variable per observation. $X$ can be
@@ -131,7 +130,7 @@ Further segment $X_{m}$ by the column which is missing data such that
 \begin{bmatrix}
   X_{m1} \\
   X_{m2} \\
-  \cdots \\
+  \vdots \\
   X_{mp}
 \end{bmatrix}
 \end{equation}
@@ -150,12 +149,12 @@ For each $X_{mj} \in X_{m}$ where $x_{j}$ is the variable with missing data and 
     \hat{\beta}_{0} \\
     \hat{\beta}_{j} \\
     \hat{\beta}_{i} \\
-    \cdots \\
+    \vdots \\
     \hat{\beta}_{p} \\
     \hat{\beta}_{j,i} \\
-    \cdots \\
+    \vdots \\
     \hat{\beta}_{j,i} \\
-    \cdots \\
+    \vdots \\
     \hat{\beta}_{j, p} \\
 
   \end{bmatrix}
@@ -172,9 +171,9 @@ This equation can be divided into two terms, those with $x_{j}$ and those withou
   \begin{bmatrix}
     \hat{\beta}_{c_0} \\
     \hat{\beta}_{c_i} \\
-    \cdots \\
+    \vdots \\
     \hat{\beta}_{c_p} \\
-    \cdots \\
+    \vdots \\
     \hat{\beta}_{c_i,i+1} \\
   \end{bmatrix}}^{\text{terms without } x_{j}}
    +
@@ -185,7 +184,7 @@ This equation can be divided into two terms, those with $x_{j}$ and those withou
   \begin{bmatrix}
     \hat{\beta}_{c_{j}} \\
     \hat{\beta}_{c_{j,i}} \\
-    \cdots \\
+    \vdots \\
     \hat{\beta}_{c_{j,p}} \\
   \end{bmatrix}}^{\text{terms including } x_{j}}
 \end{equation}
@@ -201,19 +200,19 @@ Factor out the $x_{j}$ components from the second part of the equation.
   \begin{bmatrix}
     \hat{\beta}_{c_0} \\
     \hat{\beta}_{c_i} \\
-    \cdots \\
+    \vdots \\
     \hat{\beta}_{c_p} \\
   \end{bmatrix}}^{M_{1} = \text{ terms without } x_{j}} +
   x_{j}
   \overbrace{
   \begin{bmatrix}
-    1 & x_{j} & \cdots & x_{p}
+    1 & x_{i} & \cdots & x_{p}
   \end{bmatrix}
   \begin{bmatrix}
     \hat{\beta}_{c_{j}} \\
-    \hat{\beta}_{c_{ji}} \\
-    \cdots \\
-    \hat{\beta}_{c_{jp}} \\
+    \hat{\beta}_{c_{j,i}} \\
+    \vdots \\
+    \hat{\beta}_{c_{j,p}} \\
   \end{bmatrix}}^{M_{2} = \text{ terms with } x_{j}}
 \end{equation}
 
@@ -225,8 +224,8 @@ x_{j} = \frac{y_{m} - M1}{M2}
 
 Insert the computed $x_{j}$ values back into the original dataset, compute the interactions and proceed with fitting the model.
 
-\subsubsection*{2 Variable Example Case}
-Two variable case where $X_{1}$ is missing values for some observations. The data
+\subsubsection{Two Variable Example Case}
+Two variable case where $x_{1}$ is missing values for some observations. The data
 is split into the missing and complete sets and the $\hat{\beta}_{c}$ vector is
 computed.
 
@@ -240,11 +239,11 @@ computed.
     \hat{\beta}_{c_2}
   \end{bmatrix} +
   \begin{bmatrix}
-    x_{1} & x_{2}
+    x_{1} & x_{1}x_{2}
   \end{bmatrix}
   \begin{bmatrix}
     \hat{\beta}_{c_1} \\
-    \hat{\beta}_{c_{12}}
+    \hat{\beta}_{c_{1,2}}
   \end{bmatrix}
 \end{equation}
 
@@ -263,7 +262,7 @@ computed.
   \end{bmatrix}
   \begin{bmatrix}
     \hat{\beta}_{c_1} \\
-    \hat{\beta}_{c_{12}}
+    \hat{\beta}_{c_{1,2}}
   \end{bmatrix}
 \end{equation}
 
@@ -284,7 +283,7 @@ computed.
     \end{bmatrix}
     \begin{bmatrix}
       \hat{\beta}_{c_1} \\
-      \hat{\beta}_{c_{12}}
+      \hat{\beta}_{c_{1,2}}
     \end{bmatrix}
     }
 \end{equation}
