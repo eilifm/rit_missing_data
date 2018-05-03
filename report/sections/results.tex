@@ -5,6 +5,44 @@
 
 \section{Results and Analysis}
 
+\subsection{Data Collection Challenges}
+Initially the original experiment and the cases were conducted under the assumption that parameter estimation in the underlying models was low variance.
+Accordingly, replication of runs served to help reduce the noise in the measurement with experiments run with between 5 and 50 replications.
+While there was little information about what to expect from the Invert method, the common understanding of OLS model behavior leads that the estimates of a coefficient for the main effects using the Drop method should show no bias.
+
+The bias for a run with 5 replications can be seen in Figure \ref{fig:drop_invert_bias_demo_low_rep}. In this particular run of the experiment the bias for $\hat{\beta}_{X_{1}}$ using the Invert and Drop methods appears to be 0.5 and -0.5 respectively.
+
+\begin{figure}[H]
+
+\centering
+\includegraphics[width=.8\textwidth]{drop_invert_bias_demo_low_rep}
+%\caption{Example of a parametric plot ($\sin (x), \cos(x), x$)}
+\caption{$\hat{\beta}_{X_{1}}$ bias  for Invert and Drop methods -- 5 Replications}
+\label{fig:drop_invert_bias_demo_low_rep}
+\end{figure}
+
+
+The observation of non-zero bias in the Drop method triggered a full review of the experimental implementation.
+
+\begin{figure}[H]
+
+\centering
+\includegraphics[width=.8\textwidth]{drop_invert_bias_demo2}
+%\caption{Example of a parametric plot ($\sin (x), \cos(x), x$)}
+\caption{$\hat{\beta}_{X_{1}}$ bias for Invert and Drop methods -- 101 Replications}
+\label{fig:drop_invert_bias_demo2}
+\end{figure}
+
+\begin{figure}[H]
+
+\centering
+\includegraphics[width=.8\textwidth]{drop_invert_bias_demo3}
+%\caption{Example of a parametric plot ($\sin (x), \cos(x), x$)}
+\caption{$\hat{\beta}_{X_{1}}$  bias for Invert and Drop methods -- 501 Replications}
+\label{fig:drop_invert_bias_demo3}
+\end{figure}
+
+
 % Inversion imputation forces the missing data onto the line defined by the remaining data. The imputed data set is now biased toward the model with which it was imputed.
 % When a model is fit again to the whole data set, the result is a
 % tighter CI around the $\beta_{1}$ estimate.

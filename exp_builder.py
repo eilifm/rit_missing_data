@@ -59,14 +59,14 @@ gen_levels = [len(x) for x in maker_levels]
 levels = [
     [config_maker(*args) for args in itertools.product(*maker_levels)],
     #("mean", "invert", "drop", "random"),
-    ("drop", "invert", "mean"),
-    (2, 4),
+    ("drop", 'invert', 'mean'),#, "invert", "mean"),
+    (1, 2,),
     (200, ),  # Initial sample sized
     (.025,),
     (.05,),  # Lower bound on percent missing data
     (.6,),  # Upper bound on percent missing data
     (['x1'],),  # Select which columns to shred
-    list(range(2000))
+    list(range(5))
 ]
 
 impute_methods = "-".join(levels[1])+"_"

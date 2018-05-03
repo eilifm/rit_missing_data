@@ -13,68 +13,71 @@ For each run, a new data set is generated, values artifically are removed, and t
 
 
 \subsection{Input Data Characteristics}
-The data set constructed for each run must be comprised of $p$ i.i.d variables. The response $y$ is computed
-to follow a linear model with all main effects and two factor interactions
+The data set constructed for each run must be comprised of $p$ i.i.d variables.
+The response $y$ is computed to follow a linear model with all main effects and two factor interactions
 in accordance with equation \ref{eq:data_assumed_model}. In practice, most of
 the research focused on the two variable case shown in Equation
 \ref{eq:2var_assumed_model}.
 
 \begin{equation}\label{eq:data_assumed_model}
-  y = \beta_{0} + \beta_{ X_{1} } X_{1}  + \ldots + \beta_{X_{p}}X_{p} +
-  \beta_{X_{1}X_{2}}X_{1}X_{2} + \ldots +\beta_{X_{p-1}X_{p}}X_{p-1}X_{p} + \epsilon
+  y = \beta_{0} + \beta_{ 1 } x_{1}  + \ldots + \beta_{p}x_{p} +
+  \beta_{12}x_{1}x_{2} + \ldots +\beta_{p-1,p}x_{p-1}x_{p} + \epsilon
 \end{equation}
 
 
 \begin{equation}\label{eq:2var_assumed_model}
-  y = \beta_{0} + \beta_{ X_{1}} X_{1} + \beta_{X_{2} }X_{2} +
-  \beta_{ X_{1} X_{2} } X_{1}X_{2} + \epsilon
+  y = \beta_{0} + \beta_{1} x_{1} + \beta_{2}x_{2} +
+  \beta_{1,2} x_{1}x_{2} + \epsilon
 \end{equation}
 
-To simplify data generation, all $\beta$ values are proportional to $\beta_{X_{1}}$.
-For example, in a data set with three variables, let $\beta_{X_{1}} = 10$, then
-the array $[0.1, 1.5]$ defines $\beta_{X_{2}}$ and $\beta_{X_{3}}$ to 1 and 15 respectively.
+To simplify data generation, all $\beta$ values are proportional to $\beta_{1}$.
+For example, in a data set with three variables, let $\beta_{1} = 10$, then
+the array $[0.1, 1.5]$ defines $\beta_{2}$ and $\beta_{3}$ to 1 and 15 respectively.
 The $\beta$ values for interaction terms are set explicitly.
 
 As the dataset is artificially generated, noise is added to the final
-computation of the response. A \mintinline{Python}{noise_factor} variable is
-introduced to control the variance of the noise proportional
-to the largest $\beta$ value of the main effects. The mean of the noise must be
-zero in accordance with the underlying assumptions of OLS. These
-relationships are described in equations \ref{eq:epsilon_def},
-\ref{eq:noise_factor_def} and \ref{eq:noise_factor_sigma_def}.
+computation of the response.
+The noise is directly controled by adjusting the standard deviation of noise distribution.
+The mean of the noise must be zero in accordance with the underlying assumptions of OLS.
 
+% These relationships are described in equations \ref{eq:epsilon_def},
+% \ref{eq:noise_factor_def} and \ref{eq:noise_factor_sigma_def}.
+%
 \begin{equation}\label{eq:epsilon_def}
   \epsilon \text{\textasciitilde} N(0, \sigma)
 \end{equation}
-
-\begin{equation}\label{eq:noise_factor_def}
-  \mintinline{Python}{noise_factor} \geq 0
-\end{equation}
-
-\begin{equation}\label{eq:noise_factor_sigma_def}
-  \sigma = MAX(\beta_{Main Effects}) * \mintinline{Python}{noise_factor}
-\end{equation}
+%
+% \begin{equation}\label{eq:noise_factor_def}
+%   \mintinline{Python}{noise_factor} \geq 0
+% \end{equation}
+%
+% \begin{equation}\label{eq:noise_factor_sigma_def}
+%   \sigma = MAX(\beta_{Main Effects}) * \mintinline{Python}{noise_factor}
+% \end{equation}
 
 
 \subsection{Simulating Missing Data}
 For a given observation, the probability that a given variable is missing is
-idependent from the probability that any other variable is missing. This randomness
+independent from the probability that any other variable is missing. This randomness
 assumption is refered to as Missing Completely at Random (MCAR). For the implementation
 used in this study, a boolean mask was randomly created for each
-of the variables. The selection of data to eliminate can be written as
+of the variables. \\
+In the implementation, the selection of data to eliminate can be written as
 \mintinline{random_choice(observation indexes, [TRUE, FALSE])} without replacement.
 The DataFrame method, \mintinline{Python}{pandas.DataFrame.sample} is used for
 performance and simplicity reasons. Removed values were set to NULL. The number of
 datapoints to remove is controlled as the fraction of data missing. Given MCAR,
-it is possible for more than one variable to be missing. While this case was intentionally avoided in the experiments for this paper, such observations are dropped from the dataset before any imputation begins. The response y is never
-nulled.
+it is possible for more than one variable to be missing. While this case was intentionally avoided in the experiments for this paper, such observations are dropped from the dataset before any imputation begins.
+The response $y$ is never nulled.
 
 
 \subsection{Imputation Methods}
 
-Four methods are proposed and explored in these experiments. Drop imputation (Drop Imputation) simply removes an observations where any value is null while making no attempt to fill it in.
+Four methods are proposed and explored in these experiments.
+Drop imputation (Drop Imputation) simply removes an observations where any value is null while making no attempt to fill it in.
 Imputing with the mean (Mean Imputation) replace missing values of a variable with the mean of the available samples for the respective variable.
-Random value imputation (Random Imputation) replaces the missing value with a value from the set of available samples for the the respective variable. Imputation through model inversion (Inverse Imputation) replaces missing values with the computed values from the linear regression equation solved for the missing variable.
+Random value imputation (Random Imputation) replaces the missing value with a value from the set of available samples for the the respective variable.
+Imputation through model inversion (Inverse Imputation) replaces missing values with the computed values from the linear regression equation solved for the missing variable.
 
 \subsubsection*{On Inverse Imputation}
 To understand the inversion method, let's explore the general case solution.
@@ -84,8 +87,9 @@ written as two components $X_{m}$ and $X_{c}$ containing observations with
  missing values and complete observations respectively.
 
 \begin{equation}
-  X = \begin{bmatrix}
-  1 & X_{1} & X_{2} & \cdots & X_{1}X_{2} & .. &X_{p-1}X_{p}
+  X =
+  \begin{bmatrix}
+  1 & x_{1} & x_{2} & x_{3} & \cdots & x_{1}x_{2} & x_{1}x_{3} & x_{2}x_{3} & \cdots & x_{1}x_{p} % & \cdots & x_{p-1}x_{p}
 \end{bmatrix}
 \end{equation}
 
@@ -106,13 +110,13 @@ The response can be similarly split as
 \end{equation}
 
 
-The complete observations are given as.
-\begin{equation}
-  X_{c} =
-  \begin{bmatrix}
-    X \neq NULL
-  \end{bmatrix}
-\end{equation}
+% The complete observations are given as.
+% \begin{equation}
+%   X_{c} =
+%   \begin{bmatrix}
+%     X \neq NULL
+%   \end{bmatrix}
+% \end{equation}
 
 
 Next, the beta estimates for the data are computed from the complete observations.
@@ -120,50 +124,68 @@ Next, the beta estimates for the data are computed from the complete observation
   \hat{\beta}_{c} = (X_{c}^{T}X_{c})^{-1} X_{c}^{T} y_{c}
 \end{equation}
 
+Further segment $X_{m}$ by the column which is missing data such that
+\begin{equation}
+  X_{m} =
+\begin{bmatrix}
+  X_{m1} \\
+  X_{m2} \\
+  \cdots \\
+  X_{mp}
+\end{bmatrix}
+\end{equation}
 
-For each variable that contains missing data $X_{md}$ and the remaining model
-terms $X_{j} \in X, j \neq md$
+For each $X_{mj} \in X_{m}$ where $x_{j}$ is the variable with missing data and $x_{i} \cdots x_{p}, x_{i} \neq x_{j}$
+
+%containing missing values, $x_{md}$,and the remaining model terms $x_{j} \in X_{m}, j \neq md$
+
 
 \begin{equation}
-  y =
+  y_{mj} =
   \begin{bmatrix}
-    1 & X_{md} & X_{j} & \cdots & X_{md}X_{j} & \cdots & X_{md}X_{p} & \cdot X_{j}X_{p}
+    1 & x_{j} & x_{i} & \cdots & x_{p} & x_{j}x_{i} & \cdots & x_{i}x_{p} & \cdots & x_{j}x_{p}
   \end{bmatrix}
   \begin{bmatrix}
     \hat{\beta}_{0} \\
-    \hat{\beta}_{1} \\
-    \hat{\beta}_{2} \\
+    \hat{\beta}_{j} \\
+    \hat{\beta}_{i} \\
     \cdots \\
-    \hat{\beta}_{12} \\
-    \hat{\beta}_{p-1 p} \\
+    \hat{\beta}_{p} \\
+    \hat{\beta}_{j,i} \\
+    \cdots \\
+    \hat{\beta}_{j,i} \\
+    \cdots \\
+    \hat{\beta}_{j, p} \\
 
   \end{bmatrix}
 \end{equation}
 
-This equation can be divided into two terms, those with $X_{md}$ and those without.
+This equation can be divided into two terms, those with $x_{j}$ and those without.
 
 \begin{equation}
-  y_{m} =
+  y_{mj} =
 \overbrace{
   \begin{bmatrix}
-    1 & X_{1} & \cdots & X_{p}
+    1 & x_{i} & \cdots & x_{p} &  \cdots & x_{i}x_{i+1} \cdots  x_{i}x_{p}
   \end{bmatrix}
   \begin{bmatrix}
     \hat{\beta}_{c_0} \\
-    \hat{\beta}_{c_1} \\
+    \hat{\beta}_{c_i} \\
     \cdots \\
     \hat{\beta}_{c_p} \\
-  \end{bmatrix}}^{\text{terms without } X_{md}}
+    \cdots \\
+    \hat{\beta}_{c_i,i+1} \\
+  \end{bmatrix}}^{\text{terms without } x_{j}}
    +
   \overbrace{
   \begin{bmatrix}
-    X_{md} & X_{md}X_{j} & \cdots & X_{md}X_{p}
+    x_{j} & x_{j}x_{i} & \cdots & x_{j}x_{p}
   \end{bmatrix}
   \begin{bmatrix}
-    \hat{\beta}_{c_{md}} \\
-    \hat{\beta}_{c_{mdj}} \\
+    \hat{\beta}_{c_{j}} \\
+    \hat{\beta}_{c_{j,i}} \\
     \cdots \\
-    \hat{\beta}_{c_{mdp}} \\
+    \hat{\beta}_{c_{j,p}} \\
   \end{bmatrix}}^{\text{terms including } X_{md}}
 \end{equation}
 
@@ -200,7 +222,7 @@ Solve for $X_{md}$
 X_{md} = \frac{y_{m} - M1}{M2}
 \end{equation}
 
-Insert the computed $X_{md}$ values back into the original dataset, compute the interactions and proceed with fitting the model.
+Insert the computed $x_{j}$ values back into the original dataset, compute the interactions and proceed with fitting the model.
 
 \subsubsection*{2 Variable Example Case}
 Two variable case where $X_{1}$ is missing values for some observations. The data

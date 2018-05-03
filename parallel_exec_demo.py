@@ -34,7 +34,7 @@ if __name__ == "__main__":
     print(len(levels))
     #results = Parallel(n_jobs=-1, verbose=10)(delayed(run)(*args) for args in itertools.product(*levels))
 #    np.random.shuffle(levels)
-    results = Parallel(n_jobs=-1, verbose=10)(delayed(run)(*args) for args in levels)
+    results = Parallel(n_jobs=-2, verbose=10)(delayed(run)(*args) for args in levels)
 
     numeric_levels = list(set(itertools.chain.from_iterable([result[1] for result in results])))
 
@@ -51,7 +51,7 @@ if __name__ == "__main__":
         "sample_size",
         "targets"
     ]
-    grouped_data = data_results.groupby(grp_cols).mean().reset_index()
+    grouped_data = data_results #data_results.groupby(grp_cols).mean().reset_index()
 
     grouped_data = grouped_data.sample(frac=1).reset_index(drop=True)
 

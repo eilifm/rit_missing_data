@@ -3,7 +3,23 @@
 
 \begin{document}
 \section{Challenges}
-After 
+The common understanding of OLS model behavior leads that the estimates
+of a coefficient for the main effect in our uncorrelated dataset should show no bias.
+When using the Drop method, every model fit for every level of missing data and in each replication should, on average, produce unbiased estimates for each of the coefficients.
+Assuming that the parameter estimation in the underlying models was low variance,
+replication of runs was really just to help reduce the noise. For this purpose, 5 to 10 replications is often more than enough.
+
+\begin{figure}[H]
+
+\centering
+\includegraphics[width=.9\textwidth]{drop_invert_bias_demo}
+%\caption{Example of a parametric plot ($\sin (x), \cos(x), x$)}
+\caption{Plots of responses at various levels of $\beta_{X_{1}X_{2}}$}
+\label{fig:drop_invert_bias_demo}
+\end{figure}
+
+%ci_rng_demo
+
 %$\textcolor{red}{Add Findings Summary When Complete}
 
 
